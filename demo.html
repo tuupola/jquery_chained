@@ -1,5 +1,5 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml" debug="true">
+<html xmlns="http://www.w3.org/1999/xhtml">
 
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
@@ -84,6 +84,26 @@
           <option value="coupe"        class="a5 s5">Coupe</option>    
         </select>
       </form>
+      
+      <form>
+        <select id="a">
+          <option value="a1">a1</option>
+          <option value="a2">a2</option>
+          <option value="a3">a3</option>
+        </select>
+        <select id="b">
+          <option value="b1">b1</option>
+          <option value="b2">b2</option>
+          <option value="b3">b3</option>
+        </select>
+        <select id="c">
+          <option value="">--</option>
+          <option value="a1b1" class="a1\b1">a1b1</option>
+          <option value="a1b2" class="a1\b1 a1\b2">a1\b1 or a1b2</option>
+          <option value="a2b2" class="a2\b2">a2b2</option>
+          <option value="a2b3" class="a2\b3">a2b3</option>
+        </select>
+      </form>
             
     </div>
 
@@ -102,7 +122,9 @@
     
     $("#series").chained("#mark");
     $("#model").chained("#series");
-
+    
+    $("#c").chained("#a,#b");
+    
   });
   </script>
 
