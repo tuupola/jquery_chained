@@ -1,3 +1,13 @@
+/*
+ * Chained - jQuery chained selects plugin
+ *
+ * Copyright (c) 2010 Mika Tuupola
+ *
+ * Licensed under the MIT license:
+ *   http://www.opensource.org/licenses/mit-license.php
+ *
+ */
+
 (function($) {
 
     $.fn.chained = function(parent_selector, options) { 
@@ -13,17 +23,25 @@
                 $(this).bind("change", function() {
                     $(self).html($(backup).html());
                     
+
                     /* If multiple parents build classname like foo\bar. */
-                    var selected = "";         
+                    var selected = "";
                     $(parent_selector).each(function() {
                         selected += "\\" + $(":selected", this).val();
                     });
                     selected = selected.substr(1);
+
+                    /* Also check for first parent without subclassing. */
+                    /* TODO: This should be dynamic and check for each parent */
+                    /*       without subclassing. */
+                    var first = $(parent_selector).first();
+                    var selected_first = $(":selected", first).val();
                 
                     $("option", self).each(function() {
                         /* Remove unneeded items but save the default value. */
-                        if (!$(this).hasClass(selected) && $(this).val() !== "") {
-                            $(this).remove();
+                        if (!$(this).hasClass(selected) && 
+                            !$(this).hasClass(selected_first) && $(this).val() !== "") {
+                                $(this).remove();
                         }                        
                     });
                 
