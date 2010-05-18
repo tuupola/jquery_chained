@@ -46,7 +46,7 @@
                     });
                 
                     /* If we have only the default value disable select. */
-                    if (1 == $("option", self).size()) {
+                    if (1 == $("option", self).size() && $(self).val() == "") {
                         $(self).attr("disabled", "disabled");
                     } else {
                         $(self).removeAttr("disabled");
