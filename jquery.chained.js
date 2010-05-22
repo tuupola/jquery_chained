@@ -52,12 +52,13 @@
                         $(self).removeAttr("disabled");
                     }
                 
-                    /* Force updating the children. */
-                    $(self).trigger("change");
                 });
+
+                /* Force updating the children. */
+                $(this).trigger("change");             
+
             });
-                        
-        });  
+        });
     };
     
     /* Alias for those who like to use more English like syntax. */
