@@ -17,11 +17,11 @@
             /* Save this to self because this changes when scope changes. */            
             var self   = this;
             var backup = $(self).clone();
-            
+                        
             /* Handles maximum two parents now. */
             $(parent_selector).each(function() {
                 $(this).bind("change", function() {
-                    $(self).html($(backup).html());
+                    $(self).html(backup.html());
                     
 
                     /* If multiple parents build classname like foo\bar. */
