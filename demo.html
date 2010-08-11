@@ -98,16 +98,49 @@
         </select>
         <select id="c">
           <option value="">--</option>
-          <option value="a1b1" class="a1">anything starting a1</option>
+          <option value="a1" class="a1">anything starting a1</option>
           <option value="a1b1" class="a1\b1">a1b1</option>
-          <option value="a1b2" class="a1\b1 a1\b2">a1b1 or a1b2</option>
+          <option value="a1b1_a1b2" class="a1\b1 a1\b2">a1b1 or a1b2</option>
           <option value="a2b2" class="a2\b2">a2b2</option>
           <option value="a2b3" class="a2\b3">a2b3</option>
         </select>
       </form>
             
     </div>
-
+    
+    <div class="entry">
+      <form>
+        <select id="mark-remote">
+          <option value="">--</option>
+          <option value="bmw">BMW</option>
+          <option value="audi">Audi</option>
+        </select>
+        <select id="series-remote">
+          <option value="">--</option>
+        </select>
+        <select id="model-remote">
+          <option value="">--</option>   
+        </select>
+      </form>
+      
+      <form>
+        <select id="a-remote">
+          <option value="a1">a1</option>
+          <option value="a2">a2</option>
+          <option value="a3">a3</option>
+        </select>
+        <select id="b-remote">
+          <option value="b1">b1</option>
+          <option value="b2">b2</option>
+          <option value="b3">b3</option>
+        </select>
+        <select id="c-remote">
+          <option value="">--</option>
+        </select>
+      </form>
+            
+    </div>
+    
     <div id="sidebar">
     </div>
 
@@ -118,13 +151,20 @@
 
   <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.4.2/jquery.min.js" type="text/javascript" charset="utf-8"></script>
   <script src="jquery.chained.js" type="text/javascript" charset="utf-8"></script>
+  <script src="jquery.chained.remote.js" type="text/javascript" charset="utf-8"></script>
   <script type="text/javascript" charset="utf-8">
   $(function() {
     
+    /* For jquery.chained.js */
     $("#series").chained("#mark");
     $("#model").chained("#series");
-    
     $("#c").chained("#a,#b");
+
+    /* For jquery.chained.remote.js */    
+    $("#series-remote").remoteChained("#mark-remote", "json.php");
+    $("#model-remote").remoteChained("#series-remote", "json.php");
+    
+    $("#c-remote").remoteChained("#a-remote,#b-remote", "json.php");
     
   });
   </script>

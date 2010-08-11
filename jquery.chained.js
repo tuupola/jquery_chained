@@ -1,5 +1,5 @@
 /*
- * Chained - jQuery chained selects plugin
+ * Chained - jQuery non AJAX(J) chained selects plugin
  *
  * Copyright (c) 2010 Mika Tuupola
  *
