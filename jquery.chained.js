@@ -20,9 +20,9 @@
                         
             /* Handles maximum two parents now. */
             $(parent_selector).each(function() {
+                                                
                 $(this).bind("change", function() {
                     $(self).html(backup.html());
-                    
 
                     /* If multiple parents build classname like foo\bar. */
                     var selected = "";
@@ -46,14 +46,17 @@
                     });
                 
                     /* If we have only the default value disable select. */
-                    if (1 == $("option", self).size() && $(self).val() == "") {
+                    if (1 == $("option", self).size() && $(self).val() === "") {
                         $(self).attr("disabled", "disabled");
                     } else {
                         $(self).removeAttr("disabled");
                     }
-                
+                    $(self).trigger("change");
                 });
-
+                
+                /* Force IE to see something selected on first page load. */
+                $("option", this).first().attr("selected", "selected");
+                
                 /* Force updating the children. */
                 $(this).trigger("change");             
 
