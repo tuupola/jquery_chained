@@ -17,6 +17,10 @@
             /* Save this to self because this changes when scope changes. */            
             var self   = this;
             var backup = $(self).clone();
+
+            var settings = $.extend({
+                posted_attribute_id:  $(this).attr("id")
+            }, options||{})  ;
                         
             /* Handles maximum two parents now. */
             $(parent_selector).each(function() {
@@ -25,7 +29,7 @@
                     /* Build data array from parents values. */
                     var data = {};
                     $(parent_selector).each(function() {
-                        var id = $(this).attr("id");
+                        var id = settings.posted_attribute_id;
                         var value = $(":selected", this).val();
                         data[id] = value;
                     });
