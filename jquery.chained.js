@@ -54,9 +54,12 @@
                     $(self).trigger("change");
                 });
                 
-                /* Force IE to see something selected on first page load. */
-                $("option", this).first().attr("selected", "selected");
-                
+                /* Force IE to see something selected on first page load, */
+                /* Unless something is already selected */
+                if ( !$("option:selected", this).length ) {
+                    $("option", this).first().attr("selected", "selected");
+                }
+	    
                 /* Force updating the children. */
                 $(this).trigger("change");             
 
