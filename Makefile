@@ -1,7 +1,6 @@
-VERSION = 0.9.0
+VERSION = 0.9.1
 SHELL = /bin/sh
-DOWNLOAD = /var/www/www.appelsiini.net/htdocs/download
-JSPACKER = /home/tuupola/bin/jspacker
+DOWNLOAD = /srv/www/www.appelsiini.net/shared/static/download
 JSMIN    = /home/tuupola/bin/jsmin
 
 all: chained minified latest
