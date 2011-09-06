@@ -1,7 +1,7 @@
 /*
  * Chained - jQuery non AJAX(J) chained selects plugin
  *
- * Copyright (c) 2010 Mika Tuupola
+ * Copyright (c) 2010-2011 Mika Tuupola
  *
  * Licensed under the MIT license:
  *   http://www.opensource.org/licenses/mit-license.php
@@ -55,7 +55,7 @@
                 });
                 
                 /* Force IE to see something selected on first page load, */
-                /* Unless something is already selected */
+                /* unless something is already selected */
                 if ( !$("option:selected", this).length ) {
                     $("option", this).first().attr("selected", "selected");
                 }
