@@ -84,6 +84,13 @@
           <option value="allroad"      class="a4 a6">Allroad</option>
           <option value="coupe"        class="a5 s5">Coupe</option>    
         </select>
+        
+        <select id="engine">
+          <option value="">--</option>   
+          <option value="25-petrol" class="series-3 a3 a4">2.5 petrol</option>
+          <option value="30-petrol" class="series-3 series-5 series-6 a3 a4 a5">3.0 petrol</option>
+          <option value="30-diesel" class="series-3\sedan series-5\sedan a5">3.0 diesel</option>
+        </select>
       </form>
       
       <form>
@@ -123,6 +130,9 @@
         <select id="model-remote">
           <option value="">--</option>   
         </select>
+        <select id="engine-remote">
+          <option value="">--</option>   
+        </select>
       </form>
       
       <form>
@@ -160,6 +170,8 @@
     /* For jquery.chained.js */
     $("#series").chained("#mark");
     $("#model").chained("#series");
+    $("#engine").chained("#series, #model");
+    
     $("#c").chained("#a,#b");
 
     /* For jquery.chained.remote.js */    
