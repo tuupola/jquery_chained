@@ -16,6 +16,10 @@
   width: 770px;
 }
 
+#button, #button-remote {
+  display: none;
+}
+
 </style>
 
 </head>
@@ -91,6 +95,9 @@
           <option value="30-petrol" class="series-3 series-5 series-6 a3 a4 a5">3.0 petrol</option>
           <option value="30-diesel" class="series-3\sedan series-5\sedan a5">3.0 diesel</option>
         </select>
+        
+        <button id="button" type="submit">Button</button>
+        
       </form>
       
       <form>
@@ -133,6 +140,9 @@
         <select id="engine-remote">
           <option value="">--</option>   
         </select>
+        
+        <button id="button-remote" type="submit">Button</button>
+        
       </form>
       
       <form>
@@ -172,12 +182,31 @@
     $("#model").chained("#series");
     $("#engine").chained("#series, #model");
     
+    /* Show button after each pulldown has a value. */
+    $("#engine").bind("change", function(event) {
+        if ("" != $("option:selected", this).val() && "" != $("option:selected", $("#model")).val()) {
+            $("#button").fadeIn();
+        } else {
+            $("#button").hide();          
+        }
+    });
+    
     $("#c").chained("#a,#b");
 
     /* For jquery.chained.remote.js */    
     $("#series-remote").remoteChained("#mark-remote", "json.php");
     $("#model-remote").remoteChained("#series-remote", "json.php");
     $("#engine-remote").remoteChained("#series-remote, #model-remote", "json.php");
+    
+    /* Show button after each pulldown has a value. */
+    $("#engine-remote").bind("change", function(event) {
+        if ("" != $("option:selected", this).val() && "" != $("option:selected", $("#model-remote")).val()) {
+            $("#button-remote").fadeIn();
+        } else {
+            $("#button-remote").hide();          
+        }
+    });
+    
     
     
     $("#c-remote").remoteChained("#a-remote,#b-remote", "json.php");
