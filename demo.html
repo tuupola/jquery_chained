@@ -177,6 +177,8 @@
     /* For jquery.chained.remote.js */    
     $("#series-remote").remoteChained("#mark-remote", "json.php");
     $("#model-remote").remoteChained("#series-remote", "json.php");
+    $("#engine-remote").remoteChained("#series-remote, #model-remote", "json.php");
+    
     
     $("#c-remote").remoteChained("#a-remote,#b-remote", "json.php");
     
