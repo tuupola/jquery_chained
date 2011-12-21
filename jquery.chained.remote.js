@@ -31,6 +31,7 @@
                     });
                     
                     $.getJSON(url, data, function(json) {
+                        var selected_key = $(':selected', self).val();
 
                         /* Clear the select. */
                         $("option", self).remove();
@@ -49,7 +50,6 @@
                         }
 
                         /* Add new options from json. */
-                        var selected_key = null;
                         var options_len = option_list.length;
                         for (var i=0; i<options_len; i+=1) {
                             /* This sets the default selected. */
