@@ -49,7 +49,7 @@
                                 $(this).remove();
                         }                        
                     });
-                
+
                     /* If we have only the default value disable select. */
                     if (1 == $("option", self).size() && $(self).val() === "") {
                         $(self).attr("disabled", "disabled");
@@ -64,7 +64,7 @@
                 if ( !$("option:selected", this).length ) {
                     $("option", this).first().attr("selected", "selected");
                 }
-	    
+      
                 /* Force updating the children. */
                 $(this).trigger("change");             
 

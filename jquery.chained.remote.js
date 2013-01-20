@@ -36,6 +36,7 @@
                     });
                     
                     $.getJSON(url, data, function(json) {
+                        /* If select already had something selected, preserve it. */
                         var selected_key = $(':selected', self).val();
 
                         /* Clear the select. */
@@ -44,8 +45,11 @@
                         var option_list = [];
                         if ($.isArray(json)) {
                             /* JSON is already an array (which preserves the ordering of options) */
+                            /* [["","--"],["series-1","1 series"],["series-3","3 series"]] */
                             option_list = json;
                         } else {
+                            /* JSON is an JavaScript object. Rebuild it as an array. */
+                            /* {"":"--","series-1":"1 series","series-3":"3 series"} */
                             for (var key in json) {
                                 if (json.hasOwnProperty(key)) {
                                     option_list.push([key, json[key]]);
@@ -54,14 +58,16 @@
                         }
 
                         /* Add new options from json. */
-                        for (var i=0; i !== option_list.length; i++) {
+                        for (var i=0; i!==option_list.length; i++) {
+                            var key = option_list[i][0];
+                            var value = option_list[i][1];
+                            
                             /* This sets the default selected. */
-                            key = option_list[i][0];
                             if ("selected" === key) {
                                 selected_key = key;
                                 continue;
                             }
-                            var option = $("<option />").val(key).append(option_list[i][1]);
+                            var option = $("<option />").val(key).append(value);
                             $(self).append(option);    
                         }
                         
@@ -83,6 +89,7 @@
                         $(self).trigger("change");
                         
                     });
+
                 });
 
                 /* Force updating the children. */
