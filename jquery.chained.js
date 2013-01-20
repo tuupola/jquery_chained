@@ -14,7 +14,8 @@
  */
 
 (function($) {
-
+    "use strict";
+    
     $.fn.chained = function(parent_selector, options) { 
         
         return this.each(function() {
@@ -51,7 +52,7 @@
                     });
 
                     /* If we have only the default value disable select. */
-                    if (1 == $("option", self).size() && $(self).val() === "") {
+                    if (1 === $("option", self).size() && $(self).val() === "") {
                         $(self).attr("disabled", "disabled");
                     } else {
                         $(self).removeAttr("disabled");

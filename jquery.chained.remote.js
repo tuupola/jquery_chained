@@ -14,7 +14,8 @@
  */
 
 (function($) {
-
+    "use strict";
+    
     $.fn.remoteChained = function(parent_selector, url, options) { 
         
         return this.each(function() {
@@ -79,7 +80,7 @@
                         });
 
                         /* If we have only the default value disable select. */
-                        if (1 == $("option", self).size() && $(self).val() === "") {
+                        if (1 === $("option", self).size() && $(self).val() === "") {
                             $(self).attr("disabled", "disabled");
                         } else {
                             $(self).removeAttr("disabled");
