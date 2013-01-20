@@ -9,7 +9,7 @@
  * Project home:
  *   http://www.appelsiini.net/projects/lazyload
  *
- * Version:  0.9.2
+ * Version:  0.9.3-dev
  *
  */
 
@@ -41,10 +41,9 @@
                         /* Clear the select. */
                         $("option", self).remove();
 
-                        // json may already be an array (which preserves the ordering of options)
-
                         var option_list = [];
                         if ($.isArray(json)) {
+                            /* JSON is already an array (which preserves the ordering of options) */
                             option_list = json;
                         } else {
                             for (var key in json) {
