@@ -36,26 +36,40 @@
                     });
                     
                     $.getJSON(url, data, function(json) {
+                        var selected_key = $(':selected', self).val();
 
                         /* Clear the select. */
                         $("option", self).remove();
 
+                        // json may already be an array (which preserves the ordering of options)
+
+                        var option_list = [];
+                        if ($.isArray(json)) {
+                            option_list = json;
+                        } else {
+                            for (var key in json) {
+                                if (json.hasOwnProperty(key)) {
+                                    option_list.push([key, json[key]]);
+                                }
+                            }
+                        }
+
                         /* Add new options from json. */
-                        for (var key in json) {
-                            if (!json.hasOwnProperty(key)) {
-                                continue;
-                            }
+                        var options_len = option_list.length;
+                        for (var i=0; i<options_len; i+=1) {
                             /* This sets the default selected. */
-                            if ("selected" == key) {
+                            key = option_list[i][0];
+                            if ("selected" === key) {
+                                selected_key = key;
                                 continue;
                             }
-                            var option = $("<option />").val(key).append(json[key]);
+                            var option = $("<option />").val(key).append(option_list[i][1]);
                             $(self).append(option);    
                         }
                         
                         /* Loop option again to set selected. IE needed this... */ 
                         $(self).children().each(function() {
-                            if ($(this).val() == json["selected"]) {
+                            if ($(this).val() === selected_key) {
                                 $(this).attr("selected", "selected");
                             }
                         });
