@@ -1,10 +1,15 @@
 /*
  * Chained - jQuery non AJAX(J) chained selects plugin
  *
- * Copyright (c) 2010-2011 Mika Tuupola
+ * Copyright (c) 2010-2013 Mika Tuupola
  *
  * Licensed under the MIT license:
  *   http://www.opensource.org/licenses/mit-license.php
+ *
+ * Project home:
+ *   http://www.appelsiini.net/projects/lazyload
+ *
+ * Version:  0.9.1
  *
  */
 

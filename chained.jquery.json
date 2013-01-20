@@ -1,0 +1,34 @@
+{
+    "name": "jeditable",
+    "version": "0.9.1",
+    "title": "Chained",
+    "author": {
+        "name": "Mika Tuupola",
+        "email": "tuupola@appelsiini.net",
+        "url": "http://www.appelsiini.net/"
+    },
+    "licenses": [
+        {
+            "type": "MIT",
+            "url": "http://www.opensource.org/licenses/mit-license.php"
+        }
+    ],
+    "dependencies": {
+        "jquery": ">=1.6"
+    },
+    "description": "Simple chained selects. You can choose from two different versions. Normal version uses uses classnames of select options to decide content of child select. It does not make any external AJAX(J) queries. Remote version makes external query and builds the child select from returned JSON response.",
+    "keywords": [
+        "chained",
+        "select",
+        "ui",
+        "form"
+    ],
+    "homepage": "http://www.appelsiini.net/projects/chained",
+    "bugs": "https://github.com/tuupola/jquery_chained/issues",
+    "docs": "http://www.appelsiini.net/projects/chained",
+    "demo": "http://www.appelsiini.net/projects/chained/demo.html",
+    "files": [
+        "jquery.chained.js",
+        "jquery.chained.remote.js"
+    ]
+}
