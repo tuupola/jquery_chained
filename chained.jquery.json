@@ -29,6 +29,8 @@
     "demo": "http://www.appelsiini.net/projects/chained/demo.html",
     "files": [
         "jquery.chained.js",
-        "jquery.chained.remote.js"
+        "jquery.chained.min.js",
+        "jquery.chained.remote.js",
+        "jquery.chained.remote.min.js"
     ]
 }
