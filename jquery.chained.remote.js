@@ -54,8 +54,7 @@
                         }
 
                         /* Add new options from json. */
-                        var options_len = option_list.length;
-                        for (var i=0; i<options_len; i+=1) {
+                        for (var i=0; i !== option_list.length; i++) {
                             /* This sets the default selected. */
                             key = option_list[i][0];
                             if ("selected" === key) {
