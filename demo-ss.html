@@ -1,0 +1,118 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+<title>Chained Select / Pulldown Demo</title>
+<meta name="generator" content="fingers" />
+<link href="http://www.appelsiini.net/stylesheets/main2.css" rel="stylesheet" type="text/css" />
+<link rel="alternate" type="application/atom+xml" href="http://feeds.feedburner.com/tuupola" title="Atom feed" />
+<style type="text/css">
+#sidebar {
+  width: 0px;
+}
+
+#content {
+  width: 770px;
+}
+
+#button, #button-remote {
+  display: none;
+}
+
+</style>
+
+</head>
+
+<body>
+  <div id="wrap"> 
+    <div id="header">
+      <p>
+        <h1>Chained</h1><br />
+        <small>Chained select plugin for jQuery</small>
+        <ul id="nav">
+          <li id="first"><a href="/" class="active">weblog</a></li>
+          <li><a href="/projects" class="last">projects</a></li>
+          <!--
+          <li><a href="/cv" class="last">cv</a></li>
+        -->
+        </ul>
+      </p>
+    </div>
+    <div id="content">
+		<div class="entry">
+      <h3>Demo of additional features</h3>
+			<h4>
+				If you are using firebug or some other tool that supports console, be sure to check it out.<br/>
+				First one uses id as usual.<br/> 
+				Second uses chained_query_key that differs from the id attribute<br/>
+				Third uses a lambda function that ensures id is used for the first and chained_query_key for the second.<br/>
+				Also the events "chained_remote_response_received" and "chained_remote_response_processed" are triggered and their parameters are logged to the console.
+			</h4>
+      <form id="remote_test_1" name="remote_test_1">
+        <select id="mark-remote">
+          <option value="">--</option>
+          <option value="bmw">BMW</option>
+          <option value="audi">Audi</option>
+        </select>
+        <select id="remote_test_1_b" chained_query_key="series-remote">
+          <option value="">--</option>
+        </select>
+        <select id="remote_test_1_c"><!-- chained_query_lambda => "model-remote" -->
+          <option value="">--</option>   
+        </select>
+        <button id="button-remote" type="submit">Button</button>
+      </form>
+    </div>
+    <div id="sidebar">
+    </div>
+  </div>
+  <div id="footer">
+  </div>
+  <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.6.2/jquery.min.js" type="text/javascript" charset="utf-8"></script>
+  <script src="jquery.chained.js" type="text/javascript" charset="utf-8"></script>
+  <script src="jquery.chained.remote.js" type="text/javascript" charset="utf-8"></script>
+  <script type="text/javascript" charset="utf-8">
+  $(function() {
+    $("#remote_test_1_b").remoteChained("#mark-remote", "json.php");//classic example using id
+    $("#remote_test_1_c").remoteChained("#remote_test_1_b, #mark-remote", "json.php", { 
+			query_lambda : function( $this ){
+				var data = { "unused_field" : "multiple paramaters are possible" }, 
+				id = $this.attr('chained_query_key');
+				if( ! id ){ id = $this.attr('id'); }
+				console.log($this);
+				data[id] = $this.val();
+				return data;
+			} 
+		} );
+
+$(document).bind('chained_remote_response_received', function(event, url, data, json){
+	console.log(event);
+	console.log(url);
+	console.log(data);
+	console.log(json);
+});
+$(document).bind('chained_remote_response_processed', function(event, id, json){
+	console.log(event);
+	console.log(id);
+	console.log(json);
+});
+
+    /* Show button after each pulldown has a value. */
+    $("#remote_test_1_c").bind("change", function(event) {
+        if ("" != $("option:selected", this).val() && "" != $("option:selected", $("#remote_test_1_b")).val()) {
+            $("#button-remote").fadeIn();
+        } else {
+            $("#button-remote").hide();          
+        }
+    });
+  });
+  </script>
+  <script src="http://www.google-analytics.com/urchin.js" type="text/javascript"></script>
+  <script type="text/javascript">
+    _uacct = "UA-190966-1";
+    urchinTracker();
+  </script>
+
+</body>
+</html>
