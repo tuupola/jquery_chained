@@ -8,15 +8,15 @@ if (isset($_GET["series-remote"]) && isset($_GET["model-remote"])) {
 
   $response[""] = "--";
 
-  if (in_array($_GET["series-remote"], array("series-3", "a3", "a4"))) {
+  if (in_array($_GET["series-remote"], array("series-1", "series-3", "a3", "a4"))) {
       $response["25-petrol"] = "2.5 petrol";
   }
   
-  if (in_array($_GET["series-remote"], array("series-3", "series-5", "series-6", "a3", "a4", "a5"))) {
+  if (in_array($_GET["series-remote"], array("series-3", "series-5", "series-6", "series-7", "a3", "a4", "a5"))) {
       $response["30-petrol"] = "3.0 petrol";
   }
 
-  if (in_array($_GET["series-remote"], array("a5"))) {
+  if (in_array($_GET["series-remote"], array("series-7", "a5"))) {
       $response["30-diesel"] = "3.0 diesel";    
   }
 
