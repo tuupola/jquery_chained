@@ -16,11 +16,11 @@
 (function($) {
     "use strict";
     
-    $.fn.chained = function(parent_selector, options) { 
+    $.fn.chained = function(parent_selector, options) {
         
         return this.each(function() {
             
-            /* Save this to self because this changes when scope changes. */            
+            /* Save this to self because this changes when scope changes. */
             var self   = this;
             var backup = $(self).clone();
                         
@@ -45,10 +45,10 @@
                 
                     $("option", self).each(function() {
                         /* Remove unneeded items but save the default value. */
-                        if (!$(this).hasClass(selected) && 
+                        if (!$(this).hasClass(selected) &&
                             !$(this).hasClass(selected_first) && $(this).val() !== "") {
                                 $(this).remove();
-                        }                        
+                        }
                     });
 
                     /* If we have only the default value disable select. */
@@ -67,7 +67,7 @@
                 }
       
                 /* Force updating the children. */
-                $(this).trigger("change");             
+                $(this).trigger("change");
 
             });
         });
