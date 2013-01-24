@@ -44,6 +44,10 @@ All code licensed under the "MIT License":http://www.opensource.org/licenses/mit
 
 h1. Changelog
 
+h3. 0.9.3
+
+* Also support remote JSON to be array of arrays ("Marco Mariani":https://github.com/mmariani)
+
 h3. 0.9.2
 
 * Support for "jQuery plugin repository":http://plugins.jquery.com/
