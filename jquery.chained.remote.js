@@ -16,11 +16,11 @@
 (function($) {
     "use strict";
     
-    $.fn.remoteChained = function(parent_selector, url, options) { 
+    $.fn.remoteChained = function(parent_selector, url, options) {
         
         return this.each(function() {
             
-            /* Save this to self because this changes when scope changes. */            
+            /* Save this to self because this changes when scope changes. */
             var self   = this;
             var backup = $(self).clone();
                         
@@ -69,10 +69,10 @@
                                 continue;
                             }
                             var option = $("<option />").val(key).append(value);
-                            $(self).append(option);                            
+                            $(self).append(option);
                         }
                                                 
-                        /* Loop option again to set selected. IE needed this... */ 
+                        /* Loop option again to set selected. IE needed this... */
                         $(self).children().each(function() {
                             if ($(this).val() === selected_key) {
                                 $(this).attr("selected", "selected");
@@ -94,7 +94,7 @@
                 });
 
                 /* Force updating the children. */
-                $(this).trigger("change");             
+                $(this).trigger("change");
 
             });
         });
