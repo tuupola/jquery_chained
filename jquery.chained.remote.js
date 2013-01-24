@@ -63,15 +63,15 @@
                             var key = option_list[i][0];
                             var value = option_list[i][1];
                             
-                            /* This sets the default selected. */
+                            /* Set the selected option from JSON. */
                             if ("selected" === key) {
-                                selected_key = key;
+                                selected_key = value;
                                 continue;
                             }
                             var option = $("<option />").val(key).append(value);
-                            $(self).append(option);    
+                            $(self).append(option);                            
                         }
-                        
+                                                
                         /* Loop option again to set selected. IE needed this... */ 
                         $(self).children().each(function() {
                             if ($(this).val() === selected_key) {
