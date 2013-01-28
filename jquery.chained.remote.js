@@ -13,7 +13,7 @@
  *
  */
 
-(function($) {
+;(function($, window, document, undefined) {
     "use strict";
     
     $.fn.remoteChained = function(parent_selector, url, options) {
@@ -35,7 +35,7 @@
                         var value = $(":selected", this).val();
                         data[id] = value;
                     });
-                    
+
                     $.getJSON(url, data, function(json) {
                         /* If select already had something selected, preserve it. */
                         var selected_key = $(':selected', self).val();
@@ -85,10 +85,9 @@
                         } else {
                             $(self).removeAttr("disabled");
                         }
-                        
+
                         /* Force updating the children. */
                         $(self).trigger("change");
-                        
                     });
 
                 });
@@ -103,4 +102,4 @@
     /* Alias for those who like to use more English like syntax. */
     $.fn.remoteChainedTo = $.fn.remoteChained;
     
-})(jQuery);
+})(jQuery, window, document);

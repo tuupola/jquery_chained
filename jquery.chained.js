@@ -13,7 +13,7 @@
  *
  */
 
-(function($) {
+;(function($, window, document, undefined) {
     "use strict";
     
     $.fn.chained = function(parent_selector, options) {
@@ -76,4 +76,4 @@
     /* Alias for those who like to use more English like syntax. */
     $.fn.chainedTo = $.fn.chained;
     
-})(jQuery);
+})(jQuery, window, document);
