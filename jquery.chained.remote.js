@@ -9,7 +9,7 @@
  * Project home:
  *   http://www.appelsiini.net/projects/lazyload
  *
- * Version:  0.9.3
+ * Version:  0.9.4-dev
  *
  */
 
@@ -51,9 +51,9 @@
                         } else {
                             /* JSON is an JavaScript object. Rebuild it as an array. */
                             /* {"":"--","series-1":"1 series","series-3":"3 series"} */
-                            for (var key in json) {
-                                if (json.hasOwnProperty(key)) {
-                                    option_list.push([key, json[key]]);
+                            for (var index in json) {
+                                if (json.hasOwnProperty(index)) {
+                                    option_list.push([index, json[index]]);
                                 }
                             }
                         }
