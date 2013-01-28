@@ -62,7 +62,7 @@
                 
                 /* Force IE to see something selected on first page load, */
                 /* unless something is already selected */
-                if ( !$("option:selected", this).length ) {
+                if (!$("option:selected", this).length) {
                     $("option", this).first().attr("selected", "selected");
                 }
       
