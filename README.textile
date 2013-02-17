@@ -15,12 +15,12 @@ First you must include jQuery and Chained in your code:
 
 Then lets assume you have the following HTML code:
 
-<pre><select id="mark">
+<pre><select id="mark" name="mark">
   <option value="">--</option>
   <option value="bmw">BMW</option>
   <option value="audi">Audi</option>
 </select>
-<select id="series">
+<select id="series" name="series">
   <option value="">--</option>
   <option value="series-3" class="bmw">3 series</option>
   <option value="series-5" class="bmw">5 series</option>
