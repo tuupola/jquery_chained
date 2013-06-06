@@ -15,17 +15,17 @@
 
 (function($) {
     "use strict";
-    
+
     $.fn.remoteChained = function(parent_selector, url, options) {
-        
+
         return this.each(function() {
-            
+
             /* Save this to self because this changes when scope changes. */
             var self   = this;
             var backup = $(self).clone();
-                        
+
             /* Handles maximum two parents now. */
-            $(parent_selector).each(function() {
+            $(options||parent_selector).each(function() {
                 $(this).bind("change", function() {
 
                     /* Build data array from parents values. */
@@ -35,7 +35,7 @@
                         var value = $(":selected", this).val();
                         data[id] = value;
                     });
-                    
+
                     $.getJSON(url, data, function(json) {
                         /* If select already had something selected, preserve it. */
                         var selected_key = $(':selected', self).val();
@@ -62,7 +62,7 @@
                         for (var i=0; i!==option_list.length; i++) {
                             var key = option_list[i][0];
                             var value = option_list[i][1];
-                            
+
                             /* Set the selected option from JSON. */
                             if ("selected" === key) {
                                 selected_key = value;
@@ -71,7 +71,7 @@
                             var option = $("<option />").val(key).append(value);
                             $(self).append(option);
                         }
-                                                
+
                         /* Loop option again to set selected. IE needed this... */
                         $(self).children().each(function() {
                             if ($(this).val() === selected_key) {
@@ -85,10 +85,10 @@
                         } else {
                             $(self).removeAttr("disabled");
                         }
-                        
+
                         /* Force updating the children. */
                         $(self).trigger("change");
-                        
+
                     });
 
                 });
@@ -99,8 +99,8 @@
             });
         });
     };
-    
+
     /* Alias for those who like to use more English like syntax. */
     $.fn.remoteChainedTo = $.fn.remoteChained;
-    
+
 })(jQuery);
