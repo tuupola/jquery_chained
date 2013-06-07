@@ -99,9 +99,6 @@ describe("Chained", function() {
     });
 
     it("should only update values when firing select changes", function() {
-        var spyEvent1 = spyOnEvent('#model', 'change');
-        var spyEvent2 = spyOnEvent('#engine', 'change');
-        var spyEvent3 = spyOnEvent('#engine_2', 'change');
         var callback_change_series = sinon.spy();
         var callback_change_model = sinon.spy();
         var callback_change_engine = sinon.spy();
