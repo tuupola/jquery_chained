@@ -25,7 +25,7 @@
 </head>
 
 <body>
-  <div id="wrap"> 
+  <div id="wrap">
     <div id="header">
       <p>
         <h1>Chained</h1><br />
@@ -40,7 +40,7 @@
       </p>
     </div>
     <div id="content">
-      
+
     <div class="entry">
       <h3>jquery.chained.js</h3>
       <form>
@@ -51,13 +51,13 @@
         </select>
         <select id="series">
           <option value="">--</option>
-          
+
           <option value="series-1" class="bmw">1 series</option>
           <option value="series-3" class="bmw">3 series</option>
           <option value="series-5" class="bmw">5 series</option>
           <option value="series-6" class="bmw">6 series</option>
           <option value="series-7" class="bmw">7 series</option>
-          
+
           <option value="a1" class="audi">A1</option>
           <option value="a3" class="audi">A3</option>
           <option value="s3" class="audi">S3</option>
@@ -72,7 +72,7 @@
         </select>
         <select id="model">
           <option value="">--</option>
-          
+
           <option value="3-doors"       class="series-1">3 doors</option>
           <option value="5-doors"       class="series-1">5 doors</option>
           <option value="coupe"         class="series-1 series-3 series-6">Coupe</option>
@@ -80,26 +80,26 @@
           <option value="sedan"         class="series-3 series-5 series-7">Sedan</option>
           <option value="touring"       class="series-3 series-5">Touring</option>
           <option value="gran-tourismo" class="series-5">Gran Tourismo</option>
-          
+
           <option value="sedan"        class="a1 a3 s3 a4 s4 a6 s6 rs6">Sedan</option>
           <option value="sportback"    class="a3 s3 a5 s5">Sportback</option>
           <option value="cabriolet"    class="a3 a5 s5">Cabriolet</option>
           <option value="avant"        class="a4 s4 a6 s6 rs6">Avant</option>
           <option value="allroad"      class="a4 a6">Allroad</option>
-          <option value="coupe"        class="a5 s5">Coupe</option>    
+          <option value="coupe"        class="a5 s5">Coupe</option>
         </select>
-        
+
         <select id="engine">
-          <option value="">--</option>   
+          <option value="">--</option>
           <option value="25-petrol" class="series-3 a3 a4">2.5 petrol</option>
           <option value="30-petrol" class="series-3 series-5 series-6 a3 a4 a5">3.0 petrol</option>
           <option value="30-diesel" class="series-3\sedan series-5\sedan a5">3.0 diesel</option>
         </select>
-        
+
         <button id="button" type="submit">Button</button>
-        
+
       </form>
-      
+
       <form>
         <select id="a">
           <option value="a1">a1</option>
@@ -120,9 +120,68 @@
           <option value="a2b3" class="a2\b3">a2b3</option>
         </select>
       </form>
-            
     </div>
-    
+
+    <div class="entry">
+      <h3>jquery.chained (with fewer calls)</h3>
+      <form>
+        <select id="mark_2">
+          <option value="">--</option>
+          <option value="bmw">BMW</option>
+          <option value="audi">Audi</option>
+        </select>
+        <select id="series_2">
+          <option value="">--</option>
+
+          <option value="series-1" class="bmw">1 series</option>
+          <option value="series-3" class="bmw">3 series</option>
+          <option value="series-5" class="bmw">5 series</option>
+          <option value="series-6" class="bmw">6 series</option>
+          <option value="series-7" class="bmw">7 series</option>
+
+          <option value="a1" class="audi">A1</option>
+          <option value="a3" class="audi">A3</option>
+          <option value="s3" class="audi">S3</option>
+          <option value="a4" class="audi">A4</option>
+          <option value="s4" class="audi">S4</option>
+          <option value="a5" class="audi">A5</option>
+          <option value="s5" class="audi">S5</option>
+          <option value="a6" class="audi">A6</option>
+          <option value="s6" class="audi">S6</option>
+          <option value="rs6" class="audi">RS6</option>
+          <option value="a8" class="audi">A8</option>
+        </select>
+        <select id="model_2">
+          <option value="">--</option>
+
+          <option value="3-doors"       class="series-1">3 doors</option>
+          <option value="5-doors"       class="series-1">5 doors</option>
+          <option value="coupe"         class="series-1 series-3 series-6">Coupe</option>
+          <option value="cabrio"        class="series-1 series-3 series-6">Cabrio</option>
+          <option value="sedan"         class="series-3 series-5 series-7">Sedan</option>
+          <option value="touring"       class="series-3 series-5">Touring</option>
+          <option value="gran-tourismo" class="series-5">Gran Tourismo</option>
+
+          <option value="sedan"        class="a1 a3 s3 a4 s4 a6 s6 rs6">Sedan</option>
+          <option value="sportback"    class="a3 s3 a5 s5">Sportback</option>
+          <option value="cabriolet"    class="a3 a5 s5">Cabriolet</option>
+          <option value="avant"        class="a4 s4 a6 s6 rs6">Avant</option>
+          <option value="allroad"      class="a4 a6">Allroad</option>
+          <option value="coupe"        class="a5 s5">Coupe</option>
+        </select>
+
+        <select id="engine_2">
+          <option value="">--</option>
+          <option value="25-petrol" class="series-3 a3 a4">2.5 petrol</option>
+          <option value="30-petrol" class="series-3 series-5 series-6 a3 a4 a5">3.0 petrol</option>
+          <option value="30-diesel" class="series-3\sedan series-5\sedan a5">3.0 diesel</option>
+        </select>
+
+        <button id="button" type="submit">Button</button>
+
+      </form>
+    </div>
+
     <div class="entry">
       <h3>jquery.chained.remote.js</h3>
       <form>
@@ -135,16 +194,16 @@
           <option value="">--</option>
         </select>
         <select id="model-remote">
-          <option value="">--</option>   
+          <option value="">--</option>
         </select>
         <select id="engine-remote">
-          <option value="">--</option>   
+          <option value="">--</option>
         </select>
-        
+
         <button id="button-remote" type="submit">Button</button>
-        
+
       </form>
-      
+
       <form>
         <select id="a-remote">
           <option value="a1">a1</option>
@@ -160,57 +219,105 @@
           <option value="">--</option>
         </select>
       </form>
-            
+
     </div>
-    
+
+    <div class="entry">
+      <h3>jquery.chained.remote.js (with fewer AJAX calls)</h3>
+      <form>
+        <select id="mark-remote-2">
+          <option value="">--</option>
+          <option value="bmw">BMW</option>
+          <option value="audi">Audi</option>
+        </select>
+        <select id="series-remote-2">
+          <option value="">--</option>
+        </select>
+        <select id="model-remote-2">
+          <option value="">--</option>
+        </select>
+        <select id="engine-remote-2">
+          <option value="">--</option>
+        </select>
+
+        <button id="button-remote" type="submit">Button</button>
+
+      </form>
+
+      <form>
+        <select id="a-remote">
+          <option value="a1">a1</option>
+          <option value="a2">a2</option>
+          <option value="a3">a3</option>
+        </select>
+        <select id="b-remote">
+          <option value="b1">b1</option>
+          <option value="b2">b2</option>
+          <option value="b3">b3</option>
+        </select>
+        <select id="c-remote">
+          <option value="">--</option>
+        </select>
+      </form>
+
+    </div>
+
     <div id="sidebar">
     </div>
 
   </div>
-  
+
   <div id="footer">
   </div>
 
-  <script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.1/jquery.min.js" type="text/javascript" charset="utf-8"></script>
+  <script src="http://ajax.googleapis.com/ajax/libs/jquery/2.0.1/jquery.min.js" type="text/javascript" charset="utf-8"></script>
   <script src="jquery.chained.js" type="text/javascript" charset="utf-8"></script>
   <script src="jquery.chained.remote.js" type="text/javascript" charset="utf-8"></script>
   <script type="text/javascript" charset="utf-8">
   $(function() {
-    
+
     /* For jquery.chained.js */
     $("#series").chained("#mark");
     $("#model").chained("#series");
     $("#engine").chained("#series, #model");
-    
+
+    $("#series_2").chained("#mark_2");
+    $("#model_2").chained("#series_2");
+    $("#engine_2").chained("#series_2, #model_2", "#model_2");
+
     /* Show button after each pulldown has a value. */
     $("#engine").bind("change", function(event) {
         if ("" != $("option:selected", this).val() && "" != $("option:selected", $("#model")).val()) {
             $("#button").fadeIn();
         } else {
-            $("#button").hide();          
+            $("#button").hide();
         }
     });
-    
+
     $("#c").chained("#a,#b");
 
-    /* For jquery.chained.remote.js */    
+    /* For jquery.chained.remote.js */
     $("#series-remote").remoteChained("#mark-remote", "json.php");
     $("#model-remote").remoteChained("#series-remote", "json.php");
     $("#engine-remote").remoteChained("#series-remote, #model-remote", "json.php");
-    
+
+    $("#series-remote-2").remoteChained("#mark-remote-2", "json.php");
+    $("#model-remote-2").remoteChained("#series-remote-2", "json.php");
+    $("#engine-remote-2").remoteChained("#series-remote-2, #model-remote-2", "json.php", "#model-remote-2");
+
     /* Show button after each pulldown has a value. */
     $("#engine-remote").bind("change", function(event) {
         if ("" != $("option:selected", this).val() && "" != $("option:selected", $("#model-remote")).val()) {
             $("#button-remote").fadeIn();
         } else {
-            $("#button-remote").hide();          
+            $("#button-remote").hide();
         }
     });
-    
-    
-    
+
+
+
     $("#c-remote").remoteChained("#a-remote,#b-remote", "json.php");
-    
+
   });
   </script>
 
