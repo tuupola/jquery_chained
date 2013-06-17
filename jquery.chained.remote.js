@@ -40,7 +40,7 @@
 
                     $.getJSON(url, data, function(json) {
                         /* If select already had something selected, preserve it. */
-                        var selected_key = $(':selected', self).val();
+                        var selected_key = $(":selected", self).val();
 
                         /* Clear the select. */
                         $("option", self).remove();
