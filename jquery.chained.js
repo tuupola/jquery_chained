@@ -20,8 +20,6 @@
         
         var settings = $.extend( {}, $.fn.chained.defaults, options);
         
-        console.log(settings);
-        
         return this.each(function() {
             
             /* Save this to self because this changes when scope changes. */
