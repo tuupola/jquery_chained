@@ -18,6 +18,8 @@
     
     $.fn.chained = function(parent_selector, options) {
         
+        var iniId = this.attr('id');
+        
         var settings = $.extend( {}, $.fn.chained.defaults, options);
         
         return this.each(function() {
@@ -30,6 +32,11 @@
             $(parent_selector).each(function() {
                                                 
                 $(this).bind("change", function() {
+                    
+                    if(iniId !== undefined)
+                		if($(self).attr('id') != iniId)
+            				return;
+                    
                     $(self).html(backup.html());
 
                     /* If multiple parents build classname like foo\bar. */
