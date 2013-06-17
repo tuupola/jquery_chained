@@ -44,12 +44,12 @@
     <div class="entry">
       <h3>jquery.chained.js</h3>
       <form>
-        <select id="mark">
+        <select id="mark" name="mark">
           <option value="">--</option>
           <option value="bmw">BMW</option>
           <option value="audi">Audi</option>
         </select>
-        <select id="series">
+        <select id="series" name="series">
           <option value="">--</option>
           
           <option value="series-1" class="bmw">1 series</option>
@@ -70,7 +70,7 @@
           <option value="rs6" class="audi">RS6</option>
           <option value="a8" class="audi">A8</option>
         </select>
-        <select id="model">
+        <select id="model" name="model">
           <option value="">--</option>
           
           <option value="3-doors"       class="series-1">3 doors</option>
@@ -89,7 +89,7 @@
           <option value="coupe"        class="a5 s5">Coupe</option>    
         </select>
         
-        <select id="engine">
+        <select id="engine" name="engine">
           <option value="">--</option>   
           <option value="25-petrol" class="series-3 a3 a4">2.5 petrol</option>
           <option value="30-petrol" class="series-3 series-5 series-6 a3 a4 a5">3.0 petrol</option>
@@ -101,17 +101,17 @@
       </form>
       
       <form>
-        <select id="a">
+        <select id="a" name="a">
           <option value="a1">a1</option>
           <option value="a2">a2</option>
           <option value="a3">a3</option>
         </select>
-        <select id="b">
+        <select id="b" name="b">
           <option value="b1">b1</option>
           <option value="b2">b2</option>
           <option value="b3">b3</option>
         </select>
-        <select id="c">
+        <select id="c" name="c">
           <option value="">--</option>
           <option value="a1" class="a1">anything starting a1</option>
           <option value="a1b1" class="a1\b1">a1b1</option>
@@ -126,18 +126,18 @@
     <div class="entry">
       <h3>jquery.chained.remote.js</h3>
       <form>
-        <select id="mark-remote">
+        <select id="mark-remote" name="mark">
           <option value="">--</option>
           <option value="bmw">BMW</option>
           <option value="audi">Audi</option>
         </select>
-        <select id="series-remote">
+        <select id="series-remote" name="series">
           <option value="">--</option>
         </select>
-        <select id="model-remote">
+        <select id="model-remote"  name="model">
           <option value="">--</option>   
         </select>
-        <select id="engine-remote">
+        <select id="engine-remote" name="engine">
           <option value="">--</option>   
         </select>
         
@@ -146,19 +146,96 @@
       </form>
       
       <form>
-        <select id="a-remote">
+        <select id="a-remote" name="a">
           <option value="a1">a1</option>
           <option value="a2">a2</option>
           <option value="a3">a3</option>
         </select>
-        <select id="b-remote">
+        <select id="b-remote" name="b">
           <option value="b1">b1</option>
           <option value="b2">b2</option>
           <option value="b3">b3</option>
         </select>
-        <select id="c-remote">
+        <select id="c-remote" name="c">
           <option value="">--</option>
         </select>
+      </form>
+            
+    </div>
+    
+    <div class="entry">
+      <h3>Multiple jquery.chained.remote.js</h3>
+      <form>
+        <select class="mark-remote" name="mark">
+          <option value="">--</option>
+          <option value="bmw">BMW</option>
+          <option value="audi">Audi</option>
+        </select>
+        <select class="series-remote" name="series">
+          <option value="">--</option>
+        </select>
+        <select class="model-remote"  name="model">
+          <option value="">--</option>   
+        </select>
+        <select class="engine-remote" name="engine">
+          <option value="">--</option>   
+        </select>
+        
+        <button id="button-remote" type="submit">Button</button>
+      </form>
+      <form>
+        <select class="mark-remote" name="mark">
+          <option value="">--</option>
+          <option value="bmw">BMW</option>
+          <option value="audi">Audi</option>
+        </select>
+        <select class="series-remote" name="series">
+          <option value="">--</option>
+        </select>
+        <select class="model-remote"  name="model">
+          <option value="">--</option>   
+        </select>
+        <select class="engine-remote" name="engine">
+          <option value="">--</option>   
+        </select>
+        
+        <button id="button-remote" type="submit">Button</button>
+      </form>
+      <form>
+        <select class="mark-remote" name="mark">
+          <option value="">--</option>
+          <option value="bmw">BMW</option>
+          <option value="audi">Audi</option>
+        </select>
+        <select class="series-remote" name="series">
+          <option value="">--</option>
+        </select>
+        <select class="model-remote"  name="model">
+          <option value="">--</option>   
+        </select>
+        <select class="engine-remote" name="engine">
+          <option value="">--</option>   
+        </select>
+        
+        <button id="button-remote" type="submit">Button</button>
+      </form>
+      <form>
+        <select class="mark-remote" name="mark">
+          <option value="">--</option>
+          <option value="bmw">BMW</option>
+          <option value="audi">Audi</option>
+        </select>
+        <select class="series-remote" name="series">
+          <option value="">--</option>
+        </select>
+        <select class="model-remote"  name="model">
+          <option value="">--</option>   
+        </select>
+        <select class="engine-remote" name="engine">
+          <option value="">--</option>   
+        </select>
+        
+        <button id="button-remote" type="submit">Button</button>
       </form>
             
     </div>
@@ -207,9 +284,21 @@
         }
     });
     
-    
-    
     $("#c-remote").remoteChained("#a-remote,#b-remote", "json.php");
+    
+    /* For multiple jquery.chained.remote.js */    
+    $(".series-remote").each(function() {
+        $(this).remoteChained($(".mark-remote", $(this).parent()), "json.php");
+    });
+    $(".model-remote").each(function() {
+        $(this).remoteChained($(".series-remote", $(this).parent()), "json.php");
+    });
+    $(".engine-remote").each(function() {
+        $(this).remoteChained([
+            $(".series-remote", $(this).parent()),
+            $(".model-remote", $(this).parent())
+        ], "json.php");
+    });
     
   });
   </script>

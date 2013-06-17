@@ -4,32 +4,32 @@
 
 $response[""] = "--";
 
-if (isset($_GET["series-remote"]) && isset($_GET["model-remote"])) {
+if (isset($_GET["series"]) && isset($_GET["model"])) {
 
   $response[""] = "--";
 
-  if (in_array($_GET["series-remote"], array("series-1", "series-3", "a3", "a4"))) {
+  if (in_array($_GET["series"], array("series-1", "series-3", "a3", "a4"))) {
       $response["25-petrol"] = "2.5 petrol";
   }
   
-  if (in_array($_GET["series-remote"], array("series-3", "series-5", "series-6", "series-7", "a3", "a4", "a5"))) {
+  if (in_array($_GET["series"], array("series-3", "series-5", "series-6", "series-7", "a3", "a4", "a5"))) {
       $response["30-petrol"] = "3.0 petrol";
   }
 
-  if (in_array($_GET["series-remote"], array("series-7", "a5"))) {
+  if (in_array($_GET["series"], array("series-7", "a5"))) {
       $response["30-diesel"] = "3.0 diesel";    
   }
 
-  if ("series-3" == $_GET["series-remote"] && "sedan" == $_GET["model-remote"]) {
+  if ("series-3" == $_GET["series"] && "sedan" == $_GET["model"]) {
       $response["30-diesel"] = "3.0 diesel";    
   }
   
-  if ("series-5" == $_GET["series-remote"] && "sedan" == $_GET["model-remote"]) {
+  if ("series-5" == $_GET["series"] && "sedan" == $_GET["model"]) {
       $response["30-diesel"] = "3.0 diesel";    
   }
   
-} else if ($_GET["mark-remote"]) {
-    if ("bmw" == $_GET["mark-remote"]) {
+} else if ($_GET["mark"]) {
+    if ("bmw" == $_GET["mark"]) {
         $response[""] = "--";
         $response["series-1"] = "1 series";
         $response["series-3"] = "3 series";
@@ -38,7 +38,7 @@ if (isset($_GET["series-remote"]) && isset($_GET["model-remote"])) {
         $response["series-7"] = "7 series";
     };
 
-    if ("audi" == $_GET["mark-remote"]) {
+    if ("audi" == $_GET["mark"]) {
         $response[""] = "--";
         $response["a1"]  = "A1";
         $response["a3"]  = "A3";
@@ -52,8 +52,8 @@ if (isset($_GET["series-remote"]) && isset($_GET["model-remote"])) {
         $response["rs6"] = "RS6";
         $response["a8"]  = "A8";
     };   
-} else if ($_GET["series-remote"]) {
-    if ("series-1" == $_GET["series-remote"]) {
+} else if ($_GET["series"]) {
+    if ("series-1" == $_GET["series"]) {
         $response[""] = "--";
         $response["3-doors"] = "3 doors";
         $response["5-doors"] = "5 doors";
@@ -62,7 +62,7 @@ if (isset($_GET["series-remote"]) && isset($_GET["model-remote"])) {
         $response["selected"] = "coupe";
     };
 
-    if ("series-3" == $_GET["series-remote"]) {
+    if ("series-3" == $_GET["series"]) {
         $response[""] = "--";
         $response["coupe"]   = "Coupe";
         $response["cabrio"]  = "Cabrio";
@@ -70,82 +70,82 @@ if (isset($_GET["series-remote"]) && isset($_GET["model-remote"])) {
         $response["touring"] = "Touring";
     };
     
-    if ("series-5" == $_GET["series-remote"]) {
+    if ("series-5" == $_GET["series"]) {
         $response[""] = "--";
         $response["sedan"]   = "Sedan";
         $response["touring"] = "Touring";
         $response["gran-tourismo"] = "Gran Tourismo";
     };
 
-    if ("series-6" == $_GET["series-remote"]) {
+    if ("series-6" == $_GET["series"]) {
         $response[""] = "--";
         $response["coupe"]   = "Coupe";
         $response["cabrio"]  = "Cabrio";
     };
 
-    if ("series-7" == $_GET["series-remote"]) {
+    if ("series-7" == $_GET["series"]) {
         $response[""] = "--";
         $response["sedan"]   = "Sedan";
     };
     
-    if ("a1" == $_GET["series-remote"]) {
+    if ("a1" == $_GET["series"]) {
         $response[""] = "--";
         $response["sedan"]   = "Sedan";
     };
 
-    if ("a3" == $_GET["series-remote"]) {
+    if ("a3" == $_GET["series"]) {
         $response[""] = "--";
         $response["sedan"]     = "Sedan";
         $response["sportback"] = "Sportback";
         $response["cabriolet"] = "Cabriolet";
     };
     
-    if ("s3" == $_GET["series-remote"]) {
+    if ("s3" == $_GET["series"]) {
         $response[""] = "--";
         $response["sedan"]     = "Sedan";
         $response["sportback"] = "Sportback";
     };
 
-    if ("a4" == $_GET["series-remote"]) {
+    if ("a4" == $_GET["series"]) {
         $response[""] = "--";
         $response["sedan"]     = "Sedan";
         $response["avant"]     = "Avant";
         $response["allroad"]   = "Allroad";
     };
 
-    if ("s4" == $_GET["series-remote"]) {
+    if ("s4" == $_GET["series"]) {
         $response[""] = "--";
         $response["sedan"]     = "Sedan";
     };
 
-    if ("a5" == $_GET["series-remote"]) {
+    if ("a5" == $_GET["series"]) {
         $response[""] = "--";
         $response["sportback"] = "Sportback";
         $response["cabriolet"] = "Cabriolet";
         $response["coupe"]     = "Coupe";
     };
 
-    if ("s5" == $_GET["series-remote"]) {
+    if ("s5" == $_GET["series"]) {
         $response[""] = "--";
         $response["sportback"] = "Sportback";
         $response["cabriolet"] = "Cabriolet";
         $response["coupe"]     = "Coupe";
     };
     
-    if ("a6" == $_GET["series-remote"]) {
+    if ("a6" == $_GET["series"]) {
         $response[""] = "--";
         $response["sedan"]     = "Sedan";
         $response["avant"]     = "Avant";
         $response["allroad"]   = "Allroad";
     };
     
-    if ("s6" == $_GET["series-remote"]) {
+    if ("s6" == $_GET["series"]) {
         $response[""] = "--";
         $response["sedan"]     = "Sedan";
         $response["avant"]     = "Avant";
     };
     
-    if ("rs6" == $_GET["series-remote"]) {
+    if ("rs6" == $_GET["series"]) {
         $response[""] = "--";
         $response["sedan"]     = "Sedan";
         $response["avant"]     = "Avant";
@@ -153,30 +153,30 @@ if (isset($_GET["series-remote"]) && isset($_GET["model-remote"])) {
     
 };
 
-if ($_GET["a-remote"]) { 
-    if ("a1" == $_GET["a-remote"]) {
+if ($_GET["a"]) { 
+    if ("a1" == $_GET["a"]) {
         $response[""]     = "--";
         $response["a1"] = "anything starting a1";
-        if ("b1" == $_GET["b-remote"]) {
+        if ("b1" == $_GET["b"]) {
             $response["a1b1"] = "a1b1";
             $response["a1b1_a1b2"] = "a1b1 or a1b2";
         }
-        if ("b2" == $_GET["b-remote"]) {
+        if ("b2" == $_GET["b"]) {
             $response["a1b1_a1b2"] = "a1b1 or a1b2";
         }
     };
 
-    if ("a2" == $_GET["a-remote"]) {
+    if ("a2" == $_GET["a"]) {
         $response[""] = "--";
-        if ("b2" == $_GET["b-remote"]) {
+        if ("b2" == $_GET["b"]) {
             $response["a2b2"] = "a2b2";
         }
-        if ("b3" == $_GET["b-remote"]) {
+        if ("b3" == $_GET["b"]) {
             $response["a2b3"] = "a2b3";
         }
     };
 
-    if ("a3" == $_GET["a-remote"]) {
+    if ("a3" == $_GET["a"]) {
         $response[""] = "--";
     };
 }

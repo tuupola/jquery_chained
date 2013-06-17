@@ -18,6 +18,10 @@
     
     $.fn.chained = function(parent_selector, options) {
         
+        var settings = $.extend( {}, $.fn.chained.defaults, options);
+        
+        console.log(settings);
+        
         return this.each(function() {
             
             /* Save this to self because this changes when scope changes. */
@@ -75,5 +79,8 @@
     
     /* Alias for those who like to use more English like syntax. */
     $.fn.chainedTo = $.fn.chained;
+    
+    /* Default settings for plugin. */
+    $.fn.chained.defaults = {};
     
 })(jQuery, window, document);

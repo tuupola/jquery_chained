@@ -18,6 +18,8 @@
     
     $.fn.remoteChained = function(parent_selector, url, options) {
         
+        var settings = $.extend( {}, $.fn.remoteChained.defaults, options);
+
         return this.each(function() {
             
             /* Save this to self because this changes when scope changes. */
@@ -31,7 +33,7 @@
                     /* Build data array from parents values. */
                     var data = {};
                     $(parent_selector).each(function() {
-                        var id = $(this).attr("id");
+                        var id = $(this).attr(settings.attribute);
                         var value = $(":selected", this).val();
                         data[id] = value;
                     });
@@ -101,5 +103,10 @@
     
     /* Alias for those who like to use more English like syntax. */
     $.fn.remoteChainedTo = $.fn.remoteChained;
+    
+    /* Default settings for plugin. */
+    $.fn.remoteChained.defaults = {
+        attribute: "name"
+    };
     
 })(jQuery, window, document);
