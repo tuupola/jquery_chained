@@ -16,7 +16,7 @@ module.exports = function(grunt) {
                 " * Project home:\n" +
                 " *   http://www.appelsiini.net/projects/lazyload\n" +
                 " *\n" +
-                " * Version: <%= pkg.version %> (<%= grunt.template.today('yyyy-mm-dd') %>)\n" +
+                " * Version: <%= pkg.version %>\n" +
                 " *\n" +
                 " */\n"
       },

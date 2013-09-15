@@ -1,3 +1,5 @@
+!https://travis-ci.org/tuupola/jquery_chained.png?branch=master!:https://travis-ci.org/tuupola/jquery_chained
+
 h1. Chained Selects Plugin for jQuery
 
 Chained is simple jQuery plugin for chained selects. You can choose from two different versions. Use jquery.chained.js if you do not want to make external queries for setting content of child selects. This version uses classnames of select options to decide content.
@@ -43,6 +45,15 @@ h1. License
 All code licensed under the "MIT License":http://www.opensource.org/licenses/mit-license.php. 
 
 h1. Changelog
+
+h3. 0.9.5
+
+* Fix bug "#12":https://github.com/tuupola/jquery_chained/issues/12. Minified versions were missing trailing semicolon;
+* Support for Travis and Grunt.
+
+h3. 0.9.4
+
+* Remote version now uses name attribute instead id when sending AJAJ query.
 
 h3. 0.9.3
 
