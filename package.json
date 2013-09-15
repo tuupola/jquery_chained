@@ -4,6 +4,11 @@
   "engines": {
     "node": ">= 0.8.0"
   },
+  "repository": {
+    "type": "git",
+    "url": "git@github.com:tuupola/jquery_chained.git"
+  },
+  "author": "Mika Tuupola <tuupola@appelsiini.net>",
   "scripts": {
     "test": "grunt test"
   },
