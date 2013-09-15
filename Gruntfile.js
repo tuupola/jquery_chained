@@ -32,13 +32,24 @@ module.exports = function(grunt) {
       options: {
         jshintrc: ".jshintrc"
       }
+    },
+    jasmine: {
+      src: ["jquery.chained.js", "jquery.chained.remote.js"],
+      options: {
+        //  specs: 'spec/*Spec.js',
+        helpers: "test/spec/*Helper.js",
+        specs: ["test/spec/ChainedSpec.js"],
+        vendor: ["test/vendor/jquery-1.9.0.js", "test/vendor/jasmine-jquery.js"]
+        //        vendor: "test/vendor/**/*.js"
+      }
     }
   });
 
   grunt.loadNpmTasks("grunt-contrib-uglify");
   grunt.loadNpmTasks("grunt-contrib-jshint");
+  grunt.loadNpmTasks("grunt-contrib-jasmine");
 
-  grunt.registerTask("test", ["jshint"]);
+  grunt.registerTask("test", ["jshint", "jasmine"]);
   grunt.registerTask("default", ["test", "uglify"]);
 
 };

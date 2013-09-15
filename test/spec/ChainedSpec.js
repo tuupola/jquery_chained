@@ -5,8 +5,51 @@ describe("Chained", function() {
     "use strict";
 
     beforeEach(function() {
-        jasmine.getFixtures().fixturesPath = "spec";
-        loadFixtures("chained.html");
+        setFixtures('<select id="mark" name="mark">' +
+        '  <option value="">--</option>' +
+        '  <option value="bmw">BMW</option>' +
+        '  <option value="audi">Audi</option>' +
+        '</select>' +
+        '<select id="series" name="series">' +
+        '  <option value="">--</option>' +
+        '  <option value="series-1" class="bmw">1 series</option>' +
+        '  <option value="series-3" class="bmw">3 series</option>' +
+        '  <option value="series-5" class="bmw">5 series</option>' +
+        '  <option value="series-6" class="bmw">6 series</option>' +
+        '  <option value="series-7" class="bmw">7 series</option>' +
+        '  <option value="a1" class="audi">A1</option>' +
+        '  <option value="a3" class="audi">A3</option>' +
+        '  <option value="s3" class="audi">S3</option>' +
+        '  <option value="a4" class="audi">A4</option>' +
+        '  <option value="s4" class="audi">S4</option>' +
+        '  <option value="a5" class="audi">A5</option>' +
+        '  <option value="s5" class="audi">S5</option>' +
+        '  <option value="a6" class="audi">A6</option>' +
+        '  <option value="s6" class="audi" selected="selected">S6</option>' +
+        '  <option value="rs6" class="audi">RS6</option>' +
+        '  <option value="a8" class="audi">A8</option>' +
+        '</select>' +
+        '<select id="model" name="model">' +
+        '  <option value="">--</option>' +
+        '  <option value="3-doors"       class="series-1">3 doors</option>' +
+        '  <option value="5-doors"       class="series-1">5 doors</option>' +
+        '  <option value="coupe"         class="series-1 series-3 series-6 a5 s5">Coupe</option>' +
+        '  <option value="cabrio"        class="series-1 series-3 series-6">Cabrio</option>' +
+        '  <option value="touring"       class="series-3 series-5">Touring</option>' +
+        '  <option value="gran-tourismo" class="series-5">Gran Tourismo</option>' +
+        '  <option value="sedan"         class="series-3 series-5 series-7 a1 a3 s3 a4 s4 a6 s6 rs6">Sedan</option>' +
+        '  <option value="sportback"     class="a3 s3 a5 s5">Sportback</option>' +
+        '  <option value="cabriolet"     class="a3 a5 s5">Cabriolet</option>' +
+        '  <option value="avant"         class="a4 s4 a6 s6 rs6">Avant</option>' +
+        '  <option value="allroad"       class="a4 a6">Allroad</option>' +
+        '</select>' +
+        '<select id="engine" name="engine">' +
+        '  <option value="">--</option>   ' +
+        '  <option value="25-petrol" class="series-3 a3 a4">2.5 petrol</option>' +
+        '  <option value="30-petrol" class="series-3 series-5 series-6 a3 a4 a5">3.0 petrol</option>' +
+        '  <option value="30-diesel" class="series-3\\sedan series-5\\sedan a5">3.0 diesel</option>' +
+        '</select>');
+
         $("#series").chained("#mark");
         $("#model").chained("#series");
         $("#engine").chained("#series, #model");
@@ -74,6 +117,7 @@ describe("Chained", function() {
         expect($("#engine > option:last").val()).toBe("30-petrol");
         
         $("#model").val("sedan").trigger("change");
+
         expect($("#engine > option").size()).toBe(4);
         expect($("#engine > option:last").val()).toBe("30-diesel");
         
