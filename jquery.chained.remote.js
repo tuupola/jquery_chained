@@ -1,3 +1,5 @@
+/* jshint -W098 */
+
 /*
  * Remote Chained - jQuery AJAX(J) chained selects plugin
  *
@@ -9,7 +11,7 @@
  * Project home:
  *   http://www.appelsiini.net/projects/lazyload
  *
- * Version:  0.9.4
+ * Version: 0.9.5
  *
  */
 
