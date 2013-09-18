@@ -28,7 +28,7 @@ module.exports = function(grunt) {
       }
     },
     jshint: {
-      files: ["Gruntfile.js", "jquery.chained.js", "jquery.chained.remote.js"],
+      files: ["Gruntfile.js", "jquery.chained.js", "jquery.chained.remote.js", "test/spec/ChainedSpec.js", "test/spec/ChainedRemoteSpec.js"],
       options: {
         jshintrc: ".jshintrc"
       }
@@ -38,7 +38,7 @@ module.exports = function(grunt) {
       options: {
         //  specs: 'spec/*Spec.js',
         helpers: "test/spec/*Helper.js",
-        specs: ["test/spec/ChainedSpec.js"],
+        specs: ["test/spec/ChainedSpec.js", "test/spec/ChainedRemoteSpec.js"],
         vendor: ["test/vendor/jquery-1.9.0.js", "test/vendor/jasmine-jquery.js"]
         //        vendor: "test/vendor/**/*.js"
       }

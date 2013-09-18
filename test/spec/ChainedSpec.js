@@ -1,5 +1,5 @@
-/*global describe:false, beforeEach:false, it:false, expect:false, sandbox:false, setFixtures:false, loadFixtures:false, jasmine:true */
-/*jshint devel:true, jquery:true */
+/* jshint -W108 */
+/* global describe, beforeEach, setFixtures, it, expect */
 
 describe("Chained", function() {
     "use strict";
