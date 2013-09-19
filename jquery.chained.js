@@ -11,7 +11,7 @@
  * Project home:
  *   http://www.appelsiini.net/projects/lazyload
  *
- * Version: 0.9.5
+ * Version: 0.9.6-dev
  *
  */
 
@@ -40,13 +40,18 @@
                         selected += "\\" + $(":selected", this).val();
                     });
                     selected = selected.substr(1);
+                    
+                    /* Zepto class regexp dies with classes like foo\bar. */
+                    if (window.Zepto) {
+                        selected = selected.replace("\\", "\\\\");
+                    }
 
                     /* Also check for first parent without subclassing. */
                     /* TODO: This should be dynamic and check for each parent */
                     /*       without subclassing. */
                     var first = $(parent_selector).first();
                     var selected_first = $(":selected", first).val();
-                
+
                     $("option", self).each(function() {
                         /* Remove unneeded items but save the default value. */
                         if (!$(this).hasClass(selected) &&
@@ -83,4 +88,4 @@
     /* Default settings for plugin. */
     $.fn.chained.defaults = {};
     
-})(jQuery, window, document);
+})(window.jQuery || window.Zepto, window, document);

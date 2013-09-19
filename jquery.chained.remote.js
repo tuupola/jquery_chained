@@ -11,7 +11,7 @@
  * Project home:
  *   http://www.appelsiini.net/projects/lazyload
  *
- * Version: 0.9.5
+ * Version: 0.9.6-dev
  *
  */
 
@@ -111,4 +111,4 @@
         attribute: "name"
     };
     
-})(jQuery, window, document);
+})(window.jQuery || window.Zepto, window, document);
