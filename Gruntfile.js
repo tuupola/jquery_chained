@@ -5,6 +5,7 @@ module.exports = function(grunt) {
         pkg: grunt.file.readJSON("package.json"),
         uglify : {
             options: {
+                report: "gzip",
                 banner: "/*\n" +
                         " * Chained - jQuery non AJAX(J) chained selects plugin\n" +
                         " *\n" +
