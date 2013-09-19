@@ -27,6 +27,12 @@ module.exports = function(grunt) {
         }
       }
     },
+    watch: {
+        files: ["Gruntfile.js", "jquery.chained.js",
+                "jquery.chained.remote.js", "test/spec/ChainedSpec.js",
+                "test/spec/ChainedRemoteSpec.js", "test/spec/ChainedRemoteMultipleSpec.js"],
+        tasks: ["test"],
+    },
     jshint: {
       files: ["Gruntfile.js", "jquery.chained.js",
               "jquery.chained.remote.js", "test/spec/ChainedSpec.js",
@@ -49,6 +55,7 @@ module.exports = function(grunt) {
   grunt.loadNpmTasks("grunt-contrib-uglify");
   grunt.loadNpmTasks("grunt-contrib-jshint");
   grunt.loadNpmTasks("grunt-contrib-jasmine");
+  grunt.loadNpmTasks("grunt-contrib-watch");
 
   grunt.registerTask("test", ["jshint", "jasmine"]);
   grunt.registerTask("default", ["test", "uglify"]);
