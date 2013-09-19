@@ -14,7 +14,7 @@ module.exports = function(grunt) {
                         " *   http://www.opensource.org/licenses/mit-license.php\n" +
                         " *\n" +
                         " * Project home:\n" +
-                        " *   http://www.appelsiini.net/projects/lazyload\n" +
+                        " *   http://www.appelsiini.net/projects/chained\n" +
                         " *\n" +
                         " * Version: <%= pkg.version %>\n" +
                         " *\n" +
