@@ -46,6 +46,10 @@ All code licensed under the "MIT License":http://www.opensource.org/licenses/mit
 
 h1. Changelog
 
+h3. 0.9.6
+
+* Zepto support.
+
 h3. 0.9.5
 
 * Fix bug "#12":https://github.com/tuupola/jquery_chained/issues/12. Minified versions were missing trailing semicolon;
