@@ -35,7 +35,14 @@
                     /* Build data array from parents values. */
                     var data = {};
                     $(parent_selector).each(function() {
-                        var id = $(this).attr(settings.attribute);
+                        
+                        var id;
+                        if(options.paramName){
+                            id = options.paramName;
+                        }else{
+                            id = $(this).attr(settings.attribute);
+                        }
+
                         var value = $(":selected", this).val();
                         data[id] = value;
                     });
