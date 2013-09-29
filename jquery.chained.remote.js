@@ -37,7 +37,7 @@
                     $(parent_selector).each(function() {
                         
                         var id;
-                        if(options.paramName){
+                        if(options.hasOwnProperty(paramName)){
                             id = options.paramName;
                         }else{
                             id = $(this).attr(settings.attribute);
