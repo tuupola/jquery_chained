@@ -17,17 +17,17 @@
 
 ;(function($, window, document, undefined) {
     "use strict";
-    
+
     $.fn.remoteChained = function(parent_selector, url, options) {
-        
+
         var settings = $.extend( {}, $.fn.remoteChained.defaults, options);
 
         return this.each(function() {
-            
+
             /* Save this to self because this changes when scope changes. */
             var self   = this;
             var backup = $(self).clone();
-                        
+
             /* Handles maximum two parents now. */
             $(parent_selector).each(function() {
                 $(this).bind("change", function() {
@@ -38,6 +38,19 @@
                         var id = $(this).attr(settings.attribute);
                         var value = $(":selected", this).val();
                         data[id] = value;
+
+                        /* Optionally also include values from these inputs. */
+                        if (settings.values) {
+                            $(settings.values).each(function() {
+                                /* Do not include own value. */
+                                if (self !== this) {
+                                    var id = $(this).attr(settings.attribute);
+                                    var value = $(this).val();
+                                    data[id] = value;
+                                }
+                            });
+                        }
+
                     });
 
                     $.getJSON(url, data, function(json) {
@@ -66,7 +79,7 @@
                         for (var i=0; i!==option_list.length; i++) {
                             var key = option_list[i][0];
                             var value = option_list[i][1];
-                            
+
                             /* Set the selected option from JSON. */
                             if ("selected" === key) {
                                 selected_key = value;
@@ -75,7 +88,7 @@
                             var option = $("<option />").val(key).append(value);
                             $(self).append(option);
                         }
-                                                
+
                         /* Loop option again to set selected. IE needed this... */
                         $(self).children().each(function() {
                             if ($(this).val() === selected_key) {
@@ -102,13 +115,14 @@
             });
         });
     };
-    
+
     /* Alias for those who like to use more English like syntax. */
     $.fn.remoteChainedTo = $.fn.remoteChained;
-    
+
     /* Default settings for plugin. */
     $.fn.remoteChained.defaults = {
-        attribute: "name"
+        attribute: "name",
+        values : null
     };
-    
+
 })(window.jQuery || window.Zepto, window, document);
