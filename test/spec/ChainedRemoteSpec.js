@@ -1,7 +1,7 @@
 /* jshint -W108 */
 /* global describe, beforeEach, setFixtures, it, expect, spyOn */
 
-describe("Remote Chained", function() {
+describe("Remote Chained Selects plugin", function() {
     "use strict";
 
     beforeEach(function() {
@@ -20,12 +20,26 @@ describe("Remote Chained", function() {
         '    <select class="engine" id="engine" name="engine">' +
         '      <option value="">--</option>   ' +
         '    </select>' +
+
+        '    <select class="mark2" id="mark2" name="mark2">' +
+        '      <option value="">--</option>' +
+        '      <option value="bmw" selected>BMW</option>' +
+        '      <option value="audi">Audi</option>' +
+        '    </select>' +
+        '    <select class="series2" id="series2" name="series2">' +
+        '      <option value="">--</option>' +
+        '    </select>' +
         '</form>');
-        
+
         $("#series").remoteChained("#mark", "json.php");
         $("#model").remoteChained("#series", "json.php");
         $("#engine").remoteChained("#series, #model", "json.php");
-        
+
+        $("#series2").remoteChained("#mark2", "json.php", {
+            "bootstrap" : {"--":"--","series-2":"2 series","series-3":"3 series","series-5":"5 series","series-6":"6 series","series-7":"7 series","selected":"series-3"}
+        });
+
+
         spyOn($, "getJSON").andCallFake(function(url, data, callback) {
             if (undefined !== data.series && undefined !== data.model) {
                 if ("series-3" === data.series && "coupe" === data.model) {
@@ -60,12 +74,12 @@ describe("Remote Chained", function() {
             }
         });
     });
-    
+
     it("should be chainable as jQuery plugin", function() {
         var select = $("#mark").remoteChained("#foo").addClass("bar");
         expect(select.hasClass("bar")).toBe(true);
     });
-    
+
     it("should make initial update", function() {
         $("#mark").trigger("change");
         expect($("#mark > option").size()).toBe(3);
@@ -74,7 +88,7 @@ describe("Remote Chained", function() {
         expect($("#model > option").size()).toBe(1);
         expect($("#model")).toBeDisabled();
     });
-    
+
     it("should update series when mark changes", function() {
 
         $("#mark").val("audi").trigger("change");
@@ -89,7 +103,7 @@ describe("Remote Chained", function() {
         expect($("#model > option").size()).toBe(1);
 
     });
-    
+
     it("should update model when series changes", function() {
         $("#mark").val("bmw").trigger("change");
         $("#series").val("series-3").trigger("change");
@@ -97,11 +111,11 @@ describe("Remote Chained", function() {
         expect($("#series > option").size()).toBe(6);
         expect($("#model > option").size()).toBe(5);
     });
-    
+
     it("should reset series and model when mark changes", function() {
         $("#mark").val("audi").trigger("change");
         $("#series").val("a6").trigger("change");
-        
+
         $("#mark").val("bmw").trigger("change");
         expect($("#mark > option").size()).toBe(3);
         expect($("#series > option").size()).toBe(6);
@@ -111,25 +125,25 @@ describe("Remote Chained", function() {
     it("should disable input if only default value exists", function() {
         $("#mark").val("audi").trigger("change");
         $("#series").val("a6").trigger("change");
-        
+
         $("#mark").val("bmw").trigger("change");
         expect($("#model > option:first").val()).toBe("");
         expect($("#model").val()).toBe("");
         expect($("#model").attr("disabled")).toBe("disabled");
     });
-    
+
     it("should be chained to two parents", function() {
         $("#mark").val("bmw").trigger("change");
         $("#series").val("series-3").trigger("change");
         $("#model").val("coupe").trigger("change");
-        
+
         expect($("#engine > option").size()).toBe(3);
         expect($("#engine > option:last").val()).toBe("30-petrol");
-        
+
         $("#model").val("sedan").trigger("change");
         expect($("#engine > option").size()).toBe(4);
         expect($("#engine > option:last").val()).toBe("30-diesel");
-        
+
         $("#series").val("series-6").trigger("change");
         $("#model").val("coupe").trigger("change");
         expect($("#engine > option").size()).toBe(2);
@@ -138,6 +152,16 @@ describe("Remote Chained", function() {
     it("should honour selected attribute in json", function() {
         $("#mark").val("audi").trigger("change");
         expect($("#series > option:selected").val()).toBe("s6");
+    });
+
+    it("should be able to bootstrap values", function() {
+        expect($("#mark2 > option").size()).toBe(3);
+        expect($("#series2 > option").size()).toBe(6);
+    });
+
+    it("should honour selected attribute in bootstrapped values", function() {
+        expect($("#mark2 > option:selected").val()).toBe("bmw");
+        expect($("#series2 > option:selected").val()).toBe("series-3");
     });
 
 });

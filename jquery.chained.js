@@ -1,7 +1,7 @@
 /* jshint -W098 */
 
 /*
- * Chained - jQuery non AJAX(J) chained selects plugin
+ * Chained - jQuery chained selects plugin
  *
  * Copyright (c) 2010-2013 Mika Tuupola
  *
@@ -17,20 +17,20 @@
 
 ;(function($, window, document, undefined) {
     "use strict";
-    
+
     $.fn.chained = function(parent_selector, options) {
-        
+
         var settings = $.extend( {}, $.fn.chained.defaults, options);
-        
+
         return this.each(function() {
-            
+
             /* Save this to self because this changes when scope changes. */
             var self   = this;
             var backup = $(self).clone();
-                        
+
             /* Handles maximum two parents now. */
             $(parent_selector).each(function() {
-                                                
+
                 $(this).bind("change", function() {
                     $(self).html(backup.html());
 
@@ -40,7 +40,7 @@
                         selected += "\\" + $(":selected", this).val();
                     });
                     selected = selected.substr(1);
-                    
+
                     /* Zepto class regexp dies with classes like foo\bar. */
                     if (window.Zepto) {
                         selected = selected.replace("\\", "\\\\");
@@ -68,24 +68,24 @@
                     }
                     $(self).trigger("change");
                 });
-                
+
                 /* Force IE to see something selected on first page load, */
                 /* unless something is already selected */
                 if (!$("option:selected", this).length) {
                     $("option", this).first().attr("selected", "selected");
                 }
-      
+
                 /* Force updating the children. */
                 $(this).trigger("change");
 
             });
         });
     };
-    
+
     /* Alias for those who like to use more English like syntax. */
     $.fn.chainedTo = $.fn.chained;
-    
+
     /* Default settings for plugin. */
     $.fn.chained.defaults = {};
-    
+
 })(window.jQuery || window.Zepto, window, document);
