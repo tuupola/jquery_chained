@@ -11,24 +11,24 @@ if (isset($_GET["series"]) && isset($_GET["model"])) {
   if (in_array($_GET["series"], array("series-1", "series-3", "a3", "a4"))) {
       $response["25-petrol"] = "2.5 petrol";
   }
-  
+
   if (in_array($_GET["series"], array("series-3", "series-5", "series-6", "series-7", "a3", "a4", "a5"))) {
       $response["30-petrol"] = "3.0 petrol";
   }
 
   if (in_array($_GET["series"], array("series-7", "a5"))) {
-      $response["30-diesel"] = "3.0 diesel";    
+      $response["30-diesel"] = "3.0 diesel";
   }
 
   if ("series-3" == $_GET["series"] && "sedan" == $_GET["model"]) {
-      $response["30-diesel"] = "3.0 diesel";    
+      $response["30-diesel"] = "3.0 diesel";
   }
-  
+
   if ("series-5" == $_GET["series"] && "sedan" == $_GET["model"]) {
-      $response["30-diesel"] = "3.0 diesel";    
+      $response["30-diesel"] = "3.0 diesel";
   }
-  
-} else if ($_GET["mark"]) {
+
+} else if (isset($_GET["mark"])) {
     if ("bmw" == $_GET["mark"]) {
         $response[""] = "--";
         $response["series-1"] = "1 series";
@@ -51,8 +51,8 @@ if (isset($_GET["series"]) && isset($_GET["model"])) {
         $response["s6"]  = "S6";
         $response["rs6"] = "RS6";
         $response["a8"]  = "A8";
-    };   
-} else if ($_GET["series"]) {
+    };
+} else if (isset($_GET["series"])) {
     if ("series-1" == $_GET["series"]) {
         $response[""] = "--";
         $response["3-doors"] = "3 doors";
@@ -69,7 +69,7 @@ if (isset($_GET["series"]) && isset($_GET["model"])) {
         $response["sedan"]   = "Sedan";
         $response["touring"] = "Touring";
     };
-    
+
     if ("series-5" == $_GET["series"]) {
         $response[""] = "--";
         $response["sedan"]   = "Sedan";
@@ -87,7 +87,7 @@ if (isset($_GET["series"]) && isset($_GET["model"])) {
         $response[""] = "--";
         $response["sedan"]   = "Sedan";
     };
-    
+
     if ("a1" == $_GET["series"]) {
         $response[""] = "--";
         $response["sedan"]   = "Sedan";
@@ -99,7 +99,7 @@ if (isset($_GET["series"]) && isset($_GET["model"])) {
         $response["sportback"] = "Sportback";
         $response["cabriolet"] = "Cabriolet";
     };
-    
+
     if ("s3" == $_GET["series"]) {
         $response[""] = "--";
         $response["sedan"]     = "Sedan";
@@ -131,29 +131,29 @@ if (isset($_GET["series"]) && isset($_GET["model"])) {
         $response["cabriolet"] = "Cabriolet";
         $response["coupe"]     = "Coupe";
     };
-    
+
     if ("a6" == $_GET["series"]) {
         $response[""] = "--";
         $response["sedan"]     = "Sedan";
         $response["avant"]     = "Avant";
         $response["allroad"]   = "Allroad";
     };
-    
+
     if ("s6" == $_GET["series"]) {
         $response[""] = "--";
         $response["sedan"]     = "Sedan";
         $response["avant"]     = "Avant";
     };
-    
+
     if ("rs6" == $_GET["series"]) {
         $response[""] = "--";
         $response["sedan"]     = "Sedan";
         $response["avant"]     = "Avant";
     };
-    
+
 };
 
-if ($_GET["a"]) { 
+if (isset($_GET["a"])) {
     if ("a1" == $_GET["a"]) {
         $response[""]     = "--";
         $response["a1"] = "anything starting a1";
