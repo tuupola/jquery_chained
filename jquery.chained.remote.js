@@ -1,7 +1,7 @@
 /* jshint -W098 */
 
 /*
- * Remote Chained - jQuery AJAX(J) chained selects plugin
+ * Chained - jQuery chained selects plugin
  *
  * Copyright (c) 2010-2013 Mika Tuupola
  *
@@ -50,69 +50,73 @@
                                 }
                             });
                         }
-
                     });
 
                     $.getJSON(url, data, function(json) {
-                        /* If select already had something selected, preserve it. */
-                        var selected_key = $(":selected", self).val();
-
-                        /* Clear the select. */
-                        $("option", self).remove();
-
-                        var option_list = [];
-                        if ($.isArray(json)) {
-                            /* JSON is already an array (which preserves the ordering of options) */
-                            /* [["","--"],["series-1","1 series"],["series-3","3 series"]] */
-                            option_list = json;
-                        } else {
-                            /* JSON is an JavaScript object. Rebuild it as an array. */
-                            /* {"":"--","series-1":"1 series","series-3":"3 series"} */
-                            for (var index in json) {
-                                if (json.hasOwnProperty(index)) {
-                                    option_list.push([index, json[index]]);
-                                }
-                            }
-                        }
-
-                        /* Add new options from json. */
-                        for (var i=0; i!==option_list.length; i++) {
-                            var key = option_list[i][0];
-                            var value = option_list[i][1];
-
-                            /* Set the selected option from JSON. */
-                            if ("selected" === key) {
-                                selected_key = value;
-                                continue;
-                            }
-                            var option = $("<option />").val(key).append(value);
-                            $(self).append(option);
-                        }
-
-                        /* Loop option again to set selected. IE needed this... */
-                        $(self).children().each(function() {
-                            if ($(this).val() === selected_key) {
-                                $(this).attr("selected", "selected");
-                            }
-                        });
-
-                        /* If we have only the default value disable select. */
-                        if (1 === $("option", self).size() && $(self).val() === "") {
-                            $(self).attr("disabled", "disabled");
-                        } else {
-                            $(self).removeAttr("disabled");
-                        }
-
+                        build.call(self, json);
                         /* Force updating the children. */
                         $(self).trigger("change");
                     });
-
                 });
 
-                /* Force updating the children. */
-                $(this).trigger("change");
-
+                /* If we have bootstrapped data given in options. */
+                if (settings.bootstrap) {
+                     build.call(self, settings.bootstrap);
+                     settings.bootstrap = null;
+                 }
             });
+
+            /* Build the select from given data. */
+            function build(json) {
+                /* If select already had something selected, preserve it. */
+                var selected_key = $(":selected", self).val();
+
+                /* Clear the select. */
+                $("option", self).remove();
+
+                var option_list = [];
+                if ($.isArray(json)) {
+                    /* JSON is already an array (which preserves the ordering of options) */
+                    /* [["","--"],["series-1","1 series"],["series-3","3 series"]] */
+                    option_list = json;
+                } else {
+                    /* JSON is an JavaScript object. Rebuild it as an array. */
+                    /* {"":"--","series-1":"1 series","series-3":"3 series"} */
+                    for (var index in json) {
+                        if (json.hasOwnProperty(index)) {
+                            option_list.push([index, json[index]]);
+                        }
+                    }
+                }
+
+                /* Add new options from json. */
+                for (var i=0; i!==option_list.length; i++) {
+                    var key = option_list[i][0];
+                    var value = option_list[i][1];
+
+                    /* Set the selected option from JSON. */
+                    if ("selected" === key) {
+                        selected_key = value;
+                        continue;
+                    }
+                    var option = $("<option />").val(key).append(value);
+                    $(self).append(option);
+                }
+
+                /* Loop option again to set selected. IE needed this... */
+                $(self).children().each(function() {
+                    if ($(this).val() === selected_key) {
+                        $(this).attr("selected", "selected");
+                    }
+                });
+
+                /* If we have only the default value disable select. */
+                if (1 === $("option", self).size() && $(self).val() === "") {
+                    $(self).attr("disabled", "disabled");
+                } else {
+                    $(self).removeAttr("disabled");
+                }
+            }
         });
     };
 
@@ -122,7 +126,8 @@
     /* Default settings for plugin. */
     $.fn.remoteChained.defaults = {
         attribute: "name",
-        values : null
+        values : null,
+        bootstrap : null
     };
 
 })(window.jQuery || window.Zepto, window, document);
