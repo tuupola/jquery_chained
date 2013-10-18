@@ -1,4 +1,4 @@
-!https://travis-ci.org/tuupola/jquery_chained.png?branch=master!:https://travis-ci.org/tuupola/jquery_chained
+<a href="https://travis-ci.org/tuupola/jquery_chained"><img src="https://travis-ci.org/tuupola/jquery_chained.png?branch=master" /></a>
 
 # Chained Selects Plugin for jQuery
 
