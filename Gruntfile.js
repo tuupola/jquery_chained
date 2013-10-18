@@ -1,13 +1,13 @@
 module.exports = function(grunt) {
     "use strict";
-  
+
     grunt.initConfig({
         pkg: grunt.file.readJSON("package.json"),
         uglify : {
             options: {
                 report: "gzip",
                 banner: "/*\n" +
-                        " * Chained - jQuery non AJAX(J) chained selects plugin\n" +
+                        " * Chained - jQuery chained selects plugin\n" +
                         " *\n" +
                         " * Copyright (c) 2010-2013 Mika Tuupola\n" +
                         " *\n" +
@@ -74,7 +74,7 @@ module.exports = function(grunt) {
             }
         }
     });
-    
+
     grunt.loadNpmTasks("grunt-contrib-uglify");
     grunt.loadNpmTasks("grunt-contrib-jshint");
     grunt.loadNpmTasks("grunt-contrib-jasmine");
