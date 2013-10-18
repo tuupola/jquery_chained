@@ -1,0 +1,25 @@
+{
+  "name": "chained",
+  "version": "0.9.5",
+  "homepage": "http://www.appelsiini.net/projects/chained",
+  "authors": [
+    "Mika Tuupola <tuupola@appelsiini.net>"
+  ],
+  "description": "Simple chained select with jQuery.",
+  "main": [
+    "jquery.chained.min.js"
+    "jquery.chained.remote.min.js"
+  ],
+  "keywords": [
+    "jquery",
+    "chained",
+    "select"
+  ],
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test"
+  ]
+}
