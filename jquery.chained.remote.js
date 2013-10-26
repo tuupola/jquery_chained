@@ -1,7 +1,7 @@
 /* jshint -W098 */
 
 /*
- * Chained - jQuery chained selects plugin
+ * Chained - jQuery / Zepto chained selects plugin
  *
  * Copyright (c) 2010-2013 Mika Tuupola
  *
@@ -9,9 +9,9 @@
  *   http://www.opensource.org/licenses/mit-license.php
  *
  * Project home:
- *   http://www.appelsiini.net/projects/lazyload
+ *   http://www.appelsiini.net/projects/chained
  *
- * Version: 0.9.6-dev
+ * Version: 0.9.6
  *
  */
 

@@ -1,13 +1,13 @@
 {
   "name": "chained",
-  "version": "0.9.5",
+  "version": "0.9.6",
   "homepage": "http://www.appelsiini.net/projects/chained",
   "authors": [
     "Mika Tuupola <tuupola@appelsiini.net>"
   ],
-  "description": "Simple chained select with jQuery.",
+  "description": "Simple chained selects with jQuery or Zepto.",
   "main": [
-    "jquery.chained.min.js"
+    "jquery.chained.min.js",
     "jquery.chained.remote.min.js"
   ],
   "keywords": [

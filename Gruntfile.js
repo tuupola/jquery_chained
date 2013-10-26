@@ -7,7 +7,7 @@ module.exports = function(grunt) {
             options: {
                 report: "gzip",
                 banner: "/*\n" +
-                        " * Chained - jQuery chained selects plugin\n" +
+                        " * Chained - jQuery / Zepto chained selects plugin\n" +
                         " *\n" +
                         " * Copyright (c) 2010-2013 Mika Tuupola\n" +
                         " *\n" +
