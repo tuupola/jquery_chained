@@ -68,29 +68,8 @@ All code licensed under the [MIT License](http://www.opensource.org/licenses/mit
 * Zepto support.
 * Bower support.
 * Ability to bootstrap selects by passing JSON data in settings. Avoids making the initial AJAX calls.
-* Alternate but prettier syntax for remote version. Allow you to pass all settings as one hash.<br>
-```
-    $("#series").remoteChained({
-        parents : "#mark",
-        url : "/api/series.json",
-        bootstrap : {
-            "--" : "--",
-            "series-3" : "3 series",
-            "series-5" : "5 series",
-            "series-6" : "6 series",
-            "selected" : "series-3"
-        }
-    });
-```
-<br>
-* Optionally send additional values of non chained inputs when using remote version<br>
-```
-    $("#transmission").remoteChained({
-       parents: "#engine",
-       url: "/api/transmissions.json",
-       values: "#model"
-    });
-```
+* Alternate but prettier syntax for remote version. Allow you to pass all settings as one hash.
+* Optionally send additional values of non chained inputs when using remote version
 
 ### 0.9.5
 
