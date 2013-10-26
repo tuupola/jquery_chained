@@ -7,18 +7,7 @@ module.exports = function(grunt) {
             options: {
                 report: "gzip",
                 banner: "/*\n" +
-                        " * Chained - jQuery / Zepto chained selects plugin\n" +
-                        " *\n" +
-                        " * Copyright (c) 2010-2013 Mika Tuupola\n" +
-                        " *\n" +
-                        " * Licensed under the MIT license:\n" +
-                        " *   http://www.opensource.org/licenses/mit-license.php\n" +
-                        " *\n" +
-                        " * Project home:\n" +
-                        " *   http://www.appelsiini.net/projects/chained\n" +
-                        " *\n" +
-                        " * Version: <%= pkg.version %>\n" +
-                        " *\n" +
+                        " * Chained <%= pkg.version %> - MIT license - Copyright 2010-2013 Mika Tuupola\n" +
                         " */\n"
             },
             target: {

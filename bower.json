@@ -1,6 +1,6 @@
 {
   "name": "chained",
-  "version": "0.9.6",
+  "version": "0.9.7",
   "homepage": "http://www.appelsiini.net/projects/chained",
   "authors": [
     "Mika Tuupola <tuupola@appelsiini.net>"
@@ -21,6 +21,7 @@
     "**/*.php",
     "**/*.html",
     "**/*.markdown",
+    "Gruntfile.js",
     "chained.jquery.json",
     "package.json",
     "node_modules",

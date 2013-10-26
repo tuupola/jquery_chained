@@ -69,6 +69,10 @@ All code licensed under the [MIT License](http://www.opensource.org/licenses/mit
 
 # Changelog
 
+### 0.9.7
+
+* Removed unneeded files when installing with Bower.
+
 ### 0.9.6
 
 * Zepto support.
