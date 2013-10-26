@@ -7,8 +7,8 @@
   ],
   "description": "Simple chained selects with jQuery or Zepto.",
   "main": [
-    "jquery.chained.min.js",
-    "jquery.chained.remote.min.js"
+    "jquery.chained.js",
+    "jquery.chained.remote.js"
   ],
   "keywords": [
     "jquery",
@@ -18,6 +18,11 @@
   "license": "MIT",
   "ignore": [
     "**/.*",
+    "**/*.php",
+    "**/*.html",
+    "**/*.markdown",
+    "chained.jquery.json",
+    "package.json",
     "node_modules",
     "bower_components",
     "test"
