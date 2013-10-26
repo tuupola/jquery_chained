@@ -1,8 +1,8 @@
 <a href="https://travis-ci.org/tuupola/jquery_chained"><img src="https://travis-ci.org/tuupola/jquery_chained.png?branch=master" /></a>
 
-# Chained Selects Plugin for jQuery
+# Chained Selects Plugin for jQuery and Zepto
 
-Chained is simple jQuery plugin for chained selects. You can choose from two different versions. Use jquery.chained.js if you do not want to make external queries for setting content of child selects. This version uses classnames of select options to decide content.
+Chained is simple plugin for chained selects. It works with both jQuery and Zepto. You can choose from two different versions. Use jquery.chained.js if you do not want to make external queries for setting content of child selects. This version uses classnames of select options to decide content.
 
 For more complex scenarios maintaining option tag classnames will get cumbersome. Also if you want to make queries against database use jquery.chained.remote.js instead. This version makes an external AJAJ query and uses the returned JSON to build child selects.
 
@@ -10,10 +10,16 @@ For more complex scenarios maintaining option tag classnames will get cumbersome
 
 Child selects are chained to parent select. All selects must have an id attribute. Child select options must have class names which match option values of parent select. When user selects something in parent select the options in child select are updated. Options which have matching classname with parents currently selected option will stay visible. Others are hidden.
 
-First you must include jQuery and Chained in your code:
+First you must include jQuery or Zepto and Chained in your code:
 
-    <script src="jquery.js" type="text/javascript" charset="utf-8"></script>
-    <script src="jquery.chained.js" type="text/javascript" charset="utf-8"></script>
+    <script src="jquery.js"></script>
+    <script src="jquery.chained.js"></script>
+
+If you are using Zepto you must also include the optional selector module.
+
+    <script src="zepto.js"></script>
+    <script src="zepto-selector.js"></script>
+    <script src="jquery.chained.js"></script>
 
 Then lets assume you have the following HTML code:
 
