@@ -18,9 +18,18 @@
 ;(function($, window, document, undefined) {
     "use strict";
 
-    $.fn.remoteChained = function(parent_selector, url, options) {
+    $.fn.remoteChained = function(parents, url, options) {
 
-        var settings = $.extend( {}, $.fn.remoteChained.defaults, options);
+        var settings;
+        /* New style syntax. */
+        if ("object" === typeof(parents) && "undefined" !== typeof(parents.url)) {
+            settings = $.extend({}, $.fn.remoteChained.defaults, parents);
+        /* Still support old style syntax. */
+        } else {
+            settings = $.extend({}, $.fn.remoteChained.defaults, options);
+            settings.parents = parents;
+            settings.url = url;
+        }
 
         return this.each(function() {
 
@@ -29,12 +38,12 @@
             var backup = $(self).clone();
 
             /* Handles maximum two parents now. */
-            $(parent_selector).each(function() {
+            $(settings.parents).each(function() {
                 $(this).bind("change", function() {
 
                     /* Build data array from parents values. */
                     var data = {};
-                    $(parent_selector).each(function() {
+                    $(settings.parents).each(function() {
                         var id = $(this).attr(settings.attribute);
                         var value = $(":selected", this).val();
                         data[id] = value;
@@ -52,7 +61,7 @@
                         }
                     });
 
-                    $.getJSON(url, data, function(json) {
+                    $.getJSON(settings.url, data, function(json) {
                         build.call(self, json);
                         /* Force updating the children. */
                         $(self).trigger("change");
