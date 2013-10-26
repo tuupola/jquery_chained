@@ -12,35 +12,43 @@ Child selects are chained to parent select. All selects must have an id attribut
 
 First you must include jQuery or Zepto and Chained in your code:
 
-    <script src="jquery.js"></script>
-    <script src="jquery.chained.js"></script>
+```html
+<script src="jquery.js"></script>
+<script src="jquery.chained.js"></script>
+```
 
 If you are using Zepto you must also include the optional selector module.
 
-    <script src="zepto.js"></script>
-    <script src="zepto-selector.js"></script>
-    <script src="jquery.chained.js"></script>
+```html
+<script src="zepto.js"></script>
+<script src="zepto-selector.js"></script>
+<script src="jquery.chained.js"></script>
+```
 
 Then lets assume you have the following HTML code:
 
-    <select id="mark" name="mark">
-      <option value="">--</option>
-      <option value="bmw">BMW</option>
-      <option value="audi">Audi</option>
-    </select>
-    <select id="series" name="series">
-      <option value="">--</option>
-      <option value="series-3" class="bmw">3 series</option>
-      <option value="series-5" class="bmw">5 series</option>
-      <option value="series-6" class="bmw">6 series</option>
-      <option value="a3" class="audi">A3</option>
-      <option value="a4" class="audi">A4</option>
-      <option value="a5" class="audi">A5</option>
-    </select>
+```html
+<select id="mark" name="mark">
+  <option value="">--</option>
+  <option value="bmw">BMW</option>
+  <option value="audi">Audi</option>
+</select>
+<select id="series" name="series">
+  <option value="">--</option>
+  <option value="series-3" class="bmw">3 series</option>
+  <option value="series-5" class="bmw">5 series</option>
+  <option value="series-6" class="bmw">6 series</option>
+  <option value="a3" class="audi">A3</option>
+  <option value="a4" class="audi">A4</option>
+  <option value="a5" class="audi">A5</option>
+</select>
+```
 
 You can now chain the series to mark. There are two different ways to do it. Choose yourself if you prefer more english like or shorter version. I prefer the shorter version.
 
-    $("#series").chained("#mark"); /* or $("#series").chainedTo("#mark");
+```javascript
+$("#series").chained("#mark"); /* or $("#series").chainedTo("#mark");
+```
 
 ## Chaining to multiple parents
 
@@ -48,16 +56,19 @@ One child can have two parents. Available options in child which chained to mult
 
 Here is code for fourth select. Note how diesel engine is available only for BMW 3 and 5 series Sedans. This is achieved by using classnames <code>series-3\sedan</code> and <code>series-5\sedan</code>.
 
-    <select id="engine" name="engine">
-      <option value="">--</option>
-      <option value="25-petrol" class="series-3 a3 a4">2.5 petrol</option>
-      <option value="30-petrol" class="series-3 series-5 series-6 a3 a4 a5">3.0 petrol</option>
-      <option value="30-diesel" class="series-3\sedan series-5\sedan a5">3.0 diesel</option>
-    </select>
-
-    $("#series").chained("#mark");
-    $("#model").chained("#series");
-    $("#engine").chained("#series, #model");
+```html
+<select id="engine" name="engine">
+  <option value="">--</option>
+  <option value="25-petrol" class="series-3 a3 a4">2.5 petrol</option>
+  <option value="30-petrol" class="series-3 series-5 series-6 a3 a4 a5">3.0 petrol</option>
+  <option value="30-diesel" class="series-3\sedan series-5\sedan a5">3.0 diesel</option>
+</select>
+```
+```javascript
+$("#series").chained("#mark");
+$("#model").chained("#series");
+$("#engine").chained("#series, #model");
+```
 
 ## Usage with AJAX
 
