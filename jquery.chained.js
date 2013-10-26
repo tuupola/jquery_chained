@@ -37,7 +37,9 @@
                     /* If multiple parents build classname like foo\bar. */
                     var selected = "";
                     $(parent_selector).each(function() {
-                        selected += "\\" + $(":selected", this).val();
+                        if ($(":selected", this).val()) {
+                            selected += "\\" + $(":selected", this).val();
+                        }
                     });
                     selected = selected.substr(1);
 
@@ -45,11 +47,15 @@
                     if (window.Zepto) {
                         selected = selected.replace("\\", "\\\\");
                     }
-
                     /* Also check for first parent without subclassing. */
                     /* TODO: This should be dynamic and check for each parent */
                     /*       without subclassing. */
-                    var first = $(parent_selector).first();
+                    var first;
+                    if ($.isArray(parent_selector)) {
+                        first = $(parent_selector[0]).first();
+                    } else {
+                        first = $(parent_selector).first();
+                    }
                     var selected_first = $(":selected", first).val();
 
                     $("option", self).each(function() {
