@@ -11,7 +11,7 @@
  * Project home:
  *   http://www.appelsiini.net/projects/chained
  *
- * Version: 0.9.7
+ * Version: 0.9.8
  *
  */
 
@@ -48,9 +48,9 @@
                         var value = $(":selected", this).val();
                         data[id] = value;
 
-                        /* Optionally also include values from these inputs. */
-                        if (settings.values) {
-                            $(settings.values).each(function() {
+                        /* Optionally also depend on values from these inputs. */
+                        if (settings.depends) {
+                            $(settings.depends).each(function() {
                                 /* Do not include own value. */
                                 if (self !== this) {
                                     var id = $(this).attr(settings.attribute);
@@ -135,7 +135,7 @@
     /* Default settings for plugin. */
     $.fn.remoteChained.defaults = {
         attribute: "name",
-        values : null,
+        depends : null,
         bootstrap : null
     };
 
