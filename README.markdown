@@ -1,6 +1,4 @@
-<a href="https://travis-ci.org/tuupola/jquery_chained"><img src="https://travis-ci.org/tuupola/jquery_chained.png?branch=master" /></a>
-
-# Chained Selects Plugin for jQuery and Zepto
+# Chained Selects for jQuery and Zepto [![Build Status](https://travis-ci.org/tuupola/jquery_chained.png?branch=master)](https://travis-ci.org/tuupola/jquery_chained)
 
 Chained is simple plugin for chained selects. It works with both jQuery and Zepto. You can choose from two different versions. Use jquery.chained.js if you do not want to make external queries for setting content of child selects. This version uses classnames of select options to decide content.
 
