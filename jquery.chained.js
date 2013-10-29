@@ -11,7 +11,7 @@
  * Project home:
  *   http://www.appelsiini.net/projects/chained
  *
- * Version: 0.9.7
+ * Version: 0.9.8
  *
  */
 

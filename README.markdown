@@ -78,6 +78,10 @@ All code licensed under the [MIT License](http://www.opensource.org/licenses/mit
 
 # Changelog
 
+### 0.9.8
+
+* Rename "values" setting to more logical "depends".
+
 ### 0.9.7
 
 * Removed unneeded files when installing with Bower.
