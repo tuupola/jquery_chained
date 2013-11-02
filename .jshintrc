@@ -1,15 +1,34 @@
 {
-	"curly": true,
-	"eqeqeq": true,
-	"eqnull": true,
-	"immed": true,
-	"noarg": true,
-	"quotmark": "double",
-	"trailing": true,
-	"undef": true,
-	"unused": true,
+    "curly": true,
+    "eqeqeq": true,
+    "eqnull": true,
+    "immed": true,
+    "noarg": true,
+    "quotmark": "double",
+    "trailing": true,
+    "undef": true,
+    "unused": "vars",
 
-	"node": true,
-	"jquery": true,
-	"browser": true
+    "node": true,
+    "jquery": true,
+    "browser": true,
+
+  "predef"     : [
+      "_",
+      "jasmine",
+      "describe",
+      "xdescribe",
+      "it",
+      "xit",
+      "beforeEach",
+      "afterEach",
+      "expect",
+      "spyOn",
+      "runs",
+      "waits",
+      "waitsFor",
+      "Backbone",
+      "Modernizr",
+      "rivets"
+    ]
 }
