@@ -6,9 +6,7 @@ module.exports = function(grunt) {
         uglify : {
             options: {
                 report: "gzip",
-                banner: "/*\n" +
-                        " * Chained <%= pkg.version %> - MIT license - Copyright 2010-2013 Mika Tuupola\n" +
-                        " */\n"
+                banner: "/*! Chained <%= pkg.version %> - MIT license - Copyright 2010-2013 Mika Tuupola */\n"
             },
             target: {
                 files: {
