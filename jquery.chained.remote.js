@@ -1,5 +1,3 @@
-/* jshint -W098 */
-
 /*
  * Chained - jQuery / Zepto chained selects plugin
  *
@@ -35,7 +33,6 @@
 
             /* Save this to self because this changes when scope changes. */
             var self   = this;
-            var backup = $(self).clone();
 
             /* Handles maximum two parents now. */
             $(settings.parents).each(function() {

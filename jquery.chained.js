@@ -1,5 +1,3 @@
-/* jshint -W098 */
-
 /*
  * Chained - jQuery / Zepto chained selects plugin
  *
@@ -19,8 +17,6 @@
     "use strict";
 
     $.fn.chained = function(parent_selector, options) {
-
-        var settings = $.extend( {}, $.fn.chained.defaults, options);
 
         return this.each(function() {
 
