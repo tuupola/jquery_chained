@@ -32,9 +32,8 @@
         return this.each(function() {
 
             /* Save this to self because this changes when scope changes. */
-            var self   = this;
+            var self = this;
 
-            /* Handles maximum two parents now. */
             $(settings.parents).each(function() {
                 $(this).bind("change", function() {
 
