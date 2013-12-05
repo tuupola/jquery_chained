@@ -24,55 +24,14 @@
 
         return this.each(function() {
 
-            /* Save this to self because this changes when scope changes. */
-            var self   = this;
-            var backup = $(self).clone();
+            /* Save this to child because this changes when scope changes. */
+            var child   = this;
+            var backup = $(child).clone();
 
             /* Handles maximum two parents now. */
             $(parent_selector).each(function() {
-
                 $(this).bind("change", function() {
-                    $(self).html(backup.html());
-
-                    /* If multiple parents build classname like foo\bar. */
-                    var selected = "";
-                    $(parent_selector).each(function() {
-                        if ($(":selected", this).val()) {
-                            selected += "\\" + $(":selected", this).val();
-                        }
-                    });
-                    selected = selected.substr(1);
-
-                    /* Zepto class regexp dies with classes like foo\bar. */
-                    if (window.Zepto) {
-                        selected = selected.replace("\\", "\\\\");
-                    }
-                    /* Also check for first parent without subclassing. */
-                    /* TODO: This should be dynamic and check for each parent */
-                    /*       without subclassing. */
-                    var first;
-                    if ($.isArray(parent_selector)) {
-                        first = $(parent_selector[0]).first();
-                    } else {
-                        first = $(parent_selector).first();
-                    }
-                    var selected_first = $(":selected", first).val();
-
-                    $("option", self).each(function() {
-                        /* Remove unneeded items but save the default value. */
-                        if (!$(this).hasClass(selected) &&
-                            !$(this).hasClass(selected_first) && $(this).val() !== "") {
-                                $(this).remove();
-                        }
-                    });
-
-                    /* If we have only the default value disable select. */
-                    if (1 === $("option", self).size() && $(self).val() === "") {
-                        $(self).attr("disabled", "disabled");
-                    } else {
-                        $(self).removeAttr("disabled");
-                    }
-                    $(self).trigger("change");
+                    updateChildren();
                 });
 
                 /* Force IE to see something selected on first page load, */
@@ -82,9 +41,63 @@
                 }
 
                 /* Force updating the children. */
-                $(this).trigger("change");
-
+                updateChildren();
             });
+        
+            function updateChildren() {
+                var trigger_change = true;
+                var currently_selected_value = $("option:selected", child).val();
+                
+                $(child).html(backup.html());
+
+                /* If multiple parents build classname like foo\bar. */
+                var selected = "";
+                $(parent_selector).each(function() {
+                    var selectedClass = $("option:selected", this).val();
+                    if (selectedClass) {
+                        if (selected.length > 0) {
+                            if (window.Zepto) {
+                                /* Zepto class regexp dies with classes like foo\bar. */
+                                selected += "\\\\";
+                            } else {
+                                selected += "\\";
+                            }
+                        }
+                        selected += selectedClass;
+                    }
+                });
+
+                /* Also check for first parent without subclassing. */
+                /* TODO: This should be dynamic and check for each parent */
+                /*       without subclassing. */
+                var first;
+                if ($.isArray(parent_selector)) {
+                    first = $(parent_selector[0]).first();
+                } else {
+                    first = $(parent_selector).first();
+                }
+                var selected_first = $("option:selected", first).val();
+                
+                $("option", child).each(function() {
+                    /* Remove unneeded items but save the default value. */
+                    if ($(this).hasClass(selected) && $(this).val() === currently_selected_value) {
+                        $(this).prop('selected', true);
+                        trigger_change = false;
+                    } else if (!$(this).hasClass(selected) && !$(this).hasClass(selected_first) && $(this).val() !== "") {
+                        $(this).remove();
+                    }
+                });
+
+                /* If we have only the default value disable select. */
+                if (1 === $("option", child).size() && $(child).val() === "") {
+                    $(child).attr("disabled", "disabled");
+                } else {
+                    $(child).removeAttr("disabled");
+                }
+                if (trigger_change) {
+                    $(child).trigger("change");
+                }
+            }
         });
     };
 
