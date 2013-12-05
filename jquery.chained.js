@@ -81,7 +81,7 @@
                 $("option", child).each(function() {
                     /* Remove unneeded items but save the default value. */
                     if ($(this).hasClass(selected) && $(this).val() === currently_selected_value) {
-                        $(this).prop('selected', true);
+                        $(this).prop("selected", true);
                         trigger_change = false;
                     } else if (!$(this).hasClass(selected) && !$(this).hasClass(selected_first) && $(this).val() !== "") {
                         $(this).remove();
