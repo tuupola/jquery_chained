@@ -2,6 +2,8 @@
 
 /* This is just a dummy file for generating example JSON. */
 
+header("Access-Control-Allow-Origin: *");
+
 $response[""] = "--";
 
 if (isset($_GET["series"]) && isset($_GET["model"])) {
