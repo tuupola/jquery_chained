@@ -9,7 +9,7 @@
  * Project home:
  *   http://www.appelsiini.net/projects/chained
  *
- * Version: 0.9.8
+ * Version: 0.9.9-dev
  *
  */
 
@@ -39,11 +39,11 @@
                 /* Force updating the children. */
                 updateChildren();
             });
-        
+
             function updateChildren() {
                 var trigger_change = true;
                 var currently_selected_value = $("option:selected", child).val();
-                
+
                 $(child).html(backup.html());
 
                 /* If multiple parents build classname like foo\bar. */
@@ -73,7 +73,7 @@
                     first = $(parent_selector).first();
                 }
                 var selected_first = $("option:selected", first).val();
-                
+
                 $("option", child).each(function() {
                     /* Remove unneeded items but save the default value. */
                     if ($(this).hasClass(selected) && $(this).val() === currently_selected_value) {
