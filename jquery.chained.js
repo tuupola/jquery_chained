@@ -65,6 +65,14 @@
                                 $(this).remove();
                         }
                     });
+                    
+                     // remove empty groups
+                    $("optgroup", self).each(function() {
+                        var $group = $(this);
+                        if ($("option", this).size() == 0) {
+                            $group.remove();
+                        }
+                    });
 
                     /* If we have only the default value disable select. */
                     if (1 === $("option", self).size() && $(self).val() === "") {
