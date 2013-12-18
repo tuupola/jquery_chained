@@ -6,7 +6,7 @@ For more complex scenarios maintaining option tag classnames will get cumbersome
 
 ## Install
 
-You can also install with [bower](http://bower.io/).
+You can install with [bower](http://bower.io/).
 
 ```
 >bower install chained
