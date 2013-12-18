@@ -78,6 +78,10 @@ All code licensed under the [MIT License](http://www.opensource.org/licenses/mit
 
 # Changelog
 
+### 0.9.9
+
+* Do not trigger change event if value of select does not change ([Brendon Muir](https://github.com/brendon))
+
 ### 0.9.8
 
 * Rename "values" setting to more logical "depends".
@@ -105,7 +109,7 @@ All code licensed under the [MIT License](http://www.opensource.org/licenses/mit
 
 ### 0.9.3
 
-* Also support remote JSON to be array of arrays ("Marco Mariani":https://github.com/mmariani)
+* Also support remote JSON to be array of arrays ([Marco Mariani](https://github.com/mmariani))
 
 ### 0.9.2
 
