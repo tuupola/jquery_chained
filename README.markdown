@@ -4,8 +4,13 @@ Chained is simple plugin for chained selects. It works with both jQuery and Zept
 
 For more complex scenarios maintaining option tag classnames will get cumbersome. Also if you want to make queries against database use jquery.chained.remote.js instead. This version makes an external AJAJ query and uses the returned JSON to build child selects.
 
-##
+## Install
 
+You can also install with [bower](http://bower.io/).
+
+```
+>bower install chained
+```
 
 ## Simple usage
 
