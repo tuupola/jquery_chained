@@ -18,83 +18,104 @@
 
     $.fn.chained = function(parent_selector, options) {
 
-        return this.each(function() {
+        return this.each(
+            function( index, element ) {
 
-            /* Save this to child because this changes when scope changes. */
-            var child   = this;
-            var backup = $(child).clone();
+                /* Save this to child because this changes when scope changes. */
+                var child   = element;
+                var backup = $(child).clone();
 
-            /* Handles maximum two parents now. */
-            $(parent_selector).each(function() {
-                $(this).bind("change", function() {
+                /* Handles maximum two parents now. */
+                $(parent_selector).each( function( index, element ) {
+                    $(element).bind("change", function() {
+                        updateChildren();
+                    });
+
+                    /* Force IE to see something selected on first page load, */
+                    /* unless something is already selected */
+                    if (!$("option:selected", element).length) {
+                        $("option", element).first().attr("selected", "selected");
+                    }
+
+                    /* Force updating the children. */
                     updateChildren();
-                });
+                } );
 
-                /* Force IE to see something selected on first page load, */
-                /* unless something is already selected */
-                if (!$("option:selected", this).length) {
-                    $("option", this).first().attr("selected", "selected");
-                }
+                function updateChildren() {
+                    var trigger_change = true;
+                    var currently_selected_value = $("option:selected", child).val();
 
-                /* Force updating the children. */
-                updateChildren();
-            });
+                    $(child).html(backup.html());
 
-            function updateChildren() {
-                var trigger_change = true;
-                var currently_selected_value = $("option:selected", child).val();
+                    /* If multiple parents build classname like foo\bar. */
+                    var selected = "";
+                    $(parent_selector).each(function() {
+                        var selectedClass = $("option:selected", this).val();
+                        if (selectedClass) {
+                            if (selected.length > 0) {
+                                if (window.Zepto) {
+                                    /* Zepto class regexp dies with classes like foo\bar. */
+                                    selected += "\\\\";
+                                } else {
+                                    selected += "\\";
+                                }
+                            }
+                            selected += selectedClass;
+                        }
+                    });
 
-                $(child).html(backup.html());
+                    /* Also check for first parent without subclassing. */
+                    /* TODO: This should be dynamic and check for each parent */
+                    /*       without subclassing. */
+                    var first;
+                    if ($.isArray(parent_selector)) {
+                        first = $(parent_selector[0]).first();
+                    } else {
+                        first = $(parent_selector).first();
+                    }
+                    var selected_first = $("option:selected", first).val();
 
-                /* If multiple parents build classname like foo\bar. */
-                var selected = "";
-                $(parent_selector).each(function() {
-                    var selectedClass = $("option:selected", this).val();
-                    if (selectedClass) {
-                        if (selected.length > 0) {
-                            if (window.Zepto) {
-                                /* Zepto class regexp dies with classes like foo\bar. */
-                                selected += "\\\\";
-                            } else {
-                                selected += "\\";
+                    $("option", child).each( function( index, element ) {
+                        var hasprop = false;
+                        var isselfirst = false;
+                        var e = $(element);
+                        if ( e.attr('data-chained') ) {
+                            var d = e.data( 'chained' );
+                            if ( d == selected ) {
+                                hasprop = true;
+                            }
+                            if ( d == selected_first ) {
+                                isselfirst = true;
+                            }
+                        } else {
+                            if ( $(element).hasClass( selected ) ) {
+                                hasprop = true;
+                            }
+                            if ( e.hasClass(selected_first) ) {
+                                isselfirst = true;
                             }
                         }
-                        selected += selectedClass;
+                        /* Remove unneeded items but save the default value. */
+                        if ( hasprop && e.val() === currently_selected_value) {
+                            e.prop("selected", true);
+                            trigger_change = false;
+                        } else if (!hasprop && !isselfirst && e.val() !== "") {
+                            e.remove();
+                        }
+                    } );
+
+                    /* If we have only the default value disable select. */
+                    if (1 === $("option", child).size() && $(child).val() === "") {
+                        $(child).attr("disabled", "disabled");
+                    } else {
+                        $(child).removeAttr("disabled");
                     }
-                });
-
-                /* Also check for first parent without subclassing. */
-                /* TODO: This should be dynamic and check for each parent */
-                /*       without subclassing. */
-                var first;
-                if ($.isArray(parent_selector)) {
-                    first = $(parent_selector[0]).first();
-                } else {
-                    first = $(parent_selector).first();
-                }
-                var selected_first = $("option:selected", first).val();
-
-                $("option", child).each(function() {
-                    /* Remove unneeded items but save the default value. */
-                    if ($(this).hasClass(selected) && $(this).val() === currently_selected_value) {
-                        $(this).prop("selected", true);
-                        trigger_change = false;
-                    } else if (!$(this).hasClass(selected) && !$(this).hasClass(selected_first) && $(this).val() !== "") {
-                        $(this).remove();
+                    if (trigger_change) {
+                        $(child).trigger("change");
                     }
-                });
-
-                /* If we have only the default value disable select. */
-                if (1 === $("option", child).size() && $(child).val() === "") {
-                    $(child).attr("disabled", "disabled");
-                } else {
-                    $(child).removeAttr("disabled");
-                }
-                if (trigger_change) {
-                    $(child).trigger("change");
                 }
             }
-        });
+        );
     };
 
     /* Alias for those who like to use more English like syntax. */
