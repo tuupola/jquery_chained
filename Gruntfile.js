@@ -42,12 +42,28 @@ module.exports = function(grunt) {
                     vendor: ["test/vendor/jquery-1.10.2.js", "test/vendor/jasmine-jquery.js"]
                 }
             },
+            "jquery-1.11.0": {
+                src: ["jquery.chained.js", "jquery.chained.remote.js"],
+                options: {
+                    helpers: "test/spec/*Helper.js",
+                    specs: "test/spec/*Spec.js",
+                    vendor: ["test/vendor/jquery-1.11.0.js", "test/vendor/jasmine-jquery.js"]
+                }
+            },
             "jquery-2.0.3": {
                 src: ["jquery.chained.js", "jquery.chained.remote.js"],
                 options: {
                     helpers: "test/spec/*Helper.js",
                     specs: "test/spec/*Spec.js",
                     vendor: ["test/vendor/jquery-2.0.3.js", "test/vendor/jasmine-jquery.js"]
+                }
+            },
+            "jquery-2.1.0": {
+                src: ["jquery.chained.js", "jquery.chained.remote.js"],
+                options: {
+                    helpers: "test/spec/*Helper.js",
+                    specs: "test/spec/*Spec.js",
+                    vendor: ["test/vendor/jquery-2.1.0.js", "test/vendor/jasmine-jquery.js"]
                 }
             },
             "zepto-1.0.1": {
