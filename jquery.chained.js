@@ -9,7 +9,7 @@
  * Project home:
  *   http://www.appelsiini.net/projects/chained
  *
- * Version: 0.9.9
+ * Version: 0.9.10-dev
  *
  */
 
@@ -86,9 +86,9 @@
 
                 /* If we have only the default value disable select. */
                 if (1 === $("option", child).size() && $(child).val() === "") {
-                    $(child).attr("disabled", "disabled");
+                    $(child).prop("disabled", true);
                 } else {
-                    $(child).removeAttr("disabled");
+                    $(child).prop("disabled", false);
                 }
                 if (trigger_change) {
                     $(child).trigger("change");

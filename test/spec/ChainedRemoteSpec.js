@@ -139,7 +139,7 @@ describe("Remote version of plugin", function() {
                 $("#mark").val("bmw").trigger("change");
                 expect($("#model > option:first").val()).toBe("");
                 expect($("#model").val()).toBe("");
-                expect($("#model").attr("disabled")).toBe("disabled");
+                expect($("#model")).toBeDisabled();
             });
 
             it("should be chained to two parents", function() {
@@ -262,7 +262,7 @@ describe("Remote version of plugin", function() {
                 $("#mark").val("bmw").trigger("change");
                 expect($("#model > option:first").val()).toBe("");
                 expect($("#model").val()).toBe("");
-                expect($("#model").attr("disabled")).toBe("disabled");
+                expect($("#model")).toBeDisabled();
             });
 
             it("should be chained to two parents", function() {
@@ -423,7 +423,7 @@ describe("Remote version of plugin", function() {
                 $("#mark").val("bmw").trigger("change");
                 expect($("#model > option:first").val()).toBe("");
                 expect($("#model").val()).toBe("");
-                expect($("#model").attr("disabled")).toBe("disabled");
+                expect($("#model")).toBeDisabled();
             });
 
             it("should be chained to two parents", function() {
@@ -450,7 +450,7 @@ describe("Remote version of plugin", function() {
                 expect($("#engine > option").size()).toBe(2);
 
                 $("#mark-3").trigger("change");
-                expect($("#engine-3").attr("disabled")).toBe("disabled");
+                expect($("#engine-3")).toBeDisabled();
 
             });
 
@@ -537,7 +537,7 @@ describe("Remote version of plugin", function() {
                 $("#mark").val("bmw").trigger("change");
                 expect($("#model > option:first").val()).toBe("");
                 expect($("#model").val()).toBe("");
-                expect($("#model").attr("disabled")).toBe("disabled");
+                expect($("#model")).toBeDisabled();
             });
 
             it("should be chained to two parents", function() {
@@ -564,7 +564,7 @@ describe("Remote version of plugin", function() {
                 expect($("#engine > option").size()).toBe(2);
 
                 $("#mark-3").trigger("change");
-                expect($("#engine-3").attr("disabled")).toBe("disabled");
+                expect($("#engine-3")).toBeDisabled();
 
             });
 
