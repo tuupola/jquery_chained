@@ -33,6 +33,7 @@
 
             /* Save this to self because this changes when scope changes. */
             var self = this;
+            var request = false; /* Track xhr requests. */
 
             $(settings.parents).each(function() {
                 $(this).bind("change", function() {
@@ -57,7 +58,14 @@
                         }
                     });
 
-                    $.getJSON(settings.url, data, function(json) {
+                    /* If previous request running, abort it. */
+                    /* TODO: Probably should use Sinon to test this. */
+                    if (request && $.isFunction(request.abort)) {
+                        request.abort();
+                        request = false;
+                    }
+
+                    request = $.getJSON(settings.url, data, function(json) {
                         build.call(self, json);
                         /* Force updating the children. */
                         $(self).trigger("change");
