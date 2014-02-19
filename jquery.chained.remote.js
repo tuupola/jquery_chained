@@ -40,16 +40,21 @@
                     /* Build data array from parents values. */
                     var data = {};
                     $(settings.parents).each(function() {
-                        var id = $(this).attr(settings.attribute);
-                        var value = $(":selected", this).val();
-                        data[id] = value;
+                        var id = settings.varName ? settings.varName : $(this).attr(settings.attribute);
+                        var selected = $(":selected", this);
+
+                        /* Only set the data if there is any option selected. */
+                        if (selected.length > 0) {
+                            var value = selected.val();
+                            data[id] = value;
+                        }
 
                         /* Optionally also depend on values from these inputs. */
                         if (settings.depends) {
                             $(settings.depends).each(function() {
                                 /* Do not include own value. */
                                 if (self !== this) {
-                                    var id = $(this).attr(settings.attribute);
+                                    var id = settings.varName ? settings.varName : $(this).attr(settings.attribute);
                                     var value = $(this).val();
                                     data[id] = value;
                                 }
@@ -57,11 +62,26 @@
                         }
                     });
 
-                    $.getJSON(settings.url, data, function(json) {
-                        build.call(self, json);
-                        /* Force updating the children. */
-                        $(self).trigger("change");
-                    });
+                    /* Clear the select. */
+                    $("option", self).remove();
+
+                    /* Force updating the children to clear too. */
+                    $(self).trigger("change");
+
+                    /* Do not execute remote request if the data is empty.. */
+                    if (!$.isEmptyObject(data)) {
+
+                        /* Fill the select with loading message. */
+                        if (settings.loading) {
+                            build.call(self, settings.loading);
+                        }
+
+                        $.getJSON(settings.url, data, function (json) {
+                            build.call(self, json);
+                            /* Force updating the children. */
+                            $(self).trigger("change");
+                        });
+                    }
                 });
 
                 /* If we have bootstrapped data given in options. */
@@ -131,8 +151,10 @@
     /* Default settings for plugin. */
     $.fn.remoteChained.defaults = {
         attribute: "name",
+        varName : null,
         depends : null,
-        bootstrap : null
+        bootstrap : null,
+        loading: {null:"Loading..."}
     };
 
 })(window.jQuery || window.Zepto, window, document);
