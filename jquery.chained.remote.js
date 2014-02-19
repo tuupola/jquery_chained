@@ -41,8 +41,13 @@
                     var data = {};
                     $(settings.parents).each(function() {
                         var id = settings.varName ? settings.varName : $(this).attr(settings.attribute);
-                        var value = $(":selected", this).val();
-                        data[id] = value;
+                        var selected = $(":selected", this);
+
+                        /* Only set the data if there is any option selected. */
+                        if (selected.length > 0) {
+                            var value = selected.val();
+                            data[id] = value;
+                        }
 
                         /* Optionally also depend on values from these inputs. */
                         if (settings.depends) {
@@ -57,11 +62,14 @@
                         }
                     });
 
-                    $.getJSON(settings.url, data, function(json) {
-                        build.call(self, json);
-                        /* Force updating the children. */
-                        $(self).trigger("change");
-                    });
+                    /* Do not execute remote request if the data is empty.. */
+                    if (!$.isEmptyObject(data)) {
+                        $.getJSON(settings.url, data, function (json) {
+                            build.call(self, json);
+                            /* Force updating the children. */
+                            $(self).trigger("change");
+                        });
+                    }
                 });
 
                 /* If we have bootstrapped data given in options. */
