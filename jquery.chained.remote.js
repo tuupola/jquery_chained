@@ -40,7 +40,7 @@
                     /* Build data array from parents values. */
                     var data = {};
                     $(settings.parents).each(function() {
-                        var id = $(this).attr(settings.attribute);
+                        var id = settings.varName ? settings.varName : $(this).attr(settings.attribute);
                         var value = $(":selected", this).val();
                         data[id] = value;
 
@@ -49,7 +49,7 @@
                             $(settings.depends).each(function() {
                                 /* Do not include own value. */
                                 if (self !== this) {
-                                    var id = $(this).attr(settings.attribute);
+                                    var id = settings.varName ? settings.varName : $(this).attr(settings.attribute);
                                     var value = $(this).val();
                                     data[id] = value;
                                 }
@@ -131,6 +131,7 @@
     /* Default settings for plugin. */
     $.fn.remoteChained.defaults = {
         attribute: "name",
+        varName : null,
         depends : null,
         bootstrap : null
     };
