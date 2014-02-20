@@ -65,6 +65,14 @@
                         request = false;
                     }
 
+                    if (settings.clear_children) {
+                        /* Clear the select. */
+                        $("option", self).remove();
+
+                        /* Force updating the children to clear too. */
+                        $(self).trigger("change");
+                    }
+
                     request = $.getJSON(settings.url, data, function(json) {
                         build.call(self, json);
                         /* Force updating the children. */
@@ -140,7 +148,8 @@
     $.fn.remoteChained.defaults = {
         attribute: "name",
         depends : null,
-        bootstrap : null
+        bootstrap : null,
+        clear_children : false
     };
 
 })(window.jQuery || window.Zepto, window, document);
