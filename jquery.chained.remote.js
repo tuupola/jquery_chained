@@ -65,9 +65,14 @@
                         request = false;
                     }
 
-                    if (settings.clear_children) {
-                        /* Clear the select. */
-                        $("option", self).remove();
+                    if (settings.reset) {
+                        if (settings.loading) {
+                            /* Clear the select and show loading text. */
+                            build.call(self, {"" : settings.loading});
+                        } else {
+                            /* Clear the select. */
+                            $("option", self).remove();
+                        }
 
                         /* Force updating the children to clear too. */
                         $(self).trigger("change");
@@ -149,7 +154,8 @@
         attribute: "name",
         depends : null,
         bootstrap : null,
-        clear_children : false
+        loading : null,
+        reset : false
     };
 
 })(window.jQuery || window.Zepto, window, document);
