@@ -86,47 +86,4 @@ All code licensed under the [MIT License](http://www.opensource.org/licenses/mit
 
 # Changelog
 
-### 0.9.9
-
-* Do not trigger change event if value of select does not change ([Brendon Muir](https://github.com/brendon))
-
-### 0.9.8
-
-* Rename "values" setting to more logical "depends".
-
-### 0.9.7
-
-* Removed unneeded files when installing with Bower.
-
-### 0.9.6
-
-* Zepto support.
-* Bower support.
-* Ability to bootstrap selects by passing JSON data in settings. Avoids making the initial AJAX calls.
-* Alternate but prettier syntax for remote version. Allow you to pass all settings as one hash.
-* Optionally send additional values of non chained inputs when using remote version
-
-### 0.9.5
-
-* Fix bug [#12](https://github.com/tuupola/jquery_chained/issues/12). Minified versions were missing trailing semicolon;
-* Support for Travis and Grunt.
-
-### 0.9.4
-
-* Remote version now uses name attribute instead id when sending AJAJ query.
-
-### 0.9.3
-
-* Also support remote JSON to be array of arrays ([Marco Mariani](https://github.com/mmariani))
-
-### 0.9.2
-
-* Support for [jQuery plugin repository](http://plugins.jquery.com/)
-
-### 0.9.1
-
-* Allow options to be preselected in HTML ([Nathan Gray](https://github.com/kolibrie))
-
-### 0.9.0
-
-* Initial release
+See [releases](https://github.com/tuupola/jquery_chained/releases).
