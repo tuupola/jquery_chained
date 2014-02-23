@@ -65,7 +65,7 @@
                         request = false;
                     }
 
-                    if (settings.reset) {
+                    if (settings.clear) {
                         if (settings.loading) {
                             /* Clear the select and show loading text. */
                             build.call(self, {"" : settings.loading});
@@ -155,7 +155,7 @@
         depends : null,
         bootstrap : null,
         loading : null,
-        reset : false
+        clear : false
     };
 
 })(window.jQuery || window.Zepto, window, document);
