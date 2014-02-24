@@ -31,7 +31,8 @@ module.exports = function(grunt) {
                 options: {
                     helpers: "test/spec/*Helper.js",
                     specs: "test/spec/*Spec.js",
-                    vendor: ["test/vendor/jquery-1.9.1.js", "test/vendor/jasmine-jquery.js"]
+                    vendor: ["test/vendor/jquery-1.9.1.js", "test/vendor/jasmine-jquery.js",
+                             "test/vendor/sinon-1.8.2.js"]
                 }
             },
             "jquery-1.10.2": {
@@ -39,7 +40,8 @@ module.exports = function(grunt) {
                 options: {
                     helpers: "test/spec/*Helper.js",
                     specs: "test/spec/*Spec.js",
-                    vendor: ["test/vendor/jquery-1.10.2.js", "test/vendor/jasmine-jquery.js"]
+                    vendor: ["test/vendor/jquery-1.10.2.js", "test/vendor/jasmine-jquery.js",
+                             "test/vendor/sinon-1.8.2.js"]
                 }
             },
             "jquery-1.11.0": {
@@ -47,7 +49,8 @@ module.exports = function(grunt) {
                 options: {
                     helpers: "test/spec/*Helper.js",
                     specs: "test/spec/*Spec.js",
-                    vendor: ["test/vendor/jquery-1.11.0.js", "test/vendor/jasmine-jquery.js"]
+                    vendor: ["test/vendor/jquery-1.11.0.js", "test/vendor/jasmine-jquery.js",
+                             "test/vendor/sinon-1.8.2.js"]
                 }
             },
             "jquery-2.0.3": {
@@ -55,7 +58,8 @@ module.exports = function(grunt) {
                 options: {
                     helpers: "test/spec/*Helper.js",
                     specs: "test/spec/*Spec.js",
-                    vendor: ["test/vendor/jquery-2.0.3.js", "test/vendor/jasmine-jquery.js"]
+                    vendor: ["test/vendor/jquery-2.0.3.js", "test/vendor/jasmine-jquery.js",
+                             "test/vendor/sinon-1.8.2.js"]
                 }
             },
             "jquery-2.1.0": {
@@ -63,7 +67,8 @@ module.exports = function(grunt) {
                 options: {
                     helpers: "test/spec/*Helper.js",
                     specs: "test/spec/*Spec.js",
-                    vendor: ["test/vendor/jquery-2.1.0.js", "test/vendor/jasmine-jquery.js"]
+                    vendor: ["test/vendor/jquery-2.1.0.js", "test/vendor/jasmine-jquery.js",
+                             "test/vendor/sinon-1.8.2.js"]
                 }
             },
             "zepto-1.0.1": {
@@ -72,7 +77,7 @@ module.exports = function(grunt) {
                     helpers: "test/spec/*Helper.js",
                     specs: "test/spec/*Spec.js",
                     vendor: ["test/vendor/zepto-1.0.1.js", "test/vendor/zepto-selector.js",
-                             "test/vendor/jasmine-zepto.js"]
+                             "test/vendor/jasmine-zepto.js", "test/vendor/sinon-1.8.2.js"]
                 }
             }
         }
