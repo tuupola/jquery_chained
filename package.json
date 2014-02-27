@@ -1,6 +1,6 @@
 {
   "name": "chained",
-  "version": "0.9.9",
+  "version": "0.9.10",
   "engines": {
     "node": ">= 0.8.0"
   },

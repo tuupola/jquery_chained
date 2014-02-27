@@ -291,7 +291,7 @@
     <div class="entry">
       <h3>jquery.chained.remote.js</h3>
       <form>
-        <select id="mark-remote" name="mark">
+        <select id="mark-remote" data-variable="bar" name="mark">
           <option value="">--</option>
           <option value="bmw">BMW</option>
           <option value="audi">Audi</option>
@@ -438,9 +438,24 @@
     $("#c").chained("#a,#b");
 
     /* For jquery.chained.remote.js */
-    $("#series-remote").remoteChained("#mark-remote", "json.php");
-    $("#model-remote").remoteChained("#series-remote", "json.php");
-    $("#engine-remote").remoteChained("#series-remote, #model-remote", "json.php");
+    $("#series-remote").remoteChained({
+        parents : "#mark-remote",
+        url : "json.php?sleep=1",
+        loading : "-x-",
+        clear : true
+    });
+    $("#model-remote").remoteChained({
+        parents : "#series-remote",
+        url : "json.php?sleep=1",
+        loading : "-x-",
+        clear : true
+    });
+    $("#engine-remote").remoteChained({
+        parents : "#series-remote, #model-remote",
+        url : "json.php?sleep=1",
+        loading : "-x-",
+        clear : true
+    });
 
     /* Show button after each pulldown has a value. */
     $("#engine-remote").bind("change", function(event) {
