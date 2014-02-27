@@ -92,14 +92,19 @@ describe("Remote version of plugin", function() {
             '    <select class="engine" id="engine" name="engine">' +
             '      <option value="">--</option>   ' +
             '    </select>' +
-
-            '    <select class="mark2" id="mark2" name="mark2">' +
+            '    <select class="mark" id="mark2" name="mark">' +
             '      <option value="">--</option>' +
             '      <option value="bmw" selected>BMW</option>' +
             '      <option value="audi">Audi</option>' +
             '    </select>' +
-            '    <select class="series2" id="series2" name="series2">' +
+            '    <select class="series" id="series2" name="series">' +
             '      <option value="">--</option>' +
+            '    </select>' +
+            '    <select class="model" id="model2" name="model">' +
+            '      <option value="">--</option>' +
+            '    </select>' +
+            '    <select class="engine" id="engine2" name="engine">' +
+            '      <option value="">--</option>   ' +
             '    </select>' +
             '</form>');
         });
@@ -334,7 +339,21 @@ describe("Remote version of plugin", function() {
                         "series-6":"6 series",
                         "series-7":"7 series",
                         "selected":"series-3"
-                    }
+                    },
+                    clear: true,
+                });
+
+                $("#model2").remoteChained({
+                    parents: "#series2",
+                    url: "/api/models",
+                    clear: true
+                });
+
+                $("#engine2").remoteChained({
+                    parents: "#series2, #model2",
+                    url: "/api/engines",
+                    clear: true,
+                    loading: "Loading..."
                 });
             });
 
@@ -525,8 +544,54 @@ describe("Remote version of plugin", function() {
                 expect($("#mark2 > option:selected").val()).toBe("bmw");
                 expect($("#series2 > option:selected").val()).toBe("series-3");
             });
-        });
 
+            it("should clear selects while loading", function() {
+
+                server.autoRespondAfter = 100;
+
+                runs(function() {
+                    $("#mark2").val("bmw").trigger("change");
+                    expect($("#mark2 > option").size()).toBe(3);
+                });
+
+                waits(50);
+
+                runs(function() {
+                    expect($("#series2 > option").size()).toBe(0);
+                    expect($("#model2 > option").size()).toBe(0);
+                });
+
+                waits(200);
+
+                /* Should have values now. */
+                runs(function() {
+                    expect($("#series2 > option").size()).toBe(6);
+                    expect($("#model2 > option").size()).toBe(1);
+                });
+            });
+
+            it("should show disabled loading text while loading", function() {
+                runs(function() {
+                    $("#mark2").val("bmw").trigger("change");
+                    expect($("#mark2 > option").size()).toBe(3);
+                });
+
+                runs(function() {
+                    expect($("#engine2 > option").size()).toBe(1);
+                    expect($("#engine2 > option:first").text()).toBe("Loading...");
+                });
+
+                waits(50);
+
+                /* Should have values now. */
+                runs(function() {
+                    expect($("#engine2 > option").size()).toBe(1);
+                    expect($("#engine2 > option:first").text()).toBe("--");
+                });
+
+            });
+
+        });
     });
 
     describe("having multiple set of selects", function() {
@@ -1048,6 +1113,9 @@ describe("Remote version of plugin", function() {
                     expect($("#series > option:selected").val()).toBe("s6");
                 });
             });
+
+            /* TODO: Test for clear and loading. */
+
         });
     });
 });
