@@ -416,8 +416,8 @@
   <script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js" type="text/javascript" charset="utf-8"></script>
   <xscript type="text/javascript" src="test/vendor/zepto-1.0.1.js"></script>
   <xscript type="text/javascript" src="test/vendor/zepto-selector.js"></script>
-  <script src="jquery.chained.js?v=0.9.9-dev" type="text/javascript" charset="utf-8"></script>
-  <script src="jquery.chained.remote.js?v=0.9.9" type="text/javascript" charset="utf-8"></script>
+  <script src="jquery.chained.js?v=0.9.10" type="text/javascript" charset="utf-8"></script>
+  <script src="jquery.chained.remote.js?v=0.9.10" type="text/javascript" charset="utf-8"></script>
   <script type="text/javascript" charset="utf-8">
   $(function() {
 
@@ -441,19 +441,19 @@
     $("#series-remote").remoteChained({
         parents : "#mark-remote",
         url : "json.php?sleep=1",
-        loading : "-x-",
+        loading : "--",
         clear : true
     });
     $("#model-remote").remoteChained({
         parents : "#series-remote",
         url : "json.php?sleep=1",
-        loading : "-x-",
+        loading : "--",
         clear : true
     });
     $("#engine-remote").remoteChained({
         parents : "#series-remote, #model-remote",
         url : "json.php?sleep=1",
-        loading : "-x-",
+        loading : "--",
         clear : true
     });
 
