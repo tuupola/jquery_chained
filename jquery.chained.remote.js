@@ -131,7 +131,7 @@
 
                 /* Loop option again to set selected. IE needed this... */
                 $(self).children().each(function() {
-                    if ($(this).val() === selected_key) {
+                    if ($(this).val() === selected_key + "") {
                         $(this).attr("selected", "selected");
                     }
                 });

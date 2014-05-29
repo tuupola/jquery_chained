@@ -106,6 +106,14 @@ describe("Remote version of plugin", function() {
             '    <select class="engine" id="engine2" name="engine">' +
             '      <option value="">--</option>   ' +
             '    </select>' +
+            '    <select class="mark" id="mark3" name="mark">' +
+            '      <option value="">--</option>' +
+            '      <option value="bmw" selected>BMW</option>' +
+            '      <option value="audi">Audi</option>' +
+            '    </select>' +
+            '    <select class="series" id="series3" name="series">' +
+            '      <option value="">--</option>' +
+            '    </select>' +
             '</form>');
         });
 
@@ -118,6 +126,11 @@ describe("Remote version of plugin", function() {
 
                 $("#series2").remoteChained("#mark2", "/api/series", {
                     "bootstrap" : {"":"-zz-","series-2":"2 series","series-3":"3 series","series-5":"5 series","series-6":"6 series","series-7":"7 series","selected":"series-3"}
+                });
+
+                /* https://github.com/tuupola/jquery_chained/issues/30 */
+                $("#series3").remoteChained("#mark3", "/api/series", {
+                    "bootstrap" : {"":"--", 2:"2 series", 3:"3 series",5:"5 series",6:"6 series",7:"7 series","selected":3}
                 });
             });
 
@@ -307,7 +320,9 @@ describe("Remote version of plugin", function() {
             it("should honour selected attribute in bootstrapped values", function() {
                 expect($("#mark2 > option:selected").val()).toBe("bmw");
                 expect($("#series2 > option:selected").val()).toBe("series-3");
+                expect($("#series3 > option:selected").val()).toBe("3");
             });
+
         });
 
         describe("and using new syntax", function() {
@@ -355,6 +370,23 @@ describe("Remote version of plugin", function() {
                     clear: true,
                     loading: "Loading..."
                 });
+
+                /* https://github.com/tuupola/jquery_chained/issues/30 */
+                $("#series3").remoteChained({
+                    parents: "#mark3",
+                    url: "/api/series",
+                    bootstrap : {
+                        "--":"--",
+                        2 : "2 series",
+                        3 : "3 series",
+                        5 : "5 series",
+                        6 : "6 series",
+                        7 : "7 series",
+                        "selected" : 3
+                    },
+                    clear: true,
+                });
+
             });
 
             it("should be chainable as jQuery plugin", function() {
@@ -543,6 +575,7 @@ describe("Remote version of plugin", function() {
             it("should honour selected attribute in bootstrapped values", function() {
                 expect($("#mark2 > option:selected").val()).toBe("bmw");
                 expect($("#series2 > option:selected").val()).toBe("series-3");
+                expect($("#series3 > option:selected").val()).toBe("3");
             });
 
             it("should clear selects while loading", function() {
