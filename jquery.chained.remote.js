@@ -117,16 +117,17 @@
 
                 /* Add new options from json. */
                 for (var i=0; i!==option_list.length; i++) {
+                    var key, value;
                     if($.isArray(option_list[i])){
                         /* if child data is in array syntax, use that */
-                        var key = option_list[i][0];
-                        var value = option_list[i][1];
+                        key = option_list[i][0];
+                        value = option_list[i][1];
                     } else if ($.isPlainObject(option_list[i]) ){
                         /* if child data is nested javascript objects, use that */
-                        for (var index in option_list[i]) {
-                            if (option_list[i].hasOwnProperty(index)) {
-                                var key = index;
-                                var value = option_list[i][index];
+                        for (var objKey in option_list[i]) {
+                            if (option_list[objKey].hasOwnProperty(objKey)) {
+                                key = objKey;
+                                value = option_list[i][objKey];
                             }
                         }
                     }
