@@ -125,7 +125,7 @@
                     } else if ($.isPlainObject(option_list[i]) ){
                         /* if child data is nested javascript objects, use that */
                         for (var objKey in option_list[i]) {
-                            if (option_list[objKey].hasOwnProperty(objKey)) {
+                            if (option_list[i].hasOwnProperty(objKey)) {
                                 key = objKey;
                                 value = option_list[i][objKey];
                             }
