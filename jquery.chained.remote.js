@@ -29,6 +29,11 @@
             settings.url = url;
         }
 
+        /* Loading text always clears the select. */
+        if (settings.loading) {
+            settings.clear = true;
+        }
+
         return this.each(function() {
 
             /* Save this to self because this changes when scope changes. */
