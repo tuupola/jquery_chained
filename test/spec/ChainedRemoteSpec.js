@@ -114,6 +114,10 @@ describe("Remote version of plugin", function() {
             '    <select class="series" id="series3" name="series">' +
             '      <option value="">--</option>' +
             '    </select>' +
+            '    <input type="text" class="mark" id="mark4" name="mark">' +
+            '    <select class="series" id="series4" name="series">' +
+            '      <option value="">--</option>' +
+            '    </select>' +
             '</form>');
         });
 
@@ -384,7 +388,12 @@ describe("Remote version of plugin", function() {
                         7 : "7 series",
                         "selected" : 3
                     },
-                    clear: true,
+                    clear: true
+                });
+
+                $("#series4").remoteChained({
+                    parents: "#mark4",
+                    url: "/api/series",
                 });
 
             });
@@ -622,6 +631,19 @@ describe("Remote version of plugin", function() {
                     expect($("#engine2 > option:first").text()).toBe("--");
                 });
 
+            });
+
+            it("should be chained to normal text input", function() {
+                runs(function() {
+                    $("#mark4").val("bmw").trigger("change");
+                });
+
+                waits(50);
+
+                runs(function() {
+                    expect($("#series4 > option").size()).toBe(6);
+                    expect($("#series4 > option:first").text()).toBe("--");
+                });
             });
 
         });

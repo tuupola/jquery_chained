@@ -3,7 +3,7 @@
 /* This is just a dummy file for generating example JSON. */
 
 /* Emulate slow queries when asked. */
-if ($_GET["sleep"]) {
+if (isset($_GET["sleep"])) {
     sleep(1);
 }
 

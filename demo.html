@@ -405,6 +405,25 @@
 
     </div>
 
+    <div class="entry">
+      <h3>Normal input parent and jquery.chained.remote.js</h3>
+      <form>
+        <input id="mark-remote-2" name="mark" value="audi">
+        <select id="series-remote-2" name="series">
+          <option value="">--</option>
+        </select>
+        <select id="model-remote-2"  name="model">
+          <option value="">--</option>
+        </select>
+        <select id="engine-remote-2" name="engine">
+          <option value="">--</option>
+        </select>
+
+        <button id="button-remote-2" type="submit">Button</button>
+
+      </form>
+    </div>
+
     <div id="sidebar">
     </div>
 
@@ -414,8 +433,8 @@
   </div>
 
   <script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js" type="text/javascript" charset="utf-8"></script>
-  <script src="jquery.chained.js?v=0.9.10" type="text/javascript" charset="utf-8"></script>
-  <script src="jquery.chained.remote.js?v=0.9.10" type="text/javascript" charset="utf-8"></script>
+  <script src="jquery.chained.js?v=0.9.11" type="text/javascript" charset="utf-8"></script>
+  <script src="jquery.chained.remote.js?v=0.9.11" type="text/javascript" charset="utf-8"></script>
   <script type="text/javascript" charset="utf-8">
   $(function() {
 
@@ -439,14 +458,12 @@
     $("#series-remote").remoteChained({
         parents : "#mark-remote",
         url : "json.php?sleep=1",
-        loading : "--",
-        clear : true
+        loading : "--"
     });
     $("#model-remote").remoteChained({
         parents : "#series-remote",
         url : "json.php?sleep=1",
-        loading : "--",
-        clear : true
+        loading : "--"
     });
     $("#engine-remote").remoteChained({
         parents : "#series-remote, #model-remote",
@@ -492,6 +509,29 @@
             $(".series", $(this).parent()),
             $(".model", $(this).parent())
         ]);
+    });
+
+    /* For normal input and jquery.chained.remote.js */
+    $("#series-remote-2").remoteChained({
+        parents : "#mark-remote-2",
+        url : "json.php",
+    });
+    $("#model-remote-2").remoteChained({
+        parents : "#series-remote-2",
+        url : "json.php"
+    });
+    $("#engine-remote-2").remoteChained({
+        parents : "#series-remote-2, #model-remote-2",
+        url : "json.php"
+    });
+
+    /* Show button after each pulldown has a value. */
+    $("#engine-remote-2").bind("change", function(event) {
+        if ("" != $("option:selected", this).val() && "" != $("option:selected", $("#model-remote-2")).val()) {
+            $("#button-remote-2").fadeIn();
+        } else {
+            $("#button-remote-2").hide();
+        }
     });
 
   });
