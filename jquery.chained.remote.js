@@ -47,7 +47,7 @@
                     var data = {};
                     $(settings.parents).each(function() {
                         var id = $(this).attr(settings.attribute);
-                        var value = $(":selected", this).val();
+                        var value = ($(this).is("select") ? $(":selected", this) : $(this)).val();
                         data[id] = value;
 
                         /* Optionally also depend on values from these inputs. */
