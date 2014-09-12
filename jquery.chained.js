@@ -9,14 +9,14 @@
  * Project home:
  *   http://www.appelsiini.net/projects/chained
  *
- * Version: 0.10.0
+ * Version: 1.0.0-dev
  *
  */
 
 ;(function($, window, document, undefined) {
     "use strict";
 
-    $.fn.chained = function(parent_selector, options) {
+    $.fn.chained = function(parent_selector) {
 
         return this.each(function() {
 

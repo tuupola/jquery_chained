@@ -9,25 +9,16 @@
  * Project home:
  *   http://www.appelsiini.net/projects/chained
  *
- * Version: 0.10.0
+ * Version: 1.0.0-dev
  *
  */
 
 ;(function($, window, document, undefined) {
     "use strict";
 
-    $.fn.remoteChained = function(parents, url, options) {
+    $.fn.remoteChained = function(options) {
 
-        var settings;
-        /* New style syntax. */
-        if ("object" === typeof(parents) && "undefined" !== typeof(parents.url)) {
-            settings = $.extend({}, $.fn.remoteChained.defaults, parents);
-        /* Still support old style syntax. */
-        } else {
-            settings = $.extend({}, $.fn.remoteChained.defaults, options);
-            settings.parents = parents;
-            settings.url = url;
-        }
+        var settings = $.extend({}, $.fn.remoteChained.defaults, options);
 
         /* Loading text always clears the select. */
         if (settings.loading) {
