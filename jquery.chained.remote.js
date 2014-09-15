@@ -98,9 +98,19 @@
 
                 var option_list = [];
                 if ($.isArray(json)) {
-                    /* JSON is already an array (which preserves the ordering of options) */
-                    /* [["","--"],["series-1","1 series"],["series-3","3 series"]] */
-                    option_list = json;
+                    if ($.isArray(json[0])) {
+                        /* JSON is already an array of arrays. */
+                        /* [["","--"],["series-1","1 series"],["series-3","3 series"]] */
+                        option_list = json;
+                    } else {
+                        /* JSON is an array of objects. */
+                        /* [{"":"--"},{"series-1":"1 series"},{"series-3":"3 series"}] */
+                        option_list = $.map(json, function(value) {
+                            return $.map(value, function(value, index) {
+                                return [[index, value]];
+                            });
+                        });
+                    }
                 } else {
                     /* JSON is an JavaScript object. Rebuild it as an array. */
                     /* {"":"--","series-1":"1 series","series-3":"3 series"} */

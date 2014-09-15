@@ -111,11 +111,19 @@ describe("Remote version of plugin", function() {
             '      <option value="bmw" selected>BMW</option>' +
             '      <option value="audi">Audi</option>' +
             '    </select>' +
-            '    <select class="series" id="series3" name="series">' +
+            '    <select  id="series3" name="series">' +
             '      <option value="">--</option>' +
             '    </select>' +
             '    <input type="text" class="mark" id="mark4" name="mark">' +
             '    <select class="series" id="series4" name="series">' +
+            '      <option value="">--</option>' +
+            '    </select>' +
+            '    <select class="mark" id="mark5" name="mark">' +
+            '      <option value="">--</option>' +
+            '      <option value="bmw" selected>BMW</option>' +
+            '      <option value="audi">Audi</option>' +
+            '    </select>' +
+            '    <select class="series" id="series5" name="series">' +
             '      <option value="">--</option>' +
             '    </select>' +
             '</form>');
@@ -368,9 +376,64 @@ describe("Remote version of plugin", function() {
                 });
             });
 
-            it("should be able to bootstrap values", function() {
-                expect($("#mark2 > option").size()).toBe(3);
-                expect($("#series2 > option").size()).toBe(6);
+            it("should be able to bootstrap with array of objects", function() {
+                $("#series5").remoteChained({
+                    parents : "#mark5",
+                    url: "/api/series",
+                    loading : "--",
+                    bootstrap : [
+                        {"--":"--"},
+                        {"series-2":"2 series"},
+                        {"series-3":"3 series"},
+                        {"series-5":"5 series"},
+                        {"series-6":"6 series"},
+                        {"series-7":"7 series"},
+                        {"selected":"series-3"}
+                    ]
+                });
+
+                expect($("#series5 > option").size()).toBe(6);
+                expect($("#series5 > option:selected").val()).toBe("series-3");
+            });
+
+            it("should be able to bootstrap with array of arrays", function() {
+                $("#series5").remoteChained({
+                    parents : "#mark5",
+                    url: "/api/series",
+                    loading : "--",
+                    bootstrap : [
+                        ["--", "--"],
+                        ["series-2", "2 series"],
+                        ["series-3", "3 series"],
+                        ["series-5", "5 series"],
+                        ["series-6", "6 series"],
+                        ["series-7", "7 series"],
+                        ["selected", "series-5"]
+                    ]
+                });
+
+                expect($("#series5 > option").size()).toBe(6);
+                expect($("#series5 > option:selected").val()).toBe("series-5");
+            });
+
+            it("should be able to bootstrap with object", function() {
+                $("#series5").remoteChained({
+                    parents : "#mark5",
+                    url: "/api/series",
+                    loading : "--",
+                    bootstrap : {
+                        "--":"--",
+                        "series-2":"2 series",
+                        "series-3":"3 series",
+                        "series-5":"5 series",
+                        "series-6":"6 series",
+                        "series-7":"7 series",
+                        "selected":"series-6"
+                    }
+                });
+
+                expect($("#series5 > option").size()).toBe(6);
+                expect($("#series5 > option:selected").val()).toBe("series-6");
             });
 
             it("should honour selected attribute in bootstrapped values", function() {
