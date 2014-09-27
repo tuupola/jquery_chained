@@ -4,7 +4,7 @@
 
 Make pull requests only one feature or change at the time. For example you have fixed a bug. You also have optimized some code. Optimization is not related to a bug. These should be submitted as separate pull requests. This way I can easily choose what to include. It is also easier to understand the code changes. Commit messages should be descriptive and full sentences.
 
-Do not commit minified versions. Do not touch the version number. Make the pull requests againts [0.9.x branch](https://github.com/tuupola/jquery_chained/tree/0.9.x)
+Do not commit minified versions. Do not touch the version number. Make the pull requests againts [1.x.x branch](https://github.com/tuupola/jquery_chained/tree/1.x.x)
 
 ## Write meaningful commit messages
 
