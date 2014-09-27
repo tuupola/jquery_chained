@@ -10,7 +10,7 @@ Do not commit minified versions. Do not touch the version number. Make the pull 
 
 Proper commit message is full sentence. It starts with capital letter but does not end with period. Headlines do not end with period. The GitHub default `Update filename.js` is not enough. When needed include also longer explanation what the commit does.
 
-```txt
+```
 Capitalized, short (50 chars or less) summary
 
 More detailed explanatory text, if necessary.  Wrap it to about 72
