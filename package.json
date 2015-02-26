@@ -1,5 +1,5 @@
 {
-  "name": "chained",
+  "name": "jquery-chained",
   "version": "1.0.0",
   "engines": {
     "node": ">= 0.8.0"
@@ -18,9 +18,27 @@
     "grunt-contrib-uglify": "~0.2.4",
     "grunt-contrib-jasmine": "~0.5.2",
     "grunt-contrib-watch": "~0.5.3",
-    "load-grunt-tasks": "^0.4.0"
+    "load-grunt-tasks": "^0.4.0",
+    "time-grunt": "^0.2.10"
   },
   "dependencies": {
-    "time-grunt": "^0.2.10"
-  }
+  },
+  "description": "Simple chained selects. You can choose from two different versions. Normal version uses uses classnames of select options to decide content of child select. It does not make any external AJAX(J) queries. Remote version makes external query and builds the child select from returned JSON response.",
+  "bugs": {
+    "url": "https://github.com/tuupola/jquery_chained/issues"
+  },
+  "homepage": "http://www.appelsiini.net/projects/chained",
+  "main": "Gruntfile.js",
+  "files": [
+      "jquery.chained.js",
+      "jquery.chained.remote.js"
+  ],
+  "directories": {
+    "test": "test"
+  },
+  "keywords": [
+    "jquery-plugin",
+    "ecosystem:jquery"
+  ],
+  "license": "MIT"
 }
