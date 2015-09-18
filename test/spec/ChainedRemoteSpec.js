@@ -242,6 +242,23 @@ describe("Remote version of plugin", function() {
                     expect($("#model > option").size()).toBe(1);
                 });
             });
+            
+            it("should trigger custom load event on series when mark changes", function () {
+                var eventExecuted = false;
+                
+                runs(function () {
+                    $("#series").one("chained:load", function () {
+                        eventExecuted = true;
+                    });
+                    $("#mark").val("audi").trigger("change");
+                });
+                
+                waits(50);
+                
+                runs(function () {
+                    expect(eventExecuted).toBe(true);
+                });
+            });
 
             it("should update model when series changes", function() {
                 runs(function() {

@@ -78,6 +78,8 @@
                         build.call(self, json);
                         /* Force updating the children. */
                         $(self).trigger("change");
+                        /* Custom event to notify we have remote loaded a select. See issue #38 */
+                        $(self).trigger("chained:load");
                     });
                 });
 
