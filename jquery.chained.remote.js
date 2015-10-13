@@ -74,7 +74,10 @@
                         $(self).trigger("change");
                     }
 
-                    request = $.getJSON(settings.url, data, function(json) {
+                    /* If the supplied url option is a function execute it, otherwise use the given url */
+                    var url = ($.isFunction(settings.url)) ? settings.url() : settings.url;
+
+                    request = $.getJSON(url, data, function(json) {
                         build.call(self, json);
                         /* Force updating the children. */
                         $(self).trigger("change");
