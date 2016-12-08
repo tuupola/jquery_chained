@@ -85,7 +85,7 @@
                 });
 
                 /* If we have only the default value disable select. */
-                if (1 === $("option", child).size() && $(child).val() === "") {
+                if (1 === $("option", child).length && $(child).val() === "") {
                     $(child).prop("disabled", true);
                 } else {
                     $(child).prop("disabled", false);
