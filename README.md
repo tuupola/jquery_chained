@@ -13,8 +13,8 @@ For more complex scenarios maintaining option tag classnames will get cumbersome
 You can install with [bower](http://bower.io/) or [npm](https://www.npmjs.com/).
 
 ```
->bower install chained
->npm install jquery-chained
+$ bower install chained
+$ npm install jquery-chained
 ```
 
 ## Simple usage
