@@ -13,22 +13,22 @@
     "jquery": true,
     "browser": true,
 
-  "predef"     : [
-      "_",
-      "jasmine",
-      "describe",
-      "xdescribe",
-      "it",
-      "xit",
-      "beforeEach",
-      "afterEach",
-      "expect",
-      "spyOn",
-      "runs",
-      "waits",
-      "waitsFor",
-      "Backbone",
-      "Modernizr",
-      "rivets"
+    "predef": [
+        "_",
+        "jasmine",
+        "describe",
+        "xdescribe",
+        "it",
+        "xit",
+        "beforeEach",
+        "afterEach",
+        "expect",
+        "spyOn",
+        "runs",
+        "waits",
+        "waitsFor",
+        "Backbone",
+        "Modernizr",
+        "rivets"
     ]
 }
