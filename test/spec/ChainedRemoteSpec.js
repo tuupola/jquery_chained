@@ -1,5 +1,5 @@
 /* jshint -W108 */
-/* global describe, beforeEach, setFixtures, it, expect, sinon */
+/* global describe, beforeEach, expect, sinon */
 
 describe("Remote version of plugin", function() {
     "use strict";
@@ -77,7 +77,7 @@ describe("Remote version of plugin", function() {
     describe("having single set of selects", function() {
 
         beforeEach(function() {
-            setFixtures('<form>' +
+            jasmine.getFixtures().set('<form>' +
             '    <select class="mark" id="mark" name="mark">' +
             '      <option value="">--</option>' +
             '      <option value="bmw">BMW</option>' +
@@ -203,177 +203,126 @@ describe("Remote version of plugin", function() {
                 expect(select.hasClass("bar")).toBe(true);
             });
 
-            it("should make initial update", function() {
-                runs(function() {
-                    $("#mark").trigger("change");
+            it("should make initial update", function(done) {
+                $("#mark").trigger("change");
+
+                setTimeout(function() {
                     expect($("#mark > option").size()).toBe(3);
-                });
-
-                waits(50);
-
-                runs(function() {
                     expect($("#series > option").size()).toBe(1);
                     expect($("#series")).toBeDisabled();
                     expect($("#model > option").size()).toBe(1);
                     expect($("#model")).toBeDisabled();
-                });
+                    done();
+                }, 1000);
             });
 
-            it("should update series when mark changes", function() {
-                runs(function() {
-                    $("#mark").val("audi").trigger("change");
+            it("should update series when mark changes", function(done) {
+
+                $("#mark").val("audi").trigger("change");
+
+                setTimeout(function() {
                     expect($("#mark > option").size()).toBe(3);
-                });
-
-                waits(50);
-
-                runs(function() {
                     expect($("#series > option").size()).toBe(12);
-                    /* This fails with setFixtures() but works with loadFixtures() */
-                    //expect($("#model > option").size()).toBe(3);
+                    /* This fails wxith setFixtures() but works wxith loadFixtures() */
+                    /* expect($("#model > option").size()).toBe(3); */
+
                     $("#mark").val("bmw").trigger("change");
-                });
+                }, 100);
 
-                waits(50);
-
-                runs(function() {
+                setTimeout(function() {
                     expect($("#mark > option").size()).toBe(3);
                     expect($("#series > option").size()).toBe(6);
                     expect($("#model > option").size()).toBe(1);
-                });
+                    done();
+                }, 200);
             });
 
-            it("should update model when series changes", function() {
-                runs(function() {
-                    $("#mark").val("bmw").trigger("change");
-                });
+            it("should update model when series changes", function(done) {
+                $("#mark").val("bmw").trigger("change");
 
-                waits(50);
-
-                runs(function() {
+                setTimeout(function() {
                     $("#series").val("series-3").trigger("change");
-                });
+                }, 100);
 
-                waits(50);
-
-                runs(function() {
+                setTimeout(function() {
                     expect($("#mark > option").size()).toBe(3);
                     expect($("#series > option").size()).toBe(6);
                     expect($("#model > option").size()).toBe(5);
-                });
-
+                    done();
+                }, 200);
             });
 
-            it("should reset series and model when mark changes", function() {
-                runs(function() {
-                    $("#mark").val("audi").trigger("change");
-                });
-
-                waits(50);
-
-                runs(function() {
+            it("should reset series and model when mark changes", function(done) {
+                $("#mark").val("audi").trigger("change");
+                setTimeout(function() {
                     $("#series").val("a6").trigger("change");
-                });
+                }, 10);
 
-                waits(50);
-
-                runs(function() {
+                setTimeout(function() {
                     $("#mark").val("bmw").trigger("change");
-                });
+                }, 200);
 
-                waits(50);
-
-                runs(function() {
+                setTimeout(function() {
                     expect($("#mark > option").size()).toBe(3);
                     expect($("#series > option").size()).toBe(6);
                     expect($("#model > option").size()).toBe(1);
-                });
+                    done();
+                }, 300);
             });
 
-            it("should disable input if only default value exists", function() {
-                runs(function() {
-                    $("#mark").val("audi").trigger("change");
-                });
+            it("should disable input if only default value exists", function(done) {
+                $("#mark").val("audi").trigger("change");
+                $("#series").val("a6").trigger("change");
+                $("#mark").val("bmw").trigger("change");
 
-                waits(50);
-
-                runs(function() {
-                    $("#series").val("a6").trigger("change");
-                });
-
-                waits(50);
-
-                runs(function() {
-                    $("#mark").val("bmw").trigger("change");
-                });
-
-                waits(50);
-
-                runs(function() {
+                setTimeout(function() {
                     expect($("#model > option:first").val()).toBe("");
                     expect($("#model").val()).toBe("");
                     expect($("#model")).toBeDisabled();
-                });
+                    done();
+                }, 100);
             });
 
-            it("should be chained to two parents", function() {
-                runs(function() {
-                    $("#mark").val("bmw").trigger("change");
-                });
+           it("should be chained to two parents", function(done) {
 
-                waits(50);
+                $("#mark").val("bmw").trigger("change");
 
-                runs(function() {
+                setTimeout(function() {
                     $("#series").val("series-3").trigger("change");
-                });
+                }, 100);
 
-                waits(50);
-
-                runs(function() {
+                setTimeout(function() {
                     $("#model").val("coupe").trigger("change");
-                });
+                }, 200);
 
-                waits(50);
 
-                runs(function() {
+                setTimeout(function() {
                     expect($("#engine > option").size()).toBe(3);
                     expect($("#engine > option:last").val()).toBe("30-petrol");
+
                     $("#model").val("sedan").trigger("change");
-                });
+                }, 300);
 
-                waits(50);
-
-                runs(function() {
+                setTimeout(function() {
                     expect($("#engine > option").size()).toBe(4);
                     expect($("#engine > option:last").val()).toBe("30-diesel");
-
                     $("#series").val("series-6").trigger("change");
-                });
-
-                waits(50);
-
-                runs(function() {
                     $("#model").val("coupe").trigger("change");
-                });
+                }, 400);
 
-                waits(50);
-
-                runs(function() {
+                setTimeout(function() {
                     expect($("#engine > option").size()).toBe(2);
-                });
-
+                    done();
+                }, 500);
             });
 
-            it("should honour selected attribute in json", function() {
-                runs(function() {
-                    $("#mark").val("audi").trigger("change");
-                });
+            it("should honour selected attribute in json", function(done) {
+                $("#mark").val("audi").trigger("change");
 
-                waits(50);
-
-                runs(function() {
+                setTimeout(function() {
                     expect($("#series > option:selected").val()).toBe("s6");
-                });
+                    done();
+                }, 100);
             });
 
             it("should be able to bootstrap with array of objects", function() {
@@ -442,63 +391,53 @@ describe("Remote version of plugin", function() {
                 expect($("#series3 > option:selected").val()).toBe("3");
             });
 
-            it("should clear selects while loading", function() {
+            it("should clear selects while loading", function(done) {
 
-                server.autoRespondAfter = 100;
+                server.autoRespondAfter = 200;
 
-                runs(function() {
-                    $("#mark2").val("bmw").trigger("change");
-                    expect($("#mark2 > option").size()).toBe(3);
-                });
+                $("#mark2").val("bmw").trigger("change");
+                expect($("#mark2 > option").size()).toBe(3);
 
-                waits(50);
-
-                runs(function() {
+                setTimeout(function() {
                     expect($("#series2 > option").size()).toBe(0);
                     expect($("#model2 > option").size()).toBe(0);
-                });
-
-                waits(200);
+                }, 100);
 
                 /* Should have values now. */
-                runs(function() {
+                setTimeout(function() {
                     expect($("#series2 > option").size()).toBe(6);
+                    done();
+                }, 300);
+
+                setTimeout(function() {
                     expect($("#model2 > option").size()).toBe(1);
-                });
+                    done();
+                }, 400);
             });
 
-            it("should show disabled loading text while loading", function() {
-                runs(function() {
-                    $("#mark2").val("bmw").trigger("change");
+            it("should show disabled loading text while loading", function(done) {
+                $("#mark2").val("bmw").trigger("change");
+
+                expect($("#engine2 > option").size()).toBe(1);
+                expect($("#engine2 > option:first").text()).toBe("Loading...");
+
+                setTimeout(function() {
                     expect($("#mark2 > option").size()).toBe(3);
-                });
-
-                runs(function() {
-                    expect($("#engine2 > option").size()).toBe(1);
-                    expect($("#engine2 > option:first").text()).toBe("Loading...");
-                });
-
-                waits(50);
-
-                /* Should have values now. */
-                runs(function() {
                     expect($("#engine2 > option").size()).toBe(1);
                     expect($("#engine2 > option:first").text()).toBe("--");
-                });
+                    done();
+                }, 100);
 
             });
 
-            it("should be chained to normal text input", function() {
-                runs(function() {
-                    $("#mark4").val("bmw").trigger("change");
-                });
+            it("should be chained to normal text input", function(done) {
+                $("#mark4").val("bmw").trigger("change");
 
-                waits(50);
-
-                runs(function() {
+                setTimeout(function() {
                     expect($("#series4 > option").size()).toBe(6);
                     expect($("#series4 > option:first").text()).toBe("--");
-                });
+                    done();
+                }, 100);
             });
 
         });
@@ -507,7 +446,7 @@ describe("Remote version of plugin", function() {
     describe("having multiple set of selects", function() {
 
         beforeEach(function() {
-            setFixtures('<form>' +
+            jasmine.getFixtures().set('<form>' +
             '    <select class="mark" id="mark" name="mark">' +
             '      <option value="">--</option>' +
             '      <option value="bmw">BMW</option>' +
@@ -588,219 +527,155 @@ describe("Remote version of plugin", function() {
                 expect(select.hasClass("bar")).toBe(true);
             });
 
-            it("should make initial update", function() {
-                runs(function() {
-                    $("#mark").trigger("change");
+            it("should make initial update", function(done) {
+                $("#mark").trigger("change");
+
+                setTimeout(function() {
                     expect($("#mark > option").size()).toBe(3);
-                });
-
-                waits(50);
-
-                runs(function() {
                     expect($("#series > option").size()).toBe(1);
                     expect($("#series")).toBeDisabled();
+                }, 100);
+
+                setTimeout(function() {
                     expect($("#model > option").size()).toBe(1);
                     expect($("#model")).toBeDisabled();
-                });
+                    done();
+                }, 200);
+
             });
 
-            it("should update series when mark changes", function() {
-                runs(function() {
-                    $("#mark").val("audi").trigger("change");
+            it("should update series when mark changes", function(done) {
+
+                $("#mark").val("audi").trigger("change");
+
+                setTimeout(function() {
                     expect($("#mark > option").size()).toBe(3);
-                });
-
-                waits(50);
-
-                runs(function() {
                     expect($("#series > option").size()).toBe(12);
-                    /* This fails with setFixtures() but works with loadFixtures() */
-                    //expect($("#model > option").size()).toBe(3);
-                });
+                    /* This fails wxith setFixtures() but works wxith loadFixtures() */
+                    /* expect($("#model > option").size()).toBe(3); */
 
-                waits(50);
-
-                runs(function() {
                     $("#mark").val("bmw").trigger("change");
+                }, 100);
+
+                setTimeout(function() {
                     expect($("#mark > option").size()).toBe(3);
-                });
-
-                waits(50);
-
-                runs(function() {
                     expect($("#series > option").size()).toBe(6);
                     expect($("#model > option").size()).toBe(1);
-                });
+                    done();
+                }, 200);
             });
 
-            xit("should update model when series changes", function() {
+            it("should update model when series changes", function(done) {
                 $("#mark").val("bmw").trigger("change");
-                $("#series").val("series-3").trigger("change");
-                expect($("#mark > option").size()).toBe(3);
-                expect($("#series > option").size()).toBe(6);
-                expect($("#model > option").size()).toBe(5);
-            });
 
-            it("should update model when series changes", function() {
-                runs(function() {
-                    $("#mark").val("bmw").trigger("change");
-                });
-
-                waits(50);
-
-                runs(function() {
+                setTimeout(function() {
                     $("#series").val("series-3").trigger("change");
-                });
+                }, 100);
 
-                waits(50);
-
-                runs(function() {
+                setTimeout(function() {
                     expect($("#mark > option").size()).toBe(3);
                     expect($("#series > option").size()).toBe(6);
                     expect($("#model > option").size()).toBe(5);
-                });
+                    done();
+                }, 200);
             });
 
-            it("should reset series and model when mark changes", function() {
-                runs(function() {
-                    $("#mark").val("audi").trigger("change");
-                });
-
-                waits(50);
-
-                runs(function() {
+            it("should reset series and model when mark changes", function(done) {
+                $("#mark").val("audi").trigger("change");
+                setTimeout(function() {
                     $("#series").val("a6").trigger("change");
-                });
+                }, 100);
 
-                waits(50);
-
-                runs(function() {
+                setTimeout(function() {
                     $("#mark").val("bmw").trigger("change");
-                });
+                }, 200);
 
-                waits(50);
-
-                runs(function() {
+                setTimeout(function() {
                     expect($("#mark > option").size()).toBe(3);
                     expect($("#series > option").size()).toBe(6);
                     expect($("#model > option").size()).toBe(1);
-                });
+                    done();
+                }, 300);
             });
 
-            it("should disable input if only default value exists", function() {
-                runs(function() {
-                    $("#mark").val("audi").trigger("change");
-                });
+            it("should disable input if only default value exists", function(done) {
+                $("#mark").val("audi").trigger("change");
+                $("#series").val("a6").trigger("change");
+                $("#mark").val("bmw").trigger("change");
 
-                waits(50);
-
-                runs(function() {
-                    $("#series").val("a6").trigger("change");
-                });
-
-                waits(50);
-
-                runs(function() {
-                    $("#mark").val("bmw").trigger("change");
-                });
-
-                waits(50);
-
-                runs(function() {
+                setTimeout(function() {
                     expect($("#model > option:first").val()).toBe("");
                     expect($("#model").val()).toBe("");
                     expect($("#model")).toBeDisabled();
-                });
+                    done();
+                }, 100);
             });
 
 
-            it("should be chained to two parents", function() {
-                runs(function() {
-                    $("#mark").val("bmw").trigger("change");
-                });
+            it("should be chained to two parents", function(done) {
 
-                waits(50);
+                $("#mark").val("bmw").trigger("change");
+                $("#mark-2").val("audi").trigger("change");
 
-                runs(function() {
+                setTimeout(function() {
                     $("#series").val("series-3").trigger("change");
-                });
-
-                waits(50);
-
-                runs(function() {
-                    $("#model").val("coupe").trigger("change");
-                });
-
-                waits(50);
-
-                runs(function() {
-                    $("#mark-2").val("audi").trigger("change");
-                });
-
-                waits(50);
-
-                runs(function() {
                     $("#series-2").val("a5").trigger("change");
-                });
+                }, 100);
 
-                waits(50);
-
-                runs(function() {
+                setTimeout(function() {
+                    $("#model").val("coupe").trigger("change");
                     $("#model-2").val("sportback").trigger("change");
-                });
+                }, 200);
 
-                waits(50);
 
-                runs(function() {
+                setTimeout(function() {
                     expect($("#engine > option").size()).toBe(3);
                     expect($("#engine > option:last").val()).toBe("30-petrol");
                     expect($("#engine-2 > option").size()).toBe(3);
                     expect($("#engine-2 > option:last").val()).toBe("30-diesel");
+
                     $("#model").val("sedan").trigger("change");
-                });
+                }, 300);
 
-                waits(50);
-
-                runs(function() {
+                setTimeout(function() {
                     expect($("#engine > option").size()).toBe(4);
                     expect($("#engine > option:last").val()).toBe("30-diesel");
                     $("#series").val("series-6").trigger("change");
-                });
-
-                waits(50);
-
-                runs(function() {
                     $("#model").val("coupe").trigger("change");
-                });
+                }, 400);
 
-                waits(50);
-
-                runs(function() {
+                setTimeout(function() {
                     expect($("#engine > option").size()).toBe(2);
                     $("#mark-3").trigger("change");
-                });
+                }, 500);
 
-                waits(50);
-
-                runs(function() {
+                setTimeout(function() {
                     expect($("#engine-3")).toBeDisabled();
-                });
+                    done();
+                }, 600);
             });
 
-            it("should honour selected attribute in json", function() {
-                runs(function() {
-                    $("#mark").val("audi").trigger("change");
-                });
+            it("should honour selected attribute in json", function(done) {
+                $("#mark").val("audi").trigger("change");
 
-                waits(50);
-
-                runs(function() {
+                setTimeout(function() {
                     expect($("#series > option:selected").val()).toBe("s6");
-                });
+                    done();
+                }, 500);
             });
 
             /* TODO: Test for clear and loading. */
-
         });
     });
 });
+
+var asyncCheck = function(done, wait, verify) {
+    if (wait()) {
+        verify();
+        done();
+    } else {
+        setTimeout(function() {
+            asyncCheck(done, wait, verify);
+        }, 500);
+    }
+};
