@@ -32,48 +32,21 @@ module.exports = function(grunt) {
             }
         },
         jasmine: {
-            "jquery-1.9.1": {
+            "jquery-1.12.4": {
                 src: ["jquery.chained.js", "jquery.chained.remote.js"],
                 options: {
                     helpers: "test/spec/*Helper.js",
                     specs: "test/spec/*Spec.js",
-                    vendor: ["test/vendor/jquery-1.9.1.js", "test/vendor/jasmine-jquery.js",
+                    vendor: ["test/vendor/jquery-1.12.4.js", "test/vendor/jasmine-jquery.js",
                              "test/vendor/sinon-1.8.2.js"]
                 }
             },
-            "jquery-1.10.2": {
+            "jquery-2.2.4": {
                 src: ["jquery.chained.js", "jquery.chained.remote.js"],
                 options: {
                     helpers: "test/spec/*Helper.js",
                     specs: "test/spec/*Spec.js",
-                    vendor: ["test/vendor/jquery-1.10.2.js", "test/vendor/jasmine-jquery.js",
-                             "test/vendor/sinon-1.8.2.js"]
-                }
-            },
-            "jquery-1.11.0": {
-                src: ["jquery.chained.js", "jquery.chained.remote.js"],
-                options: {
-                    helpers: "test/spec/*Helper.js",
-                    specs: "test/spec/*Spec.js",
-                    vendor: ["test/vendor/jquery-1.11.0.js", "test/vendor/jasmine-jquery.js",
-                             "test/vendor/sinon-1.8.2.js"]
-                }
-            },
-            "jquery-2.0.3": {
-                src: ["jquery.chained.js", "jquery.chained.remote.js"],
-                options: {
-                    helpers: "test/spec/*Helper.js",
-                    specs: "test/spec/*Spec.js",
-                    vendor: ["test/vendor/jquery-2.0.3.js", "test/vendor/jasmine-jquery.js",
-                             "test/vendor/sinon-1.8.2.js"]
-                }
-            },
-            "jquery-2.1.0": {
-                src: ["jquery.chained.js", "jquery.chained.remote.js"],
-                options: {
-                    helpers: "test/spec/*Helper.js",
-                    specs: "test/spec/*Spec.js",
-                    vendor: ["test/vendor/jquery-2.1.0.js", "test/vendor/jasmine-jquery.js",
+                    vendor: ["test/vendor/jquery-2.2.4.js", "test/vendor/jasmine-jquery.js",
                              "test/vendor/sinon-1.8.2.js"]
                 }
             },
