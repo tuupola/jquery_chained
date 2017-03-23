@@ -1,44 +1,31 @@
 {
-  "name": "jquery-chained",
-  "version": "1.0.1",
-  "engines": {
-    "node": ">= 0.8.0"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git@github.com:tuupola/jquery_chained.git"
-  },
-  "author": "Mika Tuupola <tuupola@appelsiini.net>",
-  "scripts": {
-    "test": "grunt test"
-  },
-  "devDependencies": {
-    "grunt": "~0.4.1",
-    "grunt-contrib-jshint": "~0.6.4",
-    "grunt-contrib-uglify": "~0.2.4",
-    "grunt-contrib-jasmine": "~0.5.2",
-    "grunt-contrib-watch": "~0.5.3",
-    "load-grunt-tasks": "^0.4.0",
-    "time-grunt": "^0.2.10"
-  },
-  "dependencies": {
-  },
-  "description": "Simple chained selects. You can choose from two different versions. Normal version uses uses classnames of select options to decide content of child select. It does not make any external AJAX(J) queries. Remote version makes external query and builds the child select from returned JSON response.",
-  "bugs": {
-    "url": "https://github.com/tuupola/jquery_chained/issues"
-  },
-  "homepage": "http://www.appelsiini.net/projects/chained",
-  "main": "Gruntfile.js",
-  "files": [
-      "jquery.chained.js",
-      "jquery.chained.remote.js"
-  ],
-  "directories": {
-    "test": "test"
-  },
-  "keywords": [
-    "jquery-plugin",
-    "ecosystem:jquery"
-  ],
-  "license": "MIT"
+    "name": "jquery-chained",
+    "version": "1.0.0",
+    "keywords": [
+        "zepto",
+        "chained",
+        "select",
+        "jquery-plugin",
+        "ecosystem:jquery"
+    ],
+    "description": "Simple chained selects. You can choose from two different versions. Normal version uses uses classnames of select options to decide content of child select. It does not make any external AJAX(J) queries. Remote version makes external query and builds the child select from returned JSON response.",
+    "repository": "git@github.com:tuupola/jquery_chained.git",
+    "homepage": "http://www.appelsiini.net/projects/chained",
+    "bugs": "https://github.com/tuupola/jquery_chained/issues",
+    "author": "Mika Tuupola <tuupola@appelsiini.net>",
+    "license": "MIT",
+    "files": [
+        "jquery.chained.js",
+        "jquery.chained.remote.js"
+    ],
+    "devDependencies": {
+        "grunt": "^1.0.1",
+        "grunt-contrib-jasmine": "^1.1.0",
+        "grunt-contrib-jshint": "^1.1.0",
+        "grunt-contrib-uglify": "^2.2.0",
+        "grunt-contrib-watch": "^1.0.0",
+        "jasmine-jquery": "^2.1.1",
+        "load-grunt-tasks": "^3.5.2",
+        "time-grunt": "^1.4.0"
+    }
 }
