@@ -63,31 +63,31 @@ describe("Class based version of plugin", function() {
         });
 
         it("should make initial update", function() {
-            expect($("#mark > option").size()).toBe(3);
-            expect($("#series > option").size()).toBe(1);
+            expect($("#mark > option").length).toBe(3);
+            expect($("#series > option").length).toBe(1);
             expect($("#series")).toBeDisabled();
-            expect($("#model > option").size()).toBe(1);
+            expect($("#model > option").length).toBe(1);
             expect($("#model")).toBeDisabled();
         });
 
         it("should update series when mark changes", function() {
             $("#mark").val("audi").trigger("change");
-            expect($("#mark > option").size()).toBe(3);
-            expect($("#series > option").size()).toBe(12);
-            expect($("#model > option").size()).toBe(3);
+            expect($("#mark > option").length).toBe(3);
+            expect($("#series > option").length).toBe(12);
+            expect($("#model > option").length).toBe(3);
 
             $("#mark").val("bmw").trigger("change");
-            expect($("#mark > option").size()).toBe(3);
-            expect($("#series > option").size()).toBe(6);
-            expect($("#model > option").size()).toBe(1);
+            expect($("#mark > option").length).toBe(3);
+            expect($("#series > option").length).toBe(6);
+            expect($("#model > option").length).toBe(1);
         });
 
         it("should update model when series changes", function() {
             $("#mark").val("bmw").trigger("change");
             $("#series").val("series-3").trigger("change");
-            expect($("#mark > option").size()).toBe(3);
-            expect($("#series > option").size()).toBe(6);
-            expect($("#model > option").size()).toBe(5);
+            expect($("#mark > option").length).toBe(3);
+            expect($("#series > option").length).toBe(6);
+            expect($("#model > option").length).toBe(5);
         });
 
         it("should reset series and model when mark changes", function() {
@@ -95,9 +95,9 @@ describe("Class based version of plugin", function() {
             $("#series").val("a6").trigger("change");
 
             $("#mark").val("bmw").trigger("change");
-            expect($("#mark > option").size()).toBe(3);
-            expect($("#series > option").size()).toBe(6);
-            expect($("#model > option").size()).toBe(1);
+            expect($("#mark > option").length).toBe(3);
+            expect($("#series > option").length).toBe(6);
+            expect($("#model > option").length).toBe(1);
         });
 
         it("should disable input if only default value exists", function() {
@@ -115,17 +115,17 @@ describe("Class based version of plugin", function() {
             $("#series").val("series-3").trigger("change");
             $("#model").val("coupe").trigger("change");
 
-            expect($("#engine > option").size()).toBe(3);
+            expect($("#engine > option").length).toBe(3);
             expect($("#engine > option:last").val()).toBe("30-petrol");
 
             $("#model").val("sedan").trigger("change");
 
-            expect($("#engine > option").size()).toBe(4);
+            expect($("#engine > option").length).toBe(4);
             expect($("#engine > option:last").val()).toBe("30-diesel");
 
             $("#series").val("series-6").trigger("change");
             $("#model").val("coupe").trigger("change");
-            expect($("#engine > option").size()).toBe(2);
+            expect($("#engine > option").length).toBe(2);
         });
 
         it("should honour selected attribute in html", function() {
@@ -292,31 +292,31 @@ describe("Class based version of plugin", function() {
         });
 
         it("should make initial update", function() {
-            expect($("#mark > option").size()).toBe(3);
-            expect($("#series > option").size()).toBe(1);
+            expect($("#mark > option").length).toBe(3);
+            expect($("#series > option").length).toBe(1);
             expect($("#series")).toBeDisabled();
-            expect($("#model > option").size()).toBe(1);
+            expect($("#model > option").length).toBe(1);
             expect($("#model")).toBeDisabled();
         });
 
         it("should update series when mark changes", function() {
             $("#mark").val("audi").trigger("change");
-            expect($("#mark > option").size()).toBe(3);
-            expect($("#series > option").size()).toBe(12);
-            expect($("#model > option").size()).toBe(3);
+            expect($("#mark > option").length).toBe(3);
+            expect($("#series > option").length).toBe(12);
+            expect($("#model > option").length).toBe(3);
 
             $("#mark").val("bmw").trigger("change");
-            expect($("#mark > option").size()).toBe(3);
-            expect($("#series > option").size()).toBe(6);
-            expect($("#model > option").size()).toBe(1);
+            expect($("#mark > option").length).toBe(3);
+            expect($("#series > option").length).toBe(6);
+            expect($("#model > option").length).toBe(1);
         });
 
         it("should update model when series changes", function() {
             $("#mark").val("bmw").trigger("change");
             $("#series").val("series-3").trigger("change");
-            expect($("#mark > option").size()).toBe(3);
-            expect($("#series > option").size()).toBe(6);
-            expect($("#model > option").size()).toBe(5);
+            expect($("#mark > option").length).toBe(3);
+            expect($("#series > option").length).toBe(6);
+            expect($("#model > option").length).toBe(5);
         });
 
         it("should reset series and model when mark changes", function() {
@@ -324,9 +324,9 @@ describe("Class based version of plugin", function() {
             $("#series").val("a6").trigger("change");
 
             $("#mark").val("bmw").trigger("change");
-            expect($("#mark > option").size()).toBe(3);
-            expect($("#series > option").size()).toBe(6);
-            expect($("#model > option").size()).toBe(1);
+            expect($("#mark > option").length).toBe(3);
+            expect($("#series > option").length).toBe(6);
+            expect($("#model > option").length).toBe(1);
         });
 
         it("should disable input if only default value exists", function() {
@@ -344,17 +344,17 @@ describe("Class based version of plugin", function() {
             $("#series").val("series-3").trigger("change");
             $("#model").val("coupe").trigger("change");
 
-            expect($("#engine > option").size()).toBe(3);
+            expect($("#engine > option").length).toBe(3);
             expect($("#engine > option:last").val()).toBe("30-petrol");
 
             $("#model").val("sedan").trigger("change");
 
-            expect($("#engine > option").size()).toBe(4);
+            expect($("#engine > option").length).toBe(4);
             expect($("#engine > option:last").val()).toBe("30-diesel");
 
             $("#series").val("series-6").trigger("change");
             $("#model").val("coupe").trigger("change");
-            expect($("#engine > option").size()).toBe(2);
+            expect($("#engine > option").length).toBe(2);
         });
 
         it("should honour selected attribute in html", function() {

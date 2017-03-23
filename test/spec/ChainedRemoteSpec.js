@@ -207,10 +207,10 @@ describe("Remote version of plugin", function() {
                 $("#mark").trigger("change");
 
                 setTimeout(function() {
-                    expect($("#mark > option").size()).toBe(3);
-                    expect($("#series > option").size()).toBe(1);
+                    expect($("#mark > option").length).toBe(3);
+                    expect($("#series > option").length).toBe(1);
                     expect($("#series")).toBeDisabled();
-                    expect($("#model > option").size()).toBe(1);
+                    expect($("#model > option").length).toBe(1);
                     expect($("#model")).toBeDisabled();
                     done();
                 }, 1000);
@@ -221,18 +221,18 @@ describe("Remote version of plugin", function() {
                 $("#mark").val("audi").trigger("change");
 
                 setTimeout(function() {
-                    expect($("#mark > option").size()).toBe(3);
-                    expect($("#series > option").size()).toBe(12);
+                    expect($("#mark > option").length).toBe(3);
+                    expect($("#series > option").length).toBe(12);
                     /* This fails wxith setFixtures() but works wxith loadFixtures() */
-                    /* expect($("#model > option").size()).toBe(3); */
+                    /* expect($("#model > option").length).toBe(3); */
 
                     $("#mark").val("bmw").trigger("change");
                 }, 100);
 
                 setTimeout(function() {
-                    expect($("#mark > option").size()).toBe(3);
-                    expect($("#series > option").size()).toBe(6);
-                    expect($("#model > option").size()).toBe(1);
+                    expect($("#mark > option").length).toBe(3);
+                    expect($("#series > option").length).toBe(6);
+                    expect($("#model > option").length).toBe(1);
                     done();
                 }, 200);
             });
@@ -245,9 +245,9 @@ describe("Remote version of plugin", function() {
                 }, 100);
 
                 setTimeout(function() {
-                    expect($("#mark > option").size()).toBe(3);
-                    expect($("#series > option").size()).toBe(6);
-                    expect($("#model > option").size()).toBe(5);
+                    expect($("#mark > option").length).toBe(3);
+                    expect($("#series > option").length).toBe(6);
+                    expect($("#model > option").length).toBe(5);
                     done();
                 }, 200);
             });
@@ -263,9 +263,9 @@ describe("Remote version of plugin", function() {
                 }, 200);
 
                 setTimeout(function() {
-                    expect($("#mark > option").size()).toBe(3);
-                    expect($("#series > option").size()).toBe(6);
-                    expect($("#model > option").size()).toBe(1);
+                    expect($("#mark > option").length).toBe(3);
+                    expect($("#series > option").length).toBe(6);
+                    expect($("#model > option").length).toBe(1);
                     done();
                 }, 300);
             });
@@ -297,21 +297,21 @@ describe("Remote version of plugin", function() {
 
 
                 setTimeout(function() {
-                    expect($("#engine > option").size()).toBe(3);
+                    expect($("#engine > option").length).toBe(3);
                     expect($("#engine > option:last").val()).toBe("30-petrol");
 
                     $("#model").val("sedan").trigger("change");
                 }, 300);
 
                 setTimeout(function() {
-                    expect($("#engine > option").size()).toBe(4);
+                    expect($("#engine > option").length).toBe(4);
                     expect($("#engine > option:last").val()).toBe("30-diesel");
                     $("#series").val("series-6").trigger("change");
                     $("#model").val("coupe").trigger("change");
                 }, 400);
 
                 setTimeout(function() {
-                    expect($("#engine > option").size()).toBe(2);
+                    expect($("#engine > option").length).toBe(2);
                     done();
                 }, 500);
             });
@@ -341,7 +341,7 @@ describe("Remote version of plugin", function() {
                     ]
                 });
 
-                expect($("#series5 > option").size()).toBe(6);
+                expect($("#series5 > option").length).toBe(6);
                 expect($("#series5 > option:selected").val()).toBe("series-3");
             });
 
@@ -361,7 +361,7 @@ describe("Remote version of plugin", function() {
                     ]
                 });
 
-                expect($("#series5 > option").size()).toBe(6);
+                expect($("#series5 > option").length).toBe(6);
                 expect($("#series5 > option:selected").val()).toBe("series-5");
             });
 
@@ -381,7 +381,7 @@ describe("Remote version of plugin", function() {
                     }
                 });
 
-                expect($("#series5 > option").size()).toBe(6);
+                expect($("#series5 > option").length).toBe(6);
                 expect($("#series5 > option:selected").val()).toBe("series-6");
             });
 
@@ -396,21 +396,21 @@ describe("Remote version of plugin", function() {
                 server.autoRespondAfter = 200;
 
                 $("#mark2").val("bmw").trigger("change");
-                expect($("#mark2 > option").size()).toBe(3);
+                expect($("#mark2 > option").length).toBe(3);
 
                 setTimeout(function() {
-                    expect($("#series2 > option").size()).toBe(0);
-                    expect($("#model2 > option").size()).toBe(0);
+                    expect($("#series2 > option").length).toBe(0);
+                    expect($("#model2 > option").length).toBe(0);
                 }, 100);
 
                 /* Should have values now. */
                 setTimeout(function() {
-                    expect($("#series2 > option").size()).toBe(6);
+                    expect($("#series2 > option").length).toBe(6);
                     done();
                 }, 300);
 
                 setTimeout(function() {
-                    expect($("#model2 > option").size()).toBe(1);
+                    expect($("#model2 > option").length).toBe(1);
                     done();
                 }, 400);
             });
@@ -418,12 +418,12 @@ describe("Remote version of plugin", function() {
             it("should show disabled loading text while loading", function(done) {
                 $("#mark2").val("bmw").trigger("change");
 
-                expect($("#engine2 > option").size()).toBe(1);
+                expect($("#engine2 > option").length).toBe(1);
                 expect($("#engine2 > option:first").text()).toBe("Loading...");
 
                 setTimeout(function() {
-                    expect($("#mark2 > option").size()).toBe(3);
-                    expect($("#engine2 > option").size()).toBe(1);
+                    expect($("#mark2 > option").length).toBe(3);
+                    expect($("#engine2 > option").length).toBe(1);
                     expect($("#engine2 > option:first").text()).toBe("--");
                     done();
                 }, 100);
@@ -434,7 +434,7 @@ describe("Remote version of plugin", function() {
                 $("#mark4").val("bmw").trigger("change");
 
                 setTimeout(function() {
-                    expect($("#series4 > option").size()).toBe(6);
+                    expect($("#series4 > option").length).toBe(6);
                     expect($("#series4 > option:first").text()).toBe("--");
                     done();
                 }, 100);
@@ -531,13 +531,13 @@ describe("Remote version of plugin", function() {
                 $("#mark").trigger("change");
 
                 setTimeout(function() {
-                    expect($("#mark > option").size()).toBe(3);
-                    expect($("#series > option").size()).toBe(1);
+                    expect($("#mark > option").length).toBe(3);
+                    expect($("#series > option").length).toBe(1);
                     expect($("#series")).toBeDisabled();
                 }, 100);
 
                 setTimeout(function() {
-                    expect($("#model > option").size()).toBe(1);
+                    expect($("#model > option").length).toBe(1);
                     expect($("#model")).toBeDisabled();
                     done();
                 }, 200);
@@ -549,18 +549,18 @@ describe("Remote version of plugin", function() {
                 $("#mark").val("audi").trigger("change");
 
                 setTimeout(function() {
-                    expect($("#mark > option").size()).toBe(3);
-                    expect($("#series > option").size()).toBe(12);
+                    expect($("#mark > option").length).toBe(3);
+                    expect($("#series > option").length).toBe(12);
                     /* This fails wxith setFixtures() but works wxith loadFixtures() */
-                    /* expect($("#model > option").size()).toBe(3); */
+                    /* expect($("#model > option").length).toBe(3); */
 
                     $("#mark").val("bmw").trigger("change");
                 }, 100);
 
                 setTimeout(function() {
-                    expect($("#mark > option").size()).toBe(3);
-                    expect($("#series > option").size()).toBe(6);
-                    expect($("#model > option").size()).toBe(1);
+                    expect($("#mark > option").length).toBe(3);
+                    expect($("#series > option").length).toBe(6);
+                    expect($("#model > option").length).toBe(1);
                     done();
                 }, 200);
             });
@@ -573,9 +573,9 @@ describe("Remote version of plugin", function() {
                 }, 100);
 
                 setTimeout(function() {
-                    expect($("#mark > option").size()).toBe(3);
-                    expect($("#series > option").size()).toBe(6);
-                    expect($("#model > option").size()).toBe(5);
+                    expect($("#mark > option").length).toBe(3);
+                    expect($("#series > option").length).toBe(6);
+                    expect($("#model > option").length).toBe(5);
                     done();
                 }, 200);
             });
@@ -591,9 +591,9 @@ describe("Remote version of plugin", function() {
                 }, 200);
 
                 setTimeout(function() {
-                    expect($("#mark > option").size()).toBe(3);
-                    expect($("#series > option").size()).toBe(6);
-                    expect($("#model > option").size()).toBe(1);
+                    expect($("#mark > option").length).toBe(3);
+                    expect($("#series > option").length).toBe(6);
+                    expect($("#model > option").length).toBe(1);
                     done();
                 }, 300);
             });
@@ -629,23 +629,23 @@ describe("Remote version of plugin", function() {
 
 
                 setTimeout(function() {
-                    expect($("#engine > option").size()).toBe(3);
+                    expect($("#engine > option").length).toBe(3);
                     expect($("#engine > option:last").val()).toBe("30-petrol");
-                    expect($("#engine-2 > option").size()).toBe(3);
+                    expect($("#engine-2 > option").length).toBe(3);
                     expect($("#engine-2 > option:last").val()).toBe("30-diesel");
 
                     $("#model").val("sedan").trigger("change");
                 }, 300);
 
                 setTimeout(function() {
-                    expect($("#engine > option").size()).toBe(4);
+                    expect($("#engine > option").length).toBe(4);
                     expect($("#engine > option:last").val()).toBe("30-diesel");
                     $("#series").val("series-6").trigger("change");
                     $("#model").val("coupe").trigger("change");
                 }, 400);
 
                 setTimeout(function() {
-                    expect($("#engine > option").size()).toBe(2);
+                    expect($("#engine > option").length).toBe(2);
                     $("#mark-3").trigger("change");
                 }, 500);
 
