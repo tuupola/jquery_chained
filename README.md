@@ -4,17 +4,18 @@
 [![Software License](https://img.shields.io/badge/license-MIT-brightgreen.svg?style=flat-square)](LICENSE.txt)
 [![Build Status](https://img.shields.io/travis/tuupola/jquery_chained/master.svg?style=flat-square)](https://travis-ci.org/tuupola/jquery_chained)
 
-Chained is simple plugin for chained selects. It works with both jQuery and Zepto. You can choose from two different versions. Use jquery.chained.js if you do not want to make external queries for setting content of child selects. This version uses classnames of select options to decide content.
+Chained is simple plugin for chained selects. It works with both jQuery and Zepto. You can choose from two different versions. Use `jquery.chained.js` if you do not want to make external queries for setting content of child selects. This version uses classnames of select options to decide content.
 
-For more complex scenarios maintaining option tag classnames will get cumbersome. Also if you want to make queries against database use jquery.chained.remote.js instead. This version makes an external AJAJ query and uses the returned JSON to build child selects.
+For more complex scenarios maintaining option tag classnames will get cumbersome. Also if you want to make queries against database use `jquery.chained.remote.js` instead. This version makes an external AJAX query and uses the returned JSON to build child selects.
 
 ## Install
 
-You can install with [bower](http://bower.io/) or [npm](https://www.npmjs.com/).
+You can install with [yarn](https://yarnpkg.com/), [npm](https://www.npmjs.com/) or [bower](http://bower.io/).
 
 ```
-$ bower install chained
+$ yarn add jquery-chained
 $ npm install jquery-chained
+$ bower install chained
 ```
 
 ## Simple usage
