@@ -1,7 +1,7 @@
 /*
  * Chained - jQuery / Zepto chained selects plugin
  *
- * Copyright (c) 2010-2014 Mika Tuupola
+ * Copyright (c) 2010-2017 Mika Tuupola
  *
  * Licensed under the MIT license:
  *   http://www.opensource.org/licenses/mit-license.php
