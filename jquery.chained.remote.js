@@ -24,6 +24,14 @@
         if (settings.loading) {
             settings.clear = true;
         }
+        
+        var compare = function (a, b) {
+            if (a[1] < b[1])
+                return -1;
+            if (a[1] > b[1])
+                return 1;
+            return 0;
+        }
 
         return this.each(function() {
 
@@ -119,6 +127,10 @@
                             option_list.push([index, json[index]]);
                         }
                     }
+                }
+                if(settings.hasOwnProperty('orderby') && 'value' == settings.orderby)
+                {
+                    option_list.sort(compare);
                 }
 
                 /* Add new options from json. */
