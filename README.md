@@ -1,6 +1,6 @@
 # Chained
 
-[![npm](https://img.shields.io/npm/v/jquery-chained.svg)](https://www.npmjs.com/package/jquery-chained∏)
+[![npm](https://img.shields.io/npm/v/jquery-chained.svg)](https://www.npmjs.com/package/jquery-chained)
 [![Software License](https://img.shields.io/badge/license-MIT-brightgreen.svg?style=flat-square)](LICENSE.txt)
 [![Build Status](https://img.shields.io/travis/tuupola/jquery_chained/master.svg?style=flat-square)](https://travis-ci.org/tuupola/jquery_chained)
 
