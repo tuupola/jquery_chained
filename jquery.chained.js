@@ -9,14 +9,14 @@
  * Project home:
  *   http://www.appelsiini.net/projects/chained
  *
- * Version: 1.0.1
+ * Version: 2.0.0-dev
  *
  */
 
 ;(function($, window, document, undefined) {
     "use strict";
 
-    $.fn.chained = function(parent_selector) {
+    $.fn.chained = function(parentSelector) {
 
         return this.each(function() {
 
@@ -25,7 +25,7 @@
             var backup = $(child).clone();
 
             /* Handles maximum two parents now. */
-            $(parent_selector).each(function() {
+            $(parentSelector).each(function() {
                 $(this).bind("change", function() {
                     updateChildren();
                 });
@@ -41,14 +41,14 @@
             });
 
             function updateChildren() {
-                var trigger_change = true;
-                var currently_selected_value = $("option:selected", child).val();
+                var triggerChange = true;
+                var currentlySelectedValue = $("option:selected", child).val();
 
                 $(child).html(backup.html());
 
                 /* If multiple parents build classname like foo\bar. */
                 var selected = "";
-                $(parent_selector).each(function() {
+                $(parentSelector).each(function() {
                     var selectedClass = $("option:selected", this).val();
                     if (selectedClass) {
                         if (selected.length > 0) {
@@ -67,19 +67,19 @@
                 /* TODO: This should be dynamic and check for each parent */
                 /*       without subclassing. */
                 var first;
-                if ($.isArray(parent_selector)) {
-                    first = $(parent_selector[0]).first();
+                if ($.isArray(parentSelector)) {
+                    first = $(parentSelector[0]).first();
                 } else {
-                    first = $(parent_selector).first();
+                    first = $(parentSelector).first();
                 }
-                var selected_first = $("option:selected", first).val();
+                var selectedFirst = $("option:selected", first).val();
 
                 $("option", child).each(function() {
                     /* Remove unneeded items but save the default value. */
-                    if ($(this).hasClass(selected) && $(this).val() === currently_selected_value) {
+                    if ($(this).hasClass(selected) && $(this).val() === currentlySelectedValue) {
                         $(this).prop("selected", true);
-                        trigger_change = false;
-                    } else if (!$(this).hasClass(selected) && !$(this).hasClass(selected_first) && $(this).val() !== "") {
+                        triggerChange = false;
+                    } else if (!$(this).hasClass(selected) && !$(this).hasClass(selectedFirst) && $(this).val() !== "") {
                         $(this).remove();
                     }
                 });
@@ -90,7 +90,7 @@
                 } else {
                     $(child).prop("disabled", false);
                 }
-                if (trigger_change) {
+                if (triggerChange) {
                     $(child).trigger("change");
                 }
             }
