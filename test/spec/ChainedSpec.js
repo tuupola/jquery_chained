@@ -107,7 +107,7 @@ describe("Class based version of plugin", function() {
             $("#mark").val("bmw").trigger("change");
             expect($("#model > option:first").val()).toBe("");
             expect($("#model").val()).toBe("");
-            //expect($("#model")).toBeDisabled();
+            expect($("#model")).toBeDisabled();
         });
 
         it("should be chained to two parents", function() {
