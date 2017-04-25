@@ -113,20 +113,17 @@
                 } else {
                     /* Add new options from json which is an object. */
                     /* {"":"--","series-1":"1 series","series-3":"3 series"} */
-                    for (var key in json) {
+                    $.each(json, function(key, value) {
                         if (json.hasOwnProperty(key)) {
-                            var value = json[key];
-
                             /* Set the selected option from JSON. */
                             if ("selected" === key) {
                                 selectedKey = value;
-                                continue;
+                            } else {
+                                var option = $("<option />").val(key).append(value);
+                                $(self).append(option);
                             }
-
-                            var option = $("<option />").val(key).append(value);
-                            $(self).append(option);
                         }
-                    }
+                    });
                 }
 
                 /* Loop option again to set selected. IE needed this... */
