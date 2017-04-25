@@ -107,11 +107,4 @@
     /* Default settings for plugin. */
     $.fn.chained.defaults = {};
 
-    /* Data attribute filter. */
-    $.fn.chainedFilter = function(key, value) {
-        return this.filter(function() {
-            return $(this).data(key) === value;
-        });
-    };
-
 })(window.jQuery || window.Zepto, window, document);
