@@ -17,7 +17,6 @@
     "use strict";
 
     $.fn.chained = function(parentSelector) {
-
         return this.each(function() {
 
             /* Save this to child because this changes when scope changes. */
@@ -46,20 +45,15 @@
 
                 $(child).html(backup.html());
 
-                /* If multiple parents build classname like foo\bar. */
+                /* If multiple parents build value like foo+bar. */
                 var selected = "";
                 $(parentSelector).each(function() {
-                    var selectedClass = $("option:selected", this).val();
-                    if (selectedClass) {
+                    var selectedValue = $("option:selected", this).val();
+                    if (selectedValue) {
                         if (selected.length > 0) {
-                            if (window.Zepto) {
-                                /* Zepto class regexp dies with classes like foo\bar. */
-                                selected += "\\\\";
-                            } else {
-                                selected += "\\";
-                            }
+                            selected += "+";
                         }
-                        selected += selectedClass;
+                        selected += selectedValue;
                     }
                 });
 
@@ -75,11 +69,21 @@
                 var selectedFirst = $("option:selected", first).val();
 
                 $("option", child).each(function() {
-                    /* Remove unneeded items but save the default value. */
-                    if ($(this).hasClass(selected) && $(this).val() === currentlySelectedValue) {
-                        $(this).prop("selected", true);
-                        triggerChange = false;
-                    } else if (!$(this).hasClass(selected) && !$(this).hasClass(selectedFirst) && $(this).val() !== "") {
+                    /* Always leave the default value in place. */
+                    if ($(this).val() === "") {
+                        return;
+                    }
+                    var matches = [];
+                    var data = $(this).data("chained");
+                    if (data) {
+                        matches = data.split(" ");
+                    }
+                    if ((matches.indexOf(selected) > -1) || (matches.indexOf(selectedFirst) > -1)) {
+                        if ($(this).val() === currentlySelectedValue) {
+                            $(this).prop("selected", true);
+                            triggerChange = false;
+                        }
+                    } else {
                         $(this).remove();
                     }
                 });
@@ -102,5 +106,12 @@
 
     /* Default settings for plugin. */
     $.fn.chained.defaults = {};
+
+    /* Data attribute filter. */
+    $.fn.chainedFilter = function(key, value) {
+        return this.filter(function() {
+            return $(this).data(key) === value;
+        });
+    };
 
 })(window.jQuery || window.Zepto, window, document);

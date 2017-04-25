@@ -14,42 +14,42 @@ describe("Class based version of plugin", function() {
             '</select>' +
             '<select id="series" name="series">' +
             '  <option value="">--</option>' +
-            '  <option value="series-1" class="bmw">1 series</option>' +
-            '  <option value="series-3" class="bmw">3 series</option>' +
-            '  <option value="series-5" class="bmw">5 series</option>' +
-            '  <option value="series-6" class="bmw">6 series</option>' +
-            '  <option value="series-7" class="bmw">7 series</option>' +
-            '  <option value="a1" class="audi">A1</option>' +
-            '  <option value="a3" class="audi">A3</option>' +
-            '  <option value="s3" class="audi">S3</option>' +
-            '  <option value="a4" class="audi">A4</option>' +
-            '  <option value="s4" class="audi">S4</option>' +
-            '  <option value="a5" class="audi">A5</option>' +
-            '  <option value="s5" class="audi">S5</option>' +
-            '  <option value="a6" class="audi">A6</option>' +
-            '  <option value="s6" class="audi" selected="selected">S6</option>' +
-            '  <option value="rs6" class="audi">RS6</option>' +
-            '  <option value="a8" class="audi">A8</option>' +
+            '  <option value="series-1" data-chained="bmw">1 series</option>' +
+            '  <option value="series-3" data-chained="bmw">3 series</option>' +
+            '  <option value="series-5" data-chained="bmw">5 series</option>' +
+            '  <option value="series-6" data-chained="bmw">6 series</option>' +
+            '  <option value="series-7" data-chained="bmw">7 series</option>' +
+            '  <option value="a1" data-chained="audi">A1</option>' +
+            '  <option value="a3" data-chained="audi">A3</option>' +
+            '  <option value="s3" data-chained="audi">S3</option>' +
+            '  <option value="a4" data-chained="audi">A4</option>' +
+            '  <option value="s4" data-chained="audi">S4</option>' +
+            '  <option value="a5" data-chained="audi">A5</option>' +
+            '  <option value="s5" data-chained="audi">S5</option>' +
+            '  <option value="a6" data-chained="audi">A6</option>' +
+            '  <option value="s6" data-chained="audi" selected="selected">S6</option>' +
+            '  <option value="rs6" data-chained="audi">RS6</option>' +
+            '  <option value="a8" data-chained="audi">A8</option>' +
             '</select>' +
             '<select id="model" name="model">' +
             '  <option value="">--</option>' +
-            '  <option value="3-doors"       class="series-1">3 doors</option>' +
-            '  <option value="5-doors"       class="series-1">5 doors</option>' +
-            '  <option value="coupe"         class="series-1 series-3 series-6 a5 s5">Coupe</option>' +
-            '  <option value="cabrio"        class="series-1 series-3 series-6">Cabrio</option>' +
-            '  <option value="touring"       class="series-3 series-5">Touring</option>' +
-            '  <option value="gran-tourismo" class="series-5">Gran Tourismo</option>' +
-            '  <option value="sedan"         class="series-3 series-5 series-7 a1 a3 s3 a4 s4 a6 s6 rs6">Sedan</option>' +
-            '  <option value="sportback"     class="a3 s3 a5 s5">Sportback</option>' +
-            '  <option value="cabriolet"     class="a3 a5 s5">Cabriolet</option>' +
-            '  <option value="avant"         class="a4 s4 a6 s6 rs6">Avant</option>' +
-            '  <option value="allroad"       class="a4 a6">Allroad</option>' +
+            '  <option value="3-doors" data-chained="series-1">3 doors</option>' +
+            '  <option value="5-doors" data-chained="series-1">5 doors</option>' +
+            '  <option value="coupe" data-chained="series-1 series-3 series-6 a5 s5">Coupe</option>' +
+            '  <option value="cabrio" data-chained="series-1 series-3 series-6">Cabrio</option>' +
+            '  <option value="touring" data-chained="series-3 series-5">Touring</option>' +
+            '  <option value="gran-tourismo" data-chained="series-5">Gran Tourismo</option>' +
+            '  <option value="sedan" data-chained="series-3 series-5 series-7 a1 a3 s3 a4 s4 a6 s6 rs6">Sedan</option>' +
+            '  <option value="sportback" data-chained="a3 s3 a5 s5">Sportback</option>' +
+            '  <option value="cabriolet" data-chained="a3 a5 s5">Cabriolet</option>' +
+            '  <option value="avant" data-chained="a4 s4 a6 s6 rs6">Avant</option>' +
+            '  <option value="allroad" data-chained="a4 a6">Allroad</option>' +
             '</select>' +
             '<select id="engine" name="engine">' +
             '  <option value="">--</option>   ' +
-            '  <option value="25-petrol" class="series-3 a3 a4">2.5 petrol</option>' +
-            '  <option value="30-petrol" class="series-3 series-5 series-6 a3 a4 a5">3.0 petrol</option>' +
-            '  <option value="30-diesel" class="series-3\\sedan series-5\\sedan a5">3.0 diesel</option>' +
+            '  <option value="25-petrol" data-chained="series-3 a3 a4">2.5 petrol</option>' +
+            '  <option value="30-petrol" data-chained="series-3 series-5 series-6 a3 a4 a5">3.0 petrol</option>' +
+            '  <option value="30-diesel" data-chained="series-3+sedan series-5+sedan a5">3.0 diesel</option>' +
             '</select>');
 
             $("#series").chained("#mark");
@@ -145,42 +145,42 @@ describe("Class based version of plugin", function() {
             '</select>' +
             '<select id="series" name="series" class="series">' +
             '  <option value="">--</option>' +
-            '  <option value="series-1" class="bmw">1 series</option>' +
-            '  <option value="series-3" class="bmw">3 series</option>' +
-            '  <option value="series-5" class="bmw">5 series</option>' +
-            '  <option value="series-6" class="bmw">6 series</option>' +
-            '  <option value="series-7" class="bmw">7 series</option>' +
-            '  <option value="a1" class="audi">A1</option>' +
-            '  <option value="a3" class="audi">A3</option>' +
-            '  <option value="s3" class="audi">S3</option>' +
-            '  <option value="a4" class="audi">A4</option>' +
-            '  <option value="s4" class="audi">S4</option>' +
-            '  <option value="a5" class="audi">A5</option>' +
-            '  <option value="s5" class="audi">S5</option>' +
-            '  <option value="a6" class="audi">A6</option>' +
-            '  <option value="s6" class="audi" selected="selected">S6</option>' +
-            '  <option value="rs6" class="audi">RS6</option>' +
-            '  <option value="a8" class="audi">A8</option>' +
+            '  <option value="series-1" data-chained="bmw">1 series</option>' +
+            '  <option value="series-3" data-chained="bmw">3 series</option>' +
+            '  <option value="series-5" data-chained="bmw">5 series</option>' +
+            '  <option value="series-6" data-chained="bmw">6 series</option>' +
+            '  <option value="series-7" data-chained="bmw">7 series</option>' +
+            '  <option value="a1" data-chained="audi">A1</option>' +
+            '  <option value="a3" data-chained="audi">A3</option>' +
+            '  <option value="s3" data-chained="audi">S3</option>' +
+            '  <option value="a4" data-chained="audi">A4</option>' +
+            '  <option value="s4" data-chained="audi">S4</option>' +
+            '  <option value="a5" data-chained="audi">A5</option>' +
+            '  <option value="s5" data-chained="audi">S5</option>' +
+            '  <option value="a6" data-chained="audi">A6</option>' +
+            '  <option value="s6" data-chained="audi" selected="selected">S6</option>' +
+            '  <option value="rs6" data-chained="audi">RS6</option>' +
+            '  <option value="a8" data-chained="audi">A8</option>' +
             '</select>' +
             '<select id="model" class="model" name="model">' +
             '  <option value="">--</option>' +
-            '  <option value="3-doors"       class="series-1">3 doors</option>' +
-            '  <option value="5-doors"       class="series-1">5 doors</option>' +
-            '  <option value="coupe"         class="series-1 series-3 series-6 a5 s5">Coupe</option>' +
-            '  <option value="cabrio"        class="series-1 series-3 series-6">Cabrio</option>' +
-            '  <option value="touring"       class="series-3 series-5">Touring</option>' +
-            '  <option value="gran-tourismo" class="series-5">Gran Tourismo</option>' +
-            '  <option value="sedan"         class="series-3 series-5 series-7 a1 a3 s3 a4 s4 a6 s6 rs6">Sedan</option>' +
-            '  <option value="sportback"     class="a3 s3 a5 s5">Sportback</option>' +
-            '  <option value="cabriolet"     class="a3 a5 s5">Cabriolet</option>' +
-            '  <option value="avant"         class="a4 s4 a6 s6 rs6">Avant</option>' +
-            '  <option value="allroad"       class="a4 a6">Allroad</option>' +
+            '  <option value="3-doors" data-chained="series-1">3 doors</option>' +
+            '  <option value="5-doors" data-chained="series-1">5 doors</option>' +
+            '  <option value="coupe" data-chained="series-1 series-3 series-6 a5 s5">Coupe</option>' +
+            '  <option value="cabrio" data-chained="series-1 series-3 series-6">Cabrio</option>' +
+            '  <option value="touring" data-chained="series-3 series-5">Touring</option>' +
+            '  <option value="gran-tourismo" data-chained="series-5">Gran Tourismo</option>' +
+            '  <option value="sedan" data-chained="series-3 series-5 series-7 a1 a3 s3 a4 s4 a6 s6 rs6">Sedan</option>' +
+            '  <option value="sportback" data-chained="a3 s3 a5 s5">Sportback</option>' +
+            '  <option value="cabriolet" data-chained="a3 a5 s5">Cabriolet</option>' +
+            '  <option value="avant" data-chained="a4 s4 a6 s6 rs6">Avant</option>' +
+            '  <option value="allroad" data-chained="a4 a6">Allroad</option>' +
             '</select>' +
             '<select id="engine" class="engine" name="engine">' +
             '  <option value="">--</option>   ' +
-            '  <option value="25-petrol" class="series-3 a3 a4">2.5 petrol</option>' +
-            '  <option value="30-petrol" class="series-3 series-5 series-6 a3 a4 a5">3.0 petrol</option>' +
-            '  <option value="30-diesel" class="series-3\\sedan series-5\\sedan a5">3.0 diesel</option>' +
+            '  <option value="25-petrol" data-chained="series-3 a3 a4">2.5 petrol</option>' +
+            '  <option value="30-petrol" data-chained="series-3 series-5 series-6 a3 a4 a5">3.0 petrol</option>' +
+            '  <option value="30-diesel" data-chained="series-3+sedan series-5+sedan a5">3.0 diesel</option>' +
             '</select>' +
             '<select id="mark-2" class="mark" name="mark">' +
             '  <option value="">--</option>' +
@@ -189,42 +189,42 @@ describe("Class based version of plugin", function() {
             '</select>' +
             '<select id="series-2" class="series" name="series">' +
             '  <option value="">--</option>' +
-            '  <option value="series-1" class="bmw">1 series</option>' +
-            '  <option value="series-3" class="bmw">3 series</option>' +
-            '  <option value="series-5" class="bmw">5 series</option>' +
-            '  <option value="series-6" class="bmw">6 series</option>' +
-            '  <option value="series-7" class="bmw">7 series</option>' +
-            '  <option value="a1" class="audi">A1</option>' +
-            '  <option value="a3" class="audi">A3</option>' +
-            '  <option value="s3" class="audi">S3</option>' +
-            '  <option value="a4" class="audi">A4</option>' +
-            '  <option value="s4" class="audi">S4</option>' +
-            '  <option value="a5" class="audi">A5</option>' +
-            '  <option value="s5" class="audi">S5</option>' +
-            '  <option value="a6" class="audi">A6</option>' +
-            '  <option value="s6" class="audi" selected="selected">S6</option>' +
-            '  <option value="rs6" class="audi">RS6</option>' +
-            '  <option value="a8" class="audi">A8</option>' +
+            '  <option value="series-1" data-chained="bmw">1 series</option>' +
+            '  <option value="series-3" data-chained="bmw">3 series</option>' +
+            '  <option value="series-5" data-chained="bmw">5 series</option>' +
+            '  <option value="series-6" data-chained="bmw">6 series</option>' +
+            '  <option value="series-7" data-chained="bmw">7 series</option>' +
+            '  <option value="a1" data-chained="audi">A1</option>' +
+            '  <option value="a3" data-chained="audi">A3</option>' +
+            '  <option value="s3" data-chained="audi">S3</option>' +
+            '  <option value="a4" data-chained="audi">A4</option>' +
+            '  <option value="s4" data-chained="audi">S4</option>' +
+            '  <option value="a5" data-chained="audi">A5</option>' +
+            '  <option value="s5" data-chained="audi">S5</option>' +
+            '  <option value="a6" data-chained="audi">A6</option>' +
+            '  <option value="s6" data-chained="audi" selected="selected">S6</option>' +
+            '  <option value="rs6" data-chained="audi">RS6</option>' +
+            '  <option value="a8" data-chained="audi">A8</option>' +
             '</select>' +
             '<select id="model-2" class="model" name="model">' +
             '  <option value="">--</option>' +
-            '  <option value="3-doors"       class="series-1">3 doors</option>' +
-            '  <option value="5-doors"       class="series-1">5 doors</option>' +
-            '  <option value="coupe"         class="series-1 series-3 series-6 a5 s5">Coupe</option>' +
-            '  <option value="cabrio"        class="series-1 series-3 series-6">Cabrio</option>' +
-            '  <option value="touring"       class="series-3 series-5">Touring</option>' +
-            '  <option value="gran-tourismo" class="series-5">Gran Tourismo</option>' +
-            '  <option value="sedan"         class="series-3 series-5 series-7 a1 a3 s3 a4 s4 a6 s6 rs6">Sedan</option>' +
-            '  <option value="sportback"     class="a3 s3 a5 s5">Sportback</option>' +
-            '  <option value="cabriolet"     class="a3 a5 s5">Cabriolet</option>' +
-            '  <option value="avant"         class="a4 s4 a6 s6 rs6">Avant</option>' +
-            '  <option value="allroad"       class="a4 a6">Allroad</option>' +
+            '  <option value="3-doors" data-chained="series-1">3 doors</option>' +
+            '  <option value="5-doors" data-chained="series-1">5 doors</option>' +
+            '  <option value="coupe" data-chained="series-1 series-3 series-6 a5 s5">Coupe</option>' +
+            '  <option value="cabrio" data-chained="series-1 series-3 series-6">Cabrio</option>' +
+            '  <option value="touring" data-chained="series-3 series-5">Touring</option>' +
+            '  <option value="gran-tourismo" data-chained="series-5">Gran Tourismo</option>' +
+            '  <option value="sedan" data-chained="series-3 series-5 series-7 a1 a3 s3 a4 s4 a6 s6 rs6">Sedan</option>' +
+            '  <option value="sportback" data-chained="a3 s3 a5 s5">Sportback</option>' +
+            '  <option value="cabriolet" data-chained="a3 a5 s5">Cabriolet</option>' +
+            '  <option value="avant" data-chained="a4 s4 a6 s6 rs6">Avant</option>' +
+            '  <option value="allroad" data-chained="a4 a6">Allroad</option>' +
             '</select>' +
             '<select id="engine-2" class="engine" name="engine">' +
             '  <option value="">--</option>   ' +
-            '  <option value="25-petrol" class="series-3 a3 a4">2.5 petrol</option>' +
-            '  <option value="30-petrol" class="series-3 series-5 series-6 a3 a4 a5">3.0 petrol</option>' +
-            '  <option value="30-diesel" class="series-3\\sedan series-5\\sedan a5">3.0 diesel</option>' +
+            '  <option value="25-petrol" data-chained="series-3 a3 a4">2.5 petrol</option>' +
+            '  <option value="30-petrol" data-chained="series-3 series-5 series-6 a3 a4 a5">3.0 petrol</option>' +
+            '  <option value="30-diesel" data-chained="series-3+sedan series-5+sedan a5">3.0 diesel</option>' +
             '</select>' +
             '<select id="mark-3" class="mark" name="mark">' +
             '  <option value="">--</option>' +
@@ -233,42 +233,42 @@ describe("Class based version of plugin", function() {
             '</select>' +
             '<select id="series-3" class="series" name="series">' +
             '  <option value="">--</option>' +
-            '  <option value="series-1" class="bmw">1 series</option>' +
-            '  <option value="series-3" class="bmw">3 series</option>' +
-            '  <option value="series-5" class="bmw">5 series</option>' +
-            '  <option value="series-6" class="bmw">6 series</option>' +
-            '  <option value="series-7" class="bmw">7 series</option>' +
-            '  <option value="a1" class="audi">A1</option>' +
-            '  <option value="a3" class="audi">A3</option>' +
-            '  <option value="s3" class="audi">S3</option>' +
-            '  <option value="a4" class="audi">A4</option>' +
-            '  <option value="s4" class="audi">S4</option>' +
-            '  <option value="a5" class="audi">A5</option>' +
-            '  <option value="s5" class="audi">S5</option>' +
-            '  <option value="a6" class="audi">A6</option>' +
-            '  <option value="s6" class="audi" selected="selected">S6</option>' +
-            '  <option value="rs6" class="audi">RS6</option>' +
-            '  <option value="a8" class="audi">A8</option>' +
+            '  <option value="series-1" data-chained="bmw">1 series</option>' +
+            '  <option value="series-3" data-chained="bmw">3 series</option>' +
+            '  <option value="series-5" data-chained="bmw">5 series</option>' +
+            '  <option value="series-6" data-chained="bmw">6 series</option>' +
+            '  <option value="series-7" data-chained="bmw">7 series</option>' +
+            '  <option value="a1" data-chained="audi">A1</option>' +
+            '  <option value="a3" data-chained="audi">A3</option>' +
+            '  <option value="s3" data-chained="audi">S3</option>' +
+            '  <option value="a4" data-chained="audi">A4</option>' +
+            '  <option value="s4" data-chained="audi">S4</option>' +
+            '  <option value="a5" data-chained="audi">A5</option>' +
+            '  <option value="s5" data-chained="audi">S5</option>' +
+            '  <option value="a6" data-chained="audi">A6</option>' +
+            '  <option value="s6" data-chained="audi" selected="selected">S6</option>' +
+            '  <option value="rs6" data-chained="audi">RS6</option>' +
+            '  <option value="a8" data-chained="audi">A8</option>' +
             '</select>' +
             '<select id="model-3" class="model" name="model">' +
             '  <option value="">--</option>' +
-            '  <option value="3-doors"       class="series-1">3 doors</option>' +
-            '  <option value="5-doors"       class="series-1">5 doors</option>' +
-            '  <option value="coupe"         class="series-1 series-3 series-6 a5 s5">Coupe</option>' +
-            '  <option value="cabrio"        class="series-1 series-3 series-6">Cabrio</option>' +
-            '  <option value="touring"       class="series-3 series-5">Touring</option>' +
-            '  <option value="gran-tourismo" class="series-5">Gran Tourismo</option>' +
-            '  <option value="sedan"         class="series-3 series-5 series-7 a1 a3 s3 a4 s4 a6 s6 rs6">Sedan</option>' +
-            '  <option value="sportback"     class="a3 s3 a5 s5">Sportback</option>' +
-            '  <option value="cabriolet"     class="a3 a5 s5">Cabriolet</option>' +
-            '  <option value="avant"         class="a4 s4 a6 s6 rs6">Avant</option>' +
-            '  <option value="allroad"       class="a4 a6">Allroad</option>' +
+            '  <option value="3-doors" data-chained="series-1">3 doors</option>' +
+            '  <option value="5-doors" data-chained="series-1">5 doors</option>' +
+            '  <option value="coupe" data-chained="series-1 series-3 series-6 a5 s5">Coupe</option>' +
+            '  <option value="cabrio" data-chained="series-1 series-3 series-6">Cabrio</option>' +
+            '  <option value="touring" data-chained="series-3 series-5">Touring</option>' +
+            '  <option value="gran-tourismo" data-chained="series-5">Gran Tourismo</option>' +
+            '  <option value="sedan" data-chained="series-3 series-5 series-7 a1 a3 s3 a4 s4 a6 s6 rs6">Sedan</option>' +
+            '  <option value="sportback" data-chained="a3 s3 a5 s5">Sportback</option>' +
+            '  <option value="cabriolet" data-chained="a3 a5 s5">Cabriolet</option>' +
+            '  <option value="avant" data-chained="a4 s4 a6 s6 rs6">Avant</option>' +
+            '  <option value="allroad" data-chained="a4 a6">Allroad</option>' +
             '</select>' +
             '<select id="engine-3" class="engine" name="engine">' +
             '  <option value="">--</option>   ' +
-            '  <option value="25-petrol" class="series-3 a3 a4">2.5 petrol</option>' +
-            '  <option value="30-petrol" class="series-3 series-5 series-6 a3 a4 a5">3.0 petrol</option>' +
-            '  <option value="30-diesel" class="series-3\\sedan series-5\\sedan a5">3.0 diesel</option>' +
+            '  <option value="25-petrol" data-chained="series-3 a3 a4">2.5 petrol</option>' +
+            '  <option value="30-petrol" data-chained="series-3 series-5 series-6 a3 a4 a5">3.0 petrol</option>' +
+            '  <option value="30-diesel" data-chained="series-3+sedan series-5+sedan a5">3.0 diesel</option>' +
             '</select>');
 
             $(".series").each(function() {
