@@ -345,26 +345,6 @@ describe("Remote version of plugin", function() {
                 expect($("#series5 > option:selected").val()).toBe("series-3");
             });
 
-            it("should be able to bootstrap with array of arrays", function() {
-                $("#series5").remoteChained({
-                    parents : "#mark5",
-                    url: "/api/series",
-                    loading : "--",
-                    bootstrap : [
-                        ["--", "--"],
-                        ["series-2", "2 series"],
-                        ["series-3", "3 series"],
-                        ["series-5", "5 series"],
-                        ["series-6", "6 series"],
-                        ["series-7", "7 series"],
-                        ["selected", "series-5"]
-                    ]
-                });
-
-                expect($("#series5 > option").length).toBe(6);
-                expect($("#series5 > option:selected").val()).toBe("series-5");
-            });
-
             it("should be able to bootstrap with object", function() {
                 $("#series5").remoteChained({
                     parents : "#mark5",

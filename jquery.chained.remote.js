@@ -97,22 +97,35 @@
                 /* Clear the select. */
                 $("option", self).remove();
 
-                /* JSON is an JavaScript object. Rebuild it as an array. */
-                /* {"":"--","series-1":"1 series","series-3":"3 series"} */
+                if ($.isArray(json)) {
+                    /* Add new options from json which is an array of objects. */
+                    /* [ {"":"--"},{"series-1":"1 series"},{"series-3"}:{"3 series"}] */
+                    $.each(json, function(key, value) {
+                        $.each(value, function(key, value) {
+                            if ("selected" === key) {
+                                selectedKey = value;
+                            } else {
+                                var option = $("<option />").val(key).append(value);
+                                $(self).append(option);
+                            }
+                        });
+                    });
+                } else {
+                    /* Add new options from json which is an object. */
+                    /* {"":"--","series-1":"1 series","series-3":"3 series"} */
+                    for (var key in json) {
+                        if (json.hasOwnProperty(key)) {
+                            var value = json[key];
 
-                /* Add new options from json. */
-                for (var key in json) {
-                    if (json.hasOwnProperty(key)) {
-                        var value = json[key];
+                            /* Set the selected option from JSON. */
+                            if ("selected" === key) {
+                                selectedKey = value;
+                                continue;
+                            }
 
-                        /* Set the selected option from JSON. */
-                        if ("selected" === key) {
-                            selectedKey = value;
-                            continue;
+                            var option = $("<option />").val(key).append(value);
+                            $(self).append(option);
                         }
-
-                        var option = $("<option />").val(key).append(value);
-                        $(self).append(option);
                     }
                 }
 
