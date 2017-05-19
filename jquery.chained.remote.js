@@ -9,7 +9,7 @@
  * Project home:
  *   http://www.appelsiini.net/projects/chained
  *
- * Version: 2.0.0-dev
+ * Version: 2.0.0-beta.2
  *
  */
 
@@ -118,7 +118,7 @@
                             /* Set the selected option from JSON. */
                             if ("selected" === key) {
                                 selectedKey = value;
-                            } else {
+                            } else {
                                 var option = $("<option />").val(key).append(value);
                                 $(self).append(option);
                             }
