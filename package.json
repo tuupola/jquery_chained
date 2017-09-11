@@ -9,6 +9,7 @@
         "ecosystem:jquery"
     ],
     "description": "Simple chained selects. You can choose from two different versions. First version uses uses data attributes to decide content of child select. It does not make any external AJAX queries. Remote version makes external query and builds the child select from returned JSON response.",
+    "main": "jquery.chained.js",
     "repository": "git@github.com:tuupola/jquery_chained.git",
     "homepage": "http://www.appelsiini.net/projects/chained",
     "bugs": "https://github.com/tuupola/jquery_chained/issues",
