@@ -49,7 +49,7 @@
                 /* If multiple parents build classname like foo\bar. */
                 var selected = "";
                 $(parent_selector).each(function() {
-                    var selectedClass = $("option:selected", this).val();
+                    var selectedClass = $(this).is("select") ? $("option:selected", this).val() : $(this).val();
                     if (selectedClass) {
                         if (selected.length > 0) {
                             if (window.Zepto) {
