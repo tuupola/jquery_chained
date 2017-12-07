@@ -16,7 +16,7 @@
 ;(function($, window, document, undefined) {
     "use strict";
 
-    $.fn.chained = function(parentSelector) {
+    $.fn.chained = function(parentSelector, callback) {
         return this.each(function() {
 
             /* Save this to child because this changes when scope changes. */
@@ -96,6 +96,10 @@
                 }
                 if (triggerChange) {
                     $(child).trigger("change");
+                }
+               
+                if (typeof callback === "function") {
+                    callback();
                 }
             }
         });
