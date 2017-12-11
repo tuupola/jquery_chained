@@ -74,7 +74,7 @@
                         return;
                     }
                     var matches = [];
-                    var data = $(this).data("chained");
+                    var data = String($(this).data("chained"));
                     if (data) {
                         matches = data.split(" ");
                     }
