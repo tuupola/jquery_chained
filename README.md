@@ -185,7 +185,7 @@ If you are accessing third party data source and do not have control over data s
 ```javascript
 $("#series").remoteChained({
     parents : "#mark",
-    url : "/api/series"
+    url : "/api/series",
     data: function (json) {
         return json.data;
     }
