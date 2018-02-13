@@ -105,7 +105,7 @@
                             if ("selected" === key) {
                                 selectedKey = value;
                             } else {
-                                var option = $("<option />").val(key).append(value);
+                                var option = settings.transform(key,value);
                                 $(self).append(option);
                             }
                         });
@@ -119,7 +119,7 @@
                             if ("selected" === key) {
                                 selectedKey = value;
                             } else {
-                                var option = $("<option />").val(key).append(value);
+                                var option = settings.transform(key,value);
                                 $(self).append(option);
                             }
                         }
@@ -153,7 +153,10 @@
         bootstrap: null,
         loading: null,
         clear: false,
-        data: function(json) { return json; }
+        data: function(json) { return json; },
+        transform: function (key, value) {
+            return $("<option />").val(key).append(value);
+        }
     };
 
 })(window.jQuery || window.Zepto, window, document);
