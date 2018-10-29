@@ -3,6 +3,7 @@
 [![npm](https://img.shields.io/npm/v/jquery-chained.svg)](https://www.npmjs.com/package/jquery-chained)
 [![Software License](https://img.shields.io/badge/license-MIT-brightgreen.svg?style=flat-square)](LICENSE.txt)
 [![Build Status](https://img.shields.io/travis/tuupola/jquery_chained/master.svg?style=flat-square)](https://travis-ci.org/tuupola/jquery_chained)
+[![jsDelivr Hits](https://data.jsdelivr.com/v1/package/npm/jquery-chained/badge)](https://www.jsdelivr.com/package/npm/jquery-chained)
 
 Chained is simple plugin for chained selects. It works with both jQuery and Zepto. You can choose from two different versions. Use `jquery.chained.js` if you do not want to make external queries for setting content of child selects. This version uses data attirbutes to decide the content.
 
