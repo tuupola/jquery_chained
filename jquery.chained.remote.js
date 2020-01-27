@@ -79,6 +79,7 @@
                         build.call(self, json);
                         /* Force updating the children. */
                         $(self).trigger("change");
+                        settings.callback(self);
                     });
                 });
 
@@ -153,6 +154,7 @@
         bootstrap: null,
         loading: null,
         clear: false,
+        callback: function() {},
         data: function(json) { return json; }
     };
 
